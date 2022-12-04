@@ -1,0 +1,33 @@
+{
+  "name": "messenger",
+  "version": "1.0.0",
+  "engines": {
+  "node": ">=16.15.0"
+},
+  "description": "---",
+
+  "scripts": {
+    "dev": "parcel src/pages/index.hbs --no-cache",
+    "build": "parcel build src/pages/index.hbs && node server/server.js",
+    "delete": "shx rm -R ./dist ./.parcel-cache"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tayru/middle.messenger.praktikum.yandex.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tayru/middle.messenger.praktikum.yandex/issues"
+  },
+  "homepage": "https://github.com/tayru/middle.messenger.praktikum.yandex#readme",
+  "devDependencies": {
+    "parcel": "^2.8.0",
+    "@anikin/parcel-transformer-handlebars": "^1.0.9",
+    "postcss-import": "^15.0.0",
+    "postcss-nested": "^6.0.0"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
