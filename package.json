@@ -7,7 +7,7 @@
   "description": "---",
   "scripts": {
     "dev": "parcel src/pages/index.hbs --no-cache",
-    "build": "parcel build src/pages/index.hbs && node server/server.js",
+    "build": "parcel build src/pages/index.hbs",
     "delete": "shx rm -R ./dist ./.parcel-cache"
   },
   "repository": {
@@ -22,7 +22,6 @@
   "homepage": "https://github.com/tayru/middle.messenger.praktikum.yandex#readme",
   "devDependencies": {
     "@anikin/parcel-transformer-handlebars": "^1.0.9",
-    "cssnano": "^5.1.14",
     "parcel": "^2.8.0",
     "postcss": "^8.4.19",
     "postcss-import": "^15.0.0",
