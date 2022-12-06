@@ -7,8 +7,12 @@
         </a>
     </aside>
     <section class="settings">
-        
-        <img class="settings__img" src="/static/assets/img/avatar.svg">
+
+        <label for="avatar">
+            <img class="settings__img" src="/static/assets/img/avatar.svg">
+        </label>
+        <input type="file" name="avatar" id="avatar">
+
         <h2 class="settings__name-title">Иван Иванович</h2>
         <section class="settings__form-wrap">
 
@@ -46,18 +50,18 @@
             <form  class="settings__form" action="" method="post">
 
                 <div class="text-field">
-                    <label class="text-field__label" for="oldPassword">Пароль</label>
-                    <input class="text-field__input" type="password" name="oldPassword" id="oldPassword" placeholder="oldPassword">
+                    <label class="text-field__label" for="oldPassword">Текущий пароль</label>
+                    <input class="text-field__input" type="password" name="oldPassword" id="oldPassword">
                 </div>
 
                 <div class="text-field">
-                    <label class="text-field__label" for="password">Пароль</label>
-                    <input class="text-field__input" type="password" name="password" id="password" placeholder="Password">
+                    <label class="text-field__label" for="password">Новый пароль</label>
+                    <input class="text-field__input" type="password" name="password" id="password">
                 </div>
 
                 <div class="text-field">
-                    <label class="text-field__label" for="newPassword">Пароль</label>
-                    <input class="text-field__input" type="password" name="newPassword" id="newPassword" placeholder="Password">
+                    <label class="text-field__label" for="newPassword">Повторите ещё раз</label>
+                    <input class="text-field__input" type="password" name="newPassword" id="newPassword">
                 </div>
                 {{> 'button/button' title='Обновить пароль' }}
             </form>
