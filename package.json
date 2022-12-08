@@ -6,7 +6,8 @@
   },
   "description": "---",
   "scripts": {
-    "dev": "parcel src/pages/index.hbs --no-cache",
+    "start": "npm run build && node server/server.js",
+    "dev": "parcel src/pages/index.hbs --open --no-cache ",
     "build": "parcel build src/pages/index.hbs",
     "delete": "shx rm -R ./dist ./.parcel-cache"
   },
@@ -14,20 +15,20 @@
     "type": "git",
     "url": "git+https://github.com/tayru/middle.messenger.praktikum.yandex.git"
   },
-  "author": "",
+  "author": "Denis Brudanin",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/tayru/middle.messenger.praktikum.yandex/issues"
   },
   "homepage": "https://github.com/tayru/middle.messenger.praktikum.yandex#readme",
   "devDependencies": {
-    "@anikin/parcel-transformer-handlebars": "^1.0.9",
-    "parcel": "^2.8.0",
-    "postcss": "^8.4.19",
-    "postcss-import": "^15.0.0",
-    "postcss-nested": "^6.0.0"
+    "@anikin/parcel-transformer-handlebars": "1.0.9",
+    "parcel": "2.8.0",
+    "postcss": "8.4.19",
+    "postcss-import": "15.0.1",
+    "postcss-nested": "6.0.0"
   },
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "4.18.2"
   }
 }

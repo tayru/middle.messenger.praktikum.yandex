@@ -2,7 +2,7 @@
 
 <main class="wrapper-login">
     <section class="form-register">
-        <h2 class="form-register__title">Регистрация</h2>
+        <h1 class="form-register__title">Регистрация</h1>
         <form action="" method="post">
 
             <div class="text-field">
@@ -23,13 +23,17 @@
             </div>
 
             <div class="text-field">
-                <label class="text-field__label" for="phone">Логин</label>
+                <label class="text-field__label" for="phone">Телефон</label>
                 <input class="text-field__input" type="tel" name="phone" id="phone" >
+            </div>
+            <div class="text-field">
+                <label class="text-field__label" for="password">Пароль</label>
+                <input class="text-field__input" type="password" name="password" id="password" >
             </div>
 
             <div class="text-field">
-                <label class="text-field__label" for="password">Пароль</label>
-                <input class="text-field__input" type="password" name="password" id="password" placeholder="Password">
+                <label class="text-field__label" for="password2">Пароль(ещё раз)</label>
+                <input class="text-field__input" type="password" name="password2" id="password2">
             </div>
 
         {{> 'button/button' title='Зарегистрироваться' }}
