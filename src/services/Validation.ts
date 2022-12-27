@@ -34,6 +34,7 @@ export function validate(name: string, str: string, str2?: string): string | nul
 
         case 'first_name':
         case 'second_name':
+        case 'display_name':
             if (str.length === 0) messege = `Поле не может быть пустым`;
             if (!/^[A-ZА-ЯЁ]/.test(str)) {
                 messege = `Первая буква должна быть заглавной`;
