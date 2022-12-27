@@ -49,7 +49,7 @@ export class LoginPage extends Block {
       <form class="login-form form">
         1111111
         {{{Button
-        text="Login222222"
+        text="Login33333"
         onClick=onLogin
         }}}
       </form>

@@ -1,5 +1,5 @@
 import Block from '../../core/Block';
-import template from 'bundle-text:./button.hbs';
+import template from 'bundle-text:./template.hbs';
 
 import './button.pcss';
 

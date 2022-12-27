@@ -1,5 +1,3 @@
-{{!< main}}
-
 <main class="wrapper-login">
     <section class="form-register">
         <h1 class="form-register__title">Регистрация</h1>
@@ -36,8 +34,10 @@
                 <input class="text-field__input" type="password" name="password2" id="password2">
             </div>
 
-        {{> 'button/button' title='Зарегистрироваться' }}
+            {{{Button
+                    text="Зарегистрироваться"
+            }}}
         </form>
-        <a href="../auth/auth.hbs" class="form-auth__reg">Войти</a>
+        <a href="../auth/template.hbs" class="form-auth__reg">Войти</a>
     </section>
 </main>
