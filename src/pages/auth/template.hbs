@@ -7,6 +7,8 @@
 
         <div class="text-field">
             <label class="text-field__label" for="login">Логин</label>
+            <div class="text-field__error"></div>
+
             {{{Input  name="login"
                       type="text"
                       class="text-field__input"
@@ -19,6 +21,7 @@
 
         <div class="text-field">
             <label class="text-field__label" for="password">Пароль</label>
+            <div class="text-field__error"></div>
             {{{Input  name="password"
                       type="password"
                       class="text-field__input"
@@ -27,7 +30,6 @@
                       onBlur=onBlur
             }}}
         </div>
-            <div class="error-wrapper"></div>
 
             {{{Button
             text="Войти" onClick=onLogin

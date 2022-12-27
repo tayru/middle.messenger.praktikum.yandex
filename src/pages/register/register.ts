@@ -3,16 +3,12 @@ import template from 'bundle-text:./template.hbs';
 
 import './register.pcss';
 
-interface ErrorProps {
-    title: string;
-    text: string;
-    img: string;
-}
+
 
 
 export class RegPage extends Block {
-    constructor(props: ErrorProps) {
-        super({...props});
+    constructor() {
+        super();
     }
 
    render() {

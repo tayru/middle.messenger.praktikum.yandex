@@ -1,11 +1,11 @@
 @import 'normalize.css';
 @import 'variables.css';
 
-@import '../../src/pages/auth/auth.pcss';
-@import '../../src/pages/register/register.pcss';
-@import '../../src/pages/messenger/messenger.pcss';
-@import '../../src/pages/error/error.pcss';
-@import '../../src/pages/settings/settings.pcss';
+/*@import '../../src/pages/auth/auth.pcss';*/
+/*@import '../../src/pages/register/register.pcss';*/
+/*@import '../../src/pages/messenger/messenger.pcss';*/
+/*@import '../../src/pages/error/error.pcss';*/
+/*@import '../../src/pages/settings/settings.pcss';*/
 
 /*@import '../../src/components/messenger/change-chat/change-chat.pcss';*/
 /*@import '../../src/components/button/button.pcss';*/

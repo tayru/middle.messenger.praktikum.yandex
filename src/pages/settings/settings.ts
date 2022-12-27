@@ -3,16 +3,11 @@ import template from 'bundle-text:./template.hbs';
 
 import './settings.pcss';
 
-interface ErrorProps {
-    title: string;
-    text: string;
-    img: string;
-}
 
 
 export class SetPage extends Block {
-    constructor(props: ErrorProps) {
-        super({...props});
+    constructor() {
+        super();
     }
 
    render() {

@@ -40,10 +40,10 @@ export class AuthPage extends Block {
                     let result:string | null = validate( name, value)
                     if (result != null) {
                         flag = true;
-                        input.classList.add("error")
-                        ErrorWrapper.textContent = result
+                        input.parentNode.querySelector(".text-field__error").textContent = result
+                        input.parentNode.classList.add("error")
                     } else {
-                        input.classList.remove("error")
+                        input.parentNode.classList.remove("error")
                         ErrorWrapper.textContent = ''
                     }
 
@@ -54,11 +54,8 @@ export class AuthPage extends Block {
             onFocus: () => {
                 this.state.checkValidation()
             },
-
-
-
             onBlur: () => {
-
+                this.state.checkValidation()
             },
 
             regPage: (e: Event) => {
@@ -69,6 +66,7 @@ export class AuthPage extends Block {
 
             onLogin: (e: Event) => {
                 e.preventDefault();
+                this.state.checkValidation()
                 // const loginData = {
                 //     login: (this.refs.login.firstElementChild as HTMLInputElement).value,
                 //     password: (this.refs.password.firstElementChild as HTMLInputElement).value
