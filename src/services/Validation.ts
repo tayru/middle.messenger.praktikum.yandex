@@ -70,24 +70,10 @@ export function validate(name: string, str: string, str2?: string): string | nul
                 messege = `Неверный телефонный номер`;
             }
             break;
-
-        case 'display_name':
-            if (str.length === 0) messege = `Поле не может быть пустым`;
-            if (str.length < 3) messege = `Имя должен быть больше 3 символов`;
-            if (str.length > 20) messege = `Имя не может быть больше 20 символов`;
-            break;
+            
 
         case 'message':
             if (str.length === 0) messege = `Сообщение не может быть пустым`;
-            break;
-
-        case 'avatar':
-            if (str.length === 0) messege = `Нужно выбрать файл`;
-            break;
-
-        case 'title':
-            if (str.length === 0) messege = `Поле не может быть пустым`;
-            if (str.length > 40) messege = `Название не может быть больше 40 символов`;
             break;
 
         default:
