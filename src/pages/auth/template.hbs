@@ -1,0 +1,47 @@
+<main class="wrapper-login">
+    <section class="form-auth">
+        <h1 class="form-auth__title">Вход</h1>
+        <form action="" method="post">
+
+
+
+        <div class="text-field">
+            <label class="text-field__label" for="login">Логин</label>
+            <div class="text-field__error"></div>
+
+            {{{Input  name="login"
+                      type="text"
+                      class="text-field__input"
+                      id="login"
+                      placeholder="Login"
+                      onFocus=onFocus
+                      onBlur=onBlur
+            }}}
+        </div>
+
+        <div class="text-field">
+            <label class="text-field__label" for="password">Пароль</label>
+            <div class="text-field__error"></div>
+            {{{Input  name="password"
+                      type="password"
+                      class="text-field__input"
+                      id="password"
+                      onFocus=onFocus
+                      onBlur=onBlur
+            }}}
+        </div>
+
+            {{{Button
+            text="Войти" onClick=onLogin
+            }}}
+
+
+        </form>
+
+        {{{Button
+        text="regPage" onClick=regPage
+        }}}
+        <a href="../register/register.hbs" class="form-auth__reg">Нет аккаунта?</a>
+
+    </section>
+</main>

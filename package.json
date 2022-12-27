@@ -4,31 +4,36 @@
   "engines": {
     "node": ">=16.15.0"
   },
-  "description": "---",
+  "description": "",
   "scripts": {
-    "start": "npm run build && node server/server.js",
-    "dev": "parcel src/pages/index.hbs --open --no-cache ",
-    "build": "parcel build src/pages/index.hbs",
-    "delete": "shx rm -R ./dist ./.parcel-cache"
+    "start": "npm run build && node ./server/server.js",
+    "dev": "parcel src/index.html --no-source-maps",
+    "build": "parcel build src/index.html",
+    "tscheck": "npx tsc --noEmit",
+    "eslint": "npx eslint \"./src/**/*.ts\" --ext .ts",
+    "csslint": "npx stylelint \"./src/**/*.css\"",
+    "lint": "npm run tscheck && npm run eslint && npm run csslint"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/tayru/middle.messenger.praktikum.yandex.git"
-  },
-  "author": "Denis Brudanin",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/tayru/middle.messenger.praktikum.yandex/issues"
-  },
-  "homepage": "https://github.com/tayru/middle.messenger.praktikum.yandex#readme",
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
   "devDependencies": {
-    "@anikin/parcel-transformer-handlebars": "1.0.9",
-    "parcel": "2.8.0",
-    "postcss": "8.4.19",
-    "postcss-import": "15.0.1",
-    "postcss-nested": "6.0.0"
+    "@parcel/transformer-inline-string": "2.8.2",
+    "@types/node": "17.0.23",
+    "parcel": "2.8.2",
+    "postcss": "8.4.12",
+    "postcss-import": "14.1.0",
+    "postcss-nested": "6.0.0",
+    "typescript": "4.6.2",
+    "eslint": "^8.26.0",
+    "eslint-config-google": "0.14.0",
+    "stylelint": "14.13",
+    "stylelint-config-prettier": "9.0.3",
+    "stylelint-config-standard": "28.0.0",
+    "stylelint-config-standard-scss": "5.0.0",
+    "nanoid": "4.0.0"
   },
   "dependencies": {
-    "express": "4.18.2"
+    "handlebars": "4.7.7"
   }
 }

@@ -1,0 +1,16 @@
+:root {
+  /* Основные цвета */
+  --main-color: #48f08e;
+  --main-color-dark: #3F4950;
+  --bg-color: #768692;
+  --dark-bg-color: rgba(0,0,0, 0.5);
+  --color-gray: #333;
+
+  --font-color: #FFFFFF;
+  /*--font-color-dark: #999;*/
+  --bg-color-dark: #929292;
+  --color-light-gray: #999;
+  --error-color: #FF2F2F;
+
+
+}
