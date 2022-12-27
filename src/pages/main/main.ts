@@ -58,6 +58,7 @@ export class MainPage extends Block {
 
     // language=hbs
     return `
+      <div>
       <h1>Список страниц</h1>
       <ul>
         <li>
@@ -102,7 +103,7 @@ export class MainPage extends Block {
         
         
       </ul>
-
+      </div>
     `;
   }
 }
