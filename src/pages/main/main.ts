@@ -56,6 +56,7 @@ export class MainPage extends Block {
 
     // language=hbs
     return `
+      <h1>Список страниц</h1>
       <ul>
         <li>
         {{{Button
