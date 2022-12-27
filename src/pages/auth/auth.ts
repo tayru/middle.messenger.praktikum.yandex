@@ -28,6 +28,8 @@ export class AuthPage extends Block {
             },
 
             checkValidation: () => {
+                const obj:object = {}
+
                 const inputs = document.querySelectorAll("input");
                 const ErrorWrapper = document.querySelector(".error-wrapper");
                 let flag:boolean = false;
@@ -36,7 +38,9 @@ export class AuthPage extends Block {
                     const input = inputs[i] as HTMLInputElement;
                     const value:string = input.value.trim();
                     const name:string = input.getAttribute("name");
-                    console.log();
+
+                    obj[name] = value;
+
                     let result:string | null = validate( name, value)
                     if (result != null) {
                         flag = true;
@@ -48,6 +52,9 @@ export class AuthPage extends Block {
                     }
 
                 }
+
+                console.log('Вывод данных', obj);
+
 
             },
 
@@ -67,33 +74,6 @@ export class AuthPage extends Block {
             onLogin: (e: Event) => {
                 e.preventDefault();
                 this.state.checkValidation()
-                // const loginData = {
-                //     login: (this.refs.login.firstElementChild as HTMLInputElement).value,
-                //     password: (this.refs.password.firstElementChild as HTMLInputElement).value
-                // };
-                //
-                // const nextState = {
-                //     errors: {
-                //         login: '',
-                //         password: '',
-                //     },
-                //     values: { ...loginData },
-                // };
-                //
-                // if (!loginData.login) {
-                //     nextState.errors.login = 'Login is required';
-                // } else if (loginData.login.length < 4) {
-                //     nextState.errors.login = 'Login should contain more than 3 chars';
-                // }
-                //
-                // if (!loginData.password) {
-                //     nextState.errors.password = 'Password is required';
-                // }
-                //
-                // this.setState(nextState);
-                console.log('action/login');
-
-                // console.log('action/login', loginData);
             }
         }
     }
