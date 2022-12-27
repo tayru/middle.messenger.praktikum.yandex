@@ -6,6 +6,8 @@ import AuthPage from '../../pages/auth';
 import RegPage from '../../pages/register';
 import SetPage from '../../pages/settings';
 import MessengerPage from '../../pages/messenger';
+import Button from '../../components/button';
+registerComponent(Button);
 
 
 import * as Nesting from '../../../static/assets/icons/Nesting.svg'
