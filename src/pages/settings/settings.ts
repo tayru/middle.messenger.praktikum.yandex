@@ -9,7 +9,6 @@ interface ErrorProps {
     img: string;
 }
 
-console.log(template, 'template')
 
 export class SetPage extends Block {
     constructor(props: ErrorProps) {

@@ -8,7 +8,6 @@ interface ErrorProps {
     img: string;
 }
 
-console.log(template, 'template')
 
 export class ErrorPage extends Block {
     constructor(props: ErrorProps) {

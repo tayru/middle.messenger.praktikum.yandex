@@ -1,16 +1,14 @@
-export const getValidationMessage = ({
-                                         name, value, value2, label,
-                                     }: Record<string, string>): string | null => {
+export function validate(name: string, str: string, str2?: string): string | null {
+    let messege: string | null = null;
     switch (name) {
         case 'login':
-            if (value.length === 0) return `Поле не может быть пустым`;
-            if (value.length < 3) return `${label} должен быть больше 3 символов`;
-            if (value.length > 20) return `${label} не может быть больше 20 символов`;
-            if (/^[0-9_-]+$/.test(value)) {
-                return `${label} не может состоять только из цифр или спецсимволов`;
+            if (str.length === 0) messege = `Поле не может быть пустым`;
+            if (str.length < 3 || str.length > 20) messege = `Логин должен быть больше 3 и не больше 20 символов`;
+            if (/^[0-9_-]+$/.test(str)) {
+                messege = `Логин не может состоять только из цифр или спецсимволов`;
             }
-            if (!/^[A-Za-z0-9_-]+$/.test(value)) {
-                return `${label} может содержать только латинские буквы, `+
+            if (!/^[A-Za-z0-9_-]+$/.test(str)) {
+                messege = `Логин может содержать только латинские буквы, `+
                     `цифры, дефис, нижнее подчёркивание`;
             }
             break;
@@ -18,82 +16,82 @@ export const getValidationMessage = ({
         case 'password':
         case 'oldPassword':
         case 'newPassword':
-            if (value.length === 0) return `Поле не может быть пустым`;
-            if (value.length < 8) return `${label} должен быть больше 8 символов`;
-            if (value.length > 40) return `${label} не может быть больше 40 символов`;
-            if (!/[0-9]/.test(value) || value === value.toLowerCase()) {
-                return `${label} должен содержать хотя бы одну цифру и заглавную букву`;
+            if (str.length === 0) messege = `Поле не может быть пустым`;
+            if (str.length < 8) messege = `Пароль должен быть больше 8 символов`;
+            if (str.length > 40) messege = `Пароль не может быть больше 40 символов`;
+            if (!/[0-9]/.test(str) || str === str.toLowerCase()) {
+                messege = `Пароль должен содержать хотя бы одну цифру и заглавную букву`;
             }
             break;
 
         case 'password2':
         case 'newPassword2':
-            if (value.length === 0) return `Поле не может быть пустым`;
-            if (typeof value2 !== 'undefined' && value !== value2) {
-                return `Пароли не совпадают`;
+            if (str.length === 0) messege = `Поле не может быть пустым`;
+            if (str !== str2) {
+                messege = `Пароли не совпадают`;
             }
             break;
 
         case 'first_name':
         case 'second_name':
-            if (value.length === 0) return `Поле не может быть пустым`;
-            if (!/^[A-ZА-ЯЁ]/.test(value)) {
-                return `Первая буква должна быть заглавной`;
+            if (str.length === 0) messege = `Поле не может быть пустым`;
+            if (!/^[A-ZА-ЯЁ]/.test(str)) {
+                messege = `Первая буква должна быть заглавной`;
             }
-            if (/[0-9 ]/.test(value)) {
-                return `${label} не может содержать пробелы или цифры`;
+            if (/[0-9 ]/.test(str)) {
+                messege = `Имя не может содержать пробелы или цифры`;
             }
-            if (/-$/.test(value)) {
-                return `${label} не может оканчиваться дефисом`;
+            if (/-$/.test(str)) {
+                messege = `Имя не может оканчиваться дефисом`;
             }
-            if (/[А-ЯЁа-яё][А-ЯЁ]/.test(value)) {
-                return `Заглавные буквы не могут быть в середине слова`;
+            if (/[А-ЯЁа-яё][А-ЯЁ]/.test(str)) {
+                messege = `Заглавные буквы не могут быть в середине слова`;
             }
-            if (!/^[A-ZА-ЯЁ][A-Za-zа-яё]+(-[A-ZА-ЯЁ]?[A-Za-zа-яё]+)*$/.test(value)) {
-                return `${label} может содержать только кириллицу/латиницу и дефисы`;
+            if (!/^[A-ZА-ЯЁ][A-Za-zа-яё]+(-[A-ZА-ЯЁ]?[A-Za-zа-яё]+)*$/.test(str)) {
+                messege = `Имя может содержать только кириллицу/латиницу и дефисы`;
             }
             break;
 
         case 'email':
-            if (value.length === 0) return `Поле не может быть пустым`;
-            if (!/[^@\s]+@[^@\s]+\.[^@\s]+/.test(value)) {
-                return `Неверная электронная почта`;
+            if (str.length === 0) messege = `Поле не может быть пустым`;
+            if (!/[^@\s]+@[^@\s]+\.[^@\s]+/.test(str)) {
+                messege = `Неверная электронная почта`;
             }
             break;
 
         case 'phone':
-            if (value.length === 0) return `Поле не может быть пустым`;
-            if (value.length < 10) return `${label} должен быть больше 10 символов`;
-            if (value.length > 15) return `${label} не может быть больше 15 символов`;
-            if (/ |-/.test(value)) {
-                return `${label} не должен содержать пробелы или дефисы`;
+            if (str.length === 0) messege = `Поле не может быть пустым`;
+            if (str.length < 10) messege = `Телефон должен быть больше 10 символов`;
+            if (str.length > 15) messege = `Телефон не может быть больше 15 символов`;
+            if (/ |-/.test(str)) {
+                messege = `Телефон} не должен содержать пробелы или дефисы`;
             }
-            if (!/^\+?[0-9]+$/.test(value)) {
-                return `Неверный телефонный номер`;
+            if (!/^\+?[0-9]+$/.test(str)) {
+                messege = `Неверный телефонный номер`;
             }
             break;
 
         case 'display_name':
-            if (value.length === 0) return `Поле не может быть пустым`;
-            if (value.length < 3) return `${label} должен быть больше 3 символов`;
-            if (value.length > 20) return `${label} не может быть больше 20 символов`;
+            if (str.length === 0) messege = `Поле не может быть пустым`;
+            if (str.length < 3) messege = `Имя должен быть больше 3 символов`;
+            if (str.length > 20) messege = `Имя не может быть больше 20 символов`;
             break;
 
         case 'message':
-            if (value.length === 0) return `Сообщение не может быть пустым`;
+            if (str.length === 0) messege = `Сообщение не может быть пустым`;
             break;
 
         case 'avatar':
-            if (value.length === 0) return `Нужно выбрать файл`;
+            if (str.length === 0) messege = `Нужно выбрать файл`;
             break;
 
         case 'title':
-            if (value.length === 0) return `Поле не может быть пустым`;
-            if (value.length > 40) return `Название не может быть больше 40 символов`;
+            if (str.length === 0) messege = `Поле не может быть пустым`;
+            if (str.length > 40) messege = `Название не может быть больше 40 символов`;
             break;
 
         default:
-            return null;
+            messege = null;
     }
-    return null;
+    return messege;
 };

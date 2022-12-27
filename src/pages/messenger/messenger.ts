@@ -9,7 +9,6 @@ interface ErrorProps {
     img: string;
 }
 
-console.log(template, 'template')
 
 export class MessengerPage extends Block {
     constructor(props: ErrorProps) {

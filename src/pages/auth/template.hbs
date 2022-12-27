@@ -27,9 +27,17 @@
                       onBlur=onBlur
             }}}
         </div>
+            <div class="error-wrapper"></div>
+
+            {{{Button
+            text="Войти" onClick=onLogin
+            }}}
+
+
         </form>
+
         {{{Button
-                text="Войти" onClick=onLogin
+        text="regPage" onClick=regPage
         }}}
         <a href="../register/register.hbs" class="form-auth__reg">Нет аккаунта?</a>
 

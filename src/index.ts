@@ -3,7 +3,7 @@
 import { renderDOM, registerComponent }  from './core';
 
 import OnboardingPage from './pages/main';
-import LoginPage from './pages/login';
+// import LoginPage from './pages/login';
 import ErrorPage from './pages/error';
 import MainPage from './pages/main';
 import AuthPage from './pages/auth';
