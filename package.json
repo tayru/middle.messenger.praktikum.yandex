@@ -4,6 +4,13 @@
   "engines": {
     "node": ">=16.15.0"
   },
+  "targets": {
+    "default": {
+      "engines": {
+        "browsers": ">= 50%"
+      }
+    }
+  },
   "description": "",
   "scripts": {
     "start": "npm run build && node ./server/server.js",
