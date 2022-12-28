@@ -6,6 +6,8 @@ import AuthPage from '../../pages/auth';
 import RegPage from '../../pages/register';
 import SetPage from '../../pages/settings';
 import MessengerPage from '../../pages/messenger';
+import Button from '../../components/button';
+registerComponent(Button);
 
 
 
@@ -58,6 +60,8 @@ export class MainPage extends Block {
 
     // language=hbs
     return `
+      <div>
+      <h1>Список страниц</h1>
       <ul>
         <li>
         {{{Button
@@ -101,7 +105,7 @@ export class MainPage extends Block {
         
         
       </ul>
-
+      </div>
     `;
   }
 }
