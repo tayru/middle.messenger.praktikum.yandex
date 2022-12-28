@@ -13,7 +13,7 @@ function queryStringify(data: any): string {
         .join("&")
 }
 
-export class HTTPTransport {
+export class HTTP {
     get = (url: string, options: Options) => {
         const transformedUrl = queryStringify(options.data);
 

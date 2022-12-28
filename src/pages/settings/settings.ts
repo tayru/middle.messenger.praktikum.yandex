@@ -11,19 +11,17 @@ import MessengerPage from "../messenger";
 export class SetPage extends Block {
     protected getStateFromProps() {
         this.state = {
-            values: {
-                login: '',
-                password: '',
-            },
-            errors: {
-                login: '',
-                password: '',
-            },
 
-            checkValidation: () => {
+            checkValidation: (form:string) => {
+                let inputs;
+                if (form === "data") {
+                    inputs = document.querySelectorAll(".settings__form-data input");
+                } else {
+                    inputs = document.querySelectorAll(".settings__form-pass input");
+                }
+
                 const obj:object = {}
 
-                const inputs = document.querySelectorAll("input");
                 const ErrorWrapper = document.querySelector(".error-wrapper");
                 let flag:boolean = false;
 
@@ -42,7 +40,6 @@ export class SetPage extends Block {
                         result = validate( name, value)
 
                     }
-
                     if (result != null) {
                         flag = true;
                         input.parentNode.querySelector(".text-field__error").textContent = result
@@ -59,11 +56,18 @@ export class SetPage extends Block {
 
             },
 
-            onFocus: () => {
-                this.state.checkValidation()
+            onFocus1: () => {
+                this.state.checkValidation("data")
             },
-            onBlur: () => {
-                this.state.checkValidation()
+            onBlur1: () => {
+                this.state.checkValidation("data")
+            },
+
+            onFocus2: () => {
+                this.state.checkValidation("pass")
+            },
+            onBlur2: () => {
+                this.state.checkValidation("pass")
             },
 
             regPage: (e: Event) => {
