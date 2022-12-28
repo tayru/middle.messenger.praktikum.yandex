@@ -6,11 +6,13 @@ import './link.pcss';
 interface LinkProps {
   text: string;
   class: string;
-  onClick: () => void;
+  events?: { [key: string]: (event?: Event) => void}
+  onClick: (event: Event  | undefined) => void;
 }
 
-export class Link extends Block {
-  static componentName = `Link`;
+export class Link extends Block<LinkProps> {
+
+static componentName = `Link`;
 
   constructor(props: LinkProps) {
     super({

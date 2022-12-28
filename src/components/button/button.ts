@@ -5,17 +5,24 @@ import './button.pcss';
 
 interface ButtonProps {
   text: string;
-  onClick: () => void;
+  onClick: (event: Event  | undefined) => void;
+  events?: { [key: string]: (event?: Event) => void}
 }
-
-export class Button extends Block {
+export class Button extends Block<ButtonProps> {
+// export class Button extends Block {
   static componentName = `Button`;
   
-  constructor({text, onClick}: ButtonProps) {
-    super({text, events: {click: onClick}});
+  constructor(props: ButtonProps) {
+    super({
+      ...props,
+      events: {
+        click: props.onClick
+      }
+    });
   }
 
   protected render(): string {
     return template;
   }
 }
+

@@ -17,3 +17,4 @@ export class ErrorPage extends Block {
     return template;
   }
 }
+
