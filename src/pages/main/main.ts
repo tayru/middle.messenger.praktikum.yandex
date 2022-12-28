@@ -1,12 +1,11 @@
 import Block from '../../core/Block';
-import { renderDOM, registerComponent }  from '../../core';
+import { renderDOM }  from '../../core';
 
 import ErrorPage from '../../pages/error';
 import AuthPage from '../../pages/auth';
 import RegPage from '../../pages/register';
 import SetPage from '../../pages/settings';
 import MessengerPage from '../../pages/messenger';
-
 
 
 
@@ -18,8 +17,9 @@ import * as CPU from '../../../static/assets/icons/CPU.svg'
 export class MainPage extends Block {
 
   protected getStateFromProps() {
+
     this.state = {
-      
+
           ErrorPage404: (e: Event) => {
           e.preventDefault();
           renderDOM(new ErrorPage({ title: '404', text: 'Не туда попали', img: Nesting  }

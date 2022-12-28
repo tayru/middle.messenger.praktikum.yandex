@@ -6,15 +6,6 @@ import MessengerPage from '../messenger';
 
 import './auth.pcss';
 
-// interface Props {
-//     title: string;
-//     text: string;
-//     img: string;
-//     onClick: () => void;
-//
-// }
-
-
 export class AuthPage extends Block {
     protected getStateFromProps() {
         this.state = {
