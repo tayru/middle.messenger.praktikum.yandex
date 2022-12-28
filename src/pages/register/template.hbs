@@ -3,35 +3,86 @@
         <h1 class="form-register__title">Регистрация</h1>
         <form action="" method="post">
 
+
             <div class="text-field">
-                <label class="text-field__label" for="first_name">Имя</label>
-                <input class="text-field__input" type="text" name="first_name" id="first_name">
+                <label class="text-field__label" for="login">Имя</label>
+                <div class="text-field__error"></div>
+                {{{Input  name="first_name"
+                          type="text"
+                          class="text-field__input"
+                          id="first_name"
+                          onFocus=onFocus
+                          onBlur=onBlur
+                }}}
             </div>
+
             <div class="text-field">
                 <label class="text-field__label" for="second_name">Фамилия</label>
-                <input class="text-field__input" type="text" name="second_name" id="second_name">
+                <div class="text-field__error"></div>
+                {{{Input  name="second_name"
+                          type="text"
+                          class="text-field__input"
+                          id="second_name"
+                          onFocus=onFocus
+                          onBlur=onBlur
+                }}}
             </div>
             <div class="text-field">
                 <label class="text-field__label" for="login">Логин</label>
-                <input class="text-field__input" type="text" name="login" id="login">
+                <div class="text-field__error"></div>
+                {{{Input  name="login"
+                          id="login"
+                          type="text"
+                          class="text-field__input"
+                          onFocus=onFocus
+                          onBlur=onBlur
+                }}}
             </div>
             <div class="text-field">
                 <label class="text-field__label" for="email">Почта</label>
-                <input class="text-field__input" type="email" name="email" id="email">
+                <div class="text-field__error"></div>
+                {{{Input  name="email"
+                          id="email"
+                          type="email"
+                          class="text-field__input"
+                          onFocus=onFocus
+                          onBlur=onBlur
+                }}}
             </div>
 
             <div class="text-field">
                 <label class="text-field__label" for="phone">Телефон</label>
-                <input class="text-field__input" type="tel" name="phone" id="phone" >
+                <div class="text-field__error"></div>
+                {{{Input  name="phone"
+                          id="phone"
+                          type="tel"
+                          class="text-field__input"
+                          onFocus=onFocus
+                          onBlur=onBlur
+                }}}
             </div>
             <div class="text-field">
                 <label class="text-field__label" for="password">Пароль</label>
-                <input class="text-field__input" type="password" name="password" id="password" >
+                <div class="text-field__error"></div>
+                {{{Input  name="password"
+                          id="password"
+                          type="password"
+                          class="text-field__input"
+                          onFocus=onFocus
+                          onBlur=onBlur
+                }}}
             </div>
 
             <div class="text-field">
                 <label class="text-field__label" for="password2">Пароль(ещё раз)</label>
-                <input class="text-field__input" type="password" name="password2" id="password2">
+                <div class="text-field__error"></div>
+                {{{Input  name="password2"
+                          id="password2"
+                          type="password"
+                          class="text-field__input"
+                          onFocus=onFocus
+                          onBlur=onBlur
+                }}}
             </div>
 
             {{{Button

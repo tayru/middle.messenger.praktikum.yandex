@@ -18,14 +18,6 @@ import './auth.pcss';
 export class AuthPage extends Block {
     protected getStateFromProps() {
         this.state = {
-            values: {
-                login: '',
-                password: '',
-            },
-            errors: {
-                login: '',
-                password: '',
-            },
 
             checkValidation: () => {
                 const obj:object = {}
