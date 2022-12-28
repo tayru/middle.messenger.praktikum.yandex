@@ -1,0 +1,48 @@
+/* Инпуты */
+.text-field {
+  margin-bottom: 1rem;
+  &__label {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 10px;
+    color: var(--color-light-gray);
+  }
+
+  &__input {
+    width: 100%;
+    height: calc(2.25rem + 2px);
+    background: none;
+    border: none;
+    border-bottom: 1px solid var(--color-light-gray);
+    border-radius: 0;
+    padding: 0.375rem 0.75rem;
+    padding-left: 0;
+    display: block;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 13px;
+    color: var(--font-color);
+  }
+
+}
+
+.error .text-field__input{
+  color: var(--error-color);
+}
+
+.text-field__error {
+  display: none;
+}
+
+.error .text-field__error {
+  display: block;
+}
+
+.text-field__input::placeholder {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 13px;
+  color: var(--font-color);
+}

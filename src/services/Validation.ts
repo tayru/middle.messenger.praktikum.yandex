@@ -17,8 +17,7 @@ export function validate(name: string, str: string, str2?: string): string | nul
         case 'oldPassword':
         case 'newPassword':
             if (str.length === 0) messege = `Поле не может быть пустым`;
-            if (str.length < 8) messege = `Пароль должен быть больше 8 символов`;
-            if (str.length > 40) messege = `Пароль не может быть больше 40 символов`;
+            if (str.length < 8 || str.length > 40) messege = `Пароль должен быть больше 8 символов и не больше 40 символов`;
             if (!/[0-9]/.test(str) || str === str.toLowerCase()) {
                 messege = `Пароль должен содержать хотя бы одну цифру и заглавную букву`;
             }
@@ -62,8 +61,7 @@ export function validate(name: string, str: string, str2?: string): string | nul
 
         case 'phone':
             if (str.length === 0) messege = `Поле не может быть пустым`;
-            if (str.length < 10) messege = `Телефон должен быть больше 10 символов`;
-            if (str.length > 15) messege = `Телефон не может быть больше 15 символов`;
+            if (str.length < 10 || str.length > 15) messege = `Телефон должен быть больше 10 символов и не больше 15 символов`;
             if (/ |-/.test(str)) {
                 messege = `Телефон} не должен содержать пробелы или дефисы`;
             }
