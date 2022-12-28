@@ -1,0 +1,94 @@
+<main class="wrapper-login">
+    <section class="form-register">
+        <h1 class="form-register__title">Регистрация</h1>
+        <form action="" method="post">
+
+
+            <div class="text-field">
+                <label class="text-field__label" for="login">Имя</label>
+                <div class="text-field__error"></div>
+                {{{Input  name="first_name"
+                          type="text"
+                          class="text-field__input"
+                          id="first_name"
+                          onFocus=onFocus
+                          onBlur=onBlur
+                }}}
+            </div>
+
+            <div class="text-field">
+                <label class="text-field__label" for="second_name">Фамилия</label>
+                <div class="text-field__error"></div>
+                {{{Input  name="second_name"
+                          type="text"
+                          class="text-field__input"
+                          id="second_name"
+                          onFocus=onFocus
+                          onBlur=onBlur
+                }}}
+            </div>
+            <div class="text-field">
+                <label class="text-field__label" for="login">Логин</label>
+                <div class="text-field__error"></div>
+                {{{Input  name="login"
+                          id="login"
+                          type="text"
+                          class="text-field__input"
+                          onFocus=onFocus
+                          onBlur=onBlur
+                }}}
+            </div>
+            <div class="text-field">
+                <label class="text-field__label" for="email">Почта</label>
+                <div class="text-field__error"></div>
+                {{{Input  name="email"
+                          id="email"
+                          type="email"
+                          class="text-field__input"
+                          onFocus=onFocus
+                          onBlur=onBlur
+                }}}
+            </div>
+
+            <div class="text-field">
+                <label class="text-field__label" for="phone">Телефон</label>
+                <div class="text-field__error"></div>
+                {{{Input  name="phone"
+                          id="phone"
+                          type="tel"
+                          class="text-field__input"
+                          onFocus=onFocus
+                          onBlur=onBlur
+                }}}
+            </div>
+            <div class="text-field">
+                <label class="text-field__label" for="password">Пароль</label>
+                <div class="text-field__error"></div>
+                {{{Input  name="password"
+                          id="password"
+                          type="password"
+                          class="text-field__input"
+                          onFocus=onFocus
+                          onBlur=onBlur
+                }}}
+            </div>
+
+            <div class="text-field">
+                <label class="text-field__label" for="password2">Пароль(ещё раз)</label>
+                <div class="text-field__error"></div>
+                {{{Input  name="password2"
+                          id="password2"
+                          type="password"
+                          class="text-field__input"
+                          onFocus=onFocus
+                          onBlur=onBlur
+                }}}
+            </div>
+
+            {{{Button
+                    text="Зарегистрироваться"
+            }}}
+        </form>
+        <a href="../auth/template.hbs" class="form-auth__reg">Войти</a>
+    </section>
+</main>
