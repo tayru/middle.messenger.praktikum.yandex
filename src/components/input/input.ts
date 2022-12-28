@@ -14,6 +14,8 @@ interface Props {
 }
 
 export class Input extends Block {
+  static componentName = `Input`;
+
   constructor(props: Props) {
     super({
       ...props,

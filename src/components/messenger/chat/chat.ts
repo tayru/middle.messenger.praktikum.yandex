@@ -5,6 +5,7 @@ import './chat.pcss';
 
 
 export class Chat extends Block {
+  static componentName = `Chat`;
 
   protected render(): string {
     return template;

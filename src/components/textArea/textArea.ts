@@ -12,6 +12,8 @@ interface Props {
 }
 
 export class textArea extends Block {
+  static componentName = `textArea`;
+
   constructor(props: Props) {
     super({
       ...props,
