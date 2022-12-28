@@ -11,3 +11,4 @@ export class Chat extends Block {
     return template;
   }
 }
+

@@ -7,11 +7,13 @@ interface Props {
   name?: string;
   class?: string;
   placeholder?: string;
-  onFocus?: () => void;
-  onBlur?: () => void;
+  events?: { [key: string]: (event?: Event) => void}
+  onFocus: (event: Event  | undefined) => void;
+  onBlur: (event: Event  | undefined) => void;
+
 }
 
-export class textArea extends Block {
+export class textArea extends Block<Props> {
   static componentName = `textArea`;
 
   constructor(props: Props) {
@@ -28,4 +30,5 @@ export class textArea extends Block {
     return template;
   }
 }
+
 

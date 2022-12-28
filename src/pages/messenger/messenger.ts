@@ -27,41 +27,12 @@ export class MessengerPage extends Block {
                     errorWrapper.textContent = ''
                 }
                 console.log('Сообщение:', message)
-                // let flag:boolean = false;
-                //
-                // console.log(message.value)
-
-                // for (let i = 0; i < inputs.length; i++) {
-                //     const input = inputs[i] as HTMLInputElement;
-                //     const value:string = input.value.trim();
-                //     const name:string = input.getAttribute("name");
-                //
-                //     obj[name] = value;
-                //
-                //     let result:string | null = validate( name, value)
-                //     if (result != null) {
-                //         flag = true;
-                //         input.parentNode.querySelector(".text-field__error").textContent = result
-                //         input.parentNode.classList.add("error")
-                //     } else {
-                //         input.parentNode.classList.remove("error")
-                //         ErrorWrapper.textContent = ''
-                //     }
-                //
-                // }
-                //
-                // console.log('Вывод данных', obj);
-
-
             },
 
             onFocus: () => {
-                console.log('12312')
                 this.state.checkValidation()
             },
             onBlur: () => {
-                console.log('12312')
-
                 this.state.checkValidation()
             },
 
@@ -76,3 +47,4 @@ export class MessengerPage extends Block {
     return template;
   }
 }
+

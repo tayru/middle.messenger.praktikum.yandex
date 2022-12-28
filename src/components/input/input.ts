@@ -7,14 +7,14 @@ interface Props {
   name?: string;
   type?: "string" | "number" | "email" | "tel" | "password";
   class?: string;
-  autocomplete: string;
-  pattern?: string;
-  onFocus?: () => void;
-  onBlur?: () => void;
+  events?: { [key: string]: (event?: Event) => void}
+  onFocus: (event: Event  | undefined) => void;
+  onBlur: (event: Event  | undefined) => void;
 }
 
-export class Input extends Block {
-  static componentName = `Input`;
+export class Input extends Block<Props> {
+
+static componentName = `Input`;
 
   constructor(props: Props) {
     super({
@@ -30,4 +30,5 @@ export class Input extends Block {
     return template;
   }
 }
+
 

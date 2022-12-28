@@ -3,14 +3,14 @@ import template from 'bundle-text:./template.hbs';
 import { validate } from "../../services/Validation";
 import { renderDOM } from "../../core";
 import MessengerPage from '../messenger';
-
 import './auth.pcss';
 
 export class AuthPage extends Block {
     protected getStateFromProps() {
         this.state = {
 
-            checkValidation: () => {
+            checkValidation: (event: Event) => {
+                console.log(event.target)
                 const obj:object = {}
 
                 const inputs = document.querySelectorAll("input");
@@ -19,6 +19,8 @@ export class AuthPage extends Block {
 
                 for (let i = 0; i < inputs.length; i++) {
                     const input = inputs[i] as HTMLInputElement;
+                    const textField = input.closest(".text-field")
+
                     const value:string = input.value.trim();
                     const name:string = input.getAttribute("name");
 
@@ -27,10 +29,10 @@ export class AuthPage extends Block {
                     let result:string | null = validate( name, value)
                     if (result != null) {
                         flag = true;
-                        input.parentNode.querySelector(".text-field__error").textContent = result
-                        input.parentNode.classList.add("error")
+                        textField.querySelector(".text-field__error").textContent = result
+                        textField.classList.add("error")
                     } else {
-                        input.parentNode.classList.remove("error")
+                        textField.classList.remove("error")
                         ErrorWrapper.textContent = ''
                     }
 
@@ -41,15 +43,14 @@ export class AuthPage extends Block {
 
             },
 
-            onFocus: () => {
-                this.state.checkValidation()
-            },
-            onBlur: () => {
-                this.state.checkValidation()
-            },
+            // onFocus: () => {
+            //     this.state.checkValidation()
+            // },
+            // onBlur: () => {
+            //     this.state.checkValidation()
+            // },
 
             regPage: (e: Event) => {
-                console.log('regPage')
                 e.preventDefault();
                 renderDOM(new MessengerPage());
             },
@@ -64,3 +65,4 @@ export class AuthPage extends Block {
     return template;
   }
 }
+

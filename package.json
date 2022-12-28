@@ -21,6 +21,13 @@
     "stylelint": "stylelint \"**/*.css\"",
     "stylelint:fix": "stylelint \"**/*{.css,.pcss}\" --fix"
   },
+  "alias": {
+    "core": "./src/core",
+    "components": "./src/components",
+    "services": "./src/services",
+    "pages": ".scr/pages"
+
+  },
   "keywords": [],
   "repository": {
     "type": "git",
@@ -39,7 +46,7 @@
     "postcss-import": "14.1.0",
     "postcss-nested": "6.0.0",
     "typescript": "4.6.2",
-    "eslint": "^8.26.0",
+    "eslint": "8.30.0",
     "eslint-config-google": "0.14.0",
     "stylelint": "14.13",
     "stylelint-config-prettier": "9.0.3",

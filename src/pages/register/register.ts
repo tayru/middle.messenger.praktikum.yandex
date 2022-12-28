@@ -1,12 +1,9 @@
 import Block from '../../core/Block';
 import template from 'bundle-text:./template.hbs';
-
 import './register.pcss';
 import {validate} from "../../services/Validation";
 import {renderDOM} from "../../core";
 import MessengerPage from "../messenger";
-
-
 
 
 export class RegPage extends Block {
@@ -21,7 +18,8 @@ export class RegPage extends Block {
                 password: '',
             },
 
-            checkValidation: () => {
+            checkValidation: (event: Event) => {
+                console.log(event.target)
                 const obj:object = {}
 
                 const inputs = document.querySelectorAll("input");
@@ -30,14 +28,14 @@ export class RegPage extends Block {
 
                 for (let i = 0; i < inputs.length; i++) {
                     const input = inputs[i] as HTMLInputElement;
+                    const textField = input.closest(".text-field")
+
                     const value:string = input.value.trim();
                     const name:string = input.getAttribute("name");
 
                     obj[name] = value;
                     let result: string | null;
                     if (name === "password2") {
-                       console.log(obj['password'])
-                       console.log(value, 'password2')
                        result = validate( name, obj['password'], value);
                     } else  {
                         result = validate( name, value)
@@ -46,10 +44,10 @@ export class RegPage extends Block {
 
                     if (result != null) {
                         flag = true;
-                        input.parentNode.querySelector(".text-field__error").textContent = result
-                        input.parentNode.classList.add("error")
+                        textField.querySelector(".text-field__error").textContent = result
+                        textField.classList.add("error")
                     } else {
-                        input.parentNode.classList.remove("error")
+                        textField.classList.remove("error")
                         ErrorWrapper.textContent = ''
                     }
 
@@ -61,21 +59,20 @@ export class RegPage extends Block {
             },
 
             onFocus: () => {
-                this.state.checkValidation()
+                this.state.checkValidation(event)
             },
             onBlur: () => {
-                this.state.checkValidation()
+                this.state.checkValidation(event)
             },
 
             regPage: (e: Event) => {
-                console.log('regPage')
                 e.preventDefault();
                 renderDOM(new MessengerPage());
             },
 
             onLogin: (e: Event) => {
                 e.preventDefault();
-                this.state.checkValidation()
+                this.state.checkValidation(event)
             }
         }
     }
@@ -83,3 +80,4 @@ export class RegPage extends Block {
     return template;
   }
 }
+
