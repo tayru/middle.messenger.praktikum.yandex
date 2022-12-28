@@ -1,50 +1,60 @@
-@import 'normalize.css';
-@import 'variables.css';
+@import "normalize.css";
+@import "variables.css";
 
-/*@import '../../src/pages/auth/auth.pcss';*/
-/*@import '../../src/pages/register/register.pcss';*/
-/*@import '../../src/pages/messenger/messenger.pcss';*/
-/*@import '../../src/pages/error/error.pcss';*/
-/*@import '../../src/pages/settings/settings.pcss';*/
+/* @import '../../src/pages/auth/auth.pcss'; */
 
-/*@import '../../src/components/messenger/change-chat/change-chat.pcss';*/
-/*@import '../../src/components/button/button.pcss';*/
+/* @import '../../src/pages/register/register.pcss'; */
 
-/*:root {*/
-/*    !* Основные цвета *!*/
-/*    --main-color: #48f08e;*/
-/*    --main-color-dark: #3F4950;*/
-/*    --bg-color: #768692;*/
-/*    --dark-bg-color: rgba(0,0,0, 0.5);*/
-/*    --color-gray: #333;*/
+/* @import '../../src/pages/messenger/messenger.pcss'; */
 
-/*    --font-color: #FFFFFF;*/
-/*    !*--font-color-dark: #999;*!*/
-/*    --bg-color-dark: #929292;*/
-/*    --color-light-gray: #999;*/
+/* @import '../../src/pages/error/error.pcss'; */
 
-/*}*/
+/* @import '../../src/pages/settings/settings.pcss'; */
 
+/* @import '../../src/components/messenger/change-chat/change-chat.pcss'; */
 
-*{
-    box-sizing: border-box;
+/* @import '../../src/components/button/button.pcss'; */
+
+/* :root { */
+
+/*    !* Основные цвета *! */
+
+/*    --main-color: #48f08e; */
+
+/*    --main-color-dark: #3F4950; */
+
+/*    --bg-color: #768692; */
+
+/*    --dark-bg-color: rgba(0,0,0, 0.5); */
+
+/*    --color-gray: #333; */
+
+/*    --font-color: #FFFFFF; */
+
+/*    !*--font-color-dark: #999;*! */
+
+/*    --bg-color-dark: #929292; */
+
+/*    --color-light-gray: #999; */
+
+/* } */
+
+* {
+  box-sizing: border-box;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 img {
-    max-width: 100%;
+  max-width: 100%;
 }
 
 body {
-    font-family: "Commissioner", "Arial", sans-serif;
+  font-family: Commissioner, Arial, sans-serif;
 }
-
-
 
 .container {
-    background-color: #333;
+  background-color: #333;
 }
-

@@ -6,22 +6,20 @@
   flex-direction: column;
   margin: 5px;
   position: relative;
-
   border-radius: 45px;
   overflow: hidden;
 }
 
 .screen__loading-progress {
   position: fixed;
-  top: 0px;
-  left: 0px;
-  right: 0px;
+  top: 0;
+  left: 0;
+  right: 0;
   height: 3px;
   width: 0%;
   opacity: 1;
   background-color: red;
   z-index: 999999;
-
   animation-duration: 15s;
   animation-name: slidein;
   animation-timing-function: ease-out;
@@ -63,7 +61,7 @@
   background: var(--screen-content-background);
   flex-grow: 1;
   border-radius: 50px 50px 0 0;
-  padding: 15px 15px 15px 15px;
+  padding: 15px;
   overflow: hidden;
   display: flex;
   flex-direction: column;

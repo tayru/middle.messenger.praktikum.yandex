@@ -1,30 +1,28 @@
 import Block from '../../core/Block';
+import template from 'bundle-text:./template.hbs';
 
-import './link.css';
+import './link.pcss';
 
 interface LinkProps {
   text: string;
-  to: string;
+  class: string;
+  onClick: () => void;
 }
 
 export class Link extends Block {
   static componentName = `Link`;
 
+
   constructor(props: LinkProps) {
-    const onClick = (e: MouseEvent) => {
-      // const router = new Router();
-      // router.go(this.props.to);
-
-      console.log(13);
-
-      e.preventDefault();
-    }
-
-    super({...props, events: { click: onClick }});
+    super({
+      ...props,
+      events: {
+        onClick: props.onClick
+      }
+    });
   }
 
-  render() {
-    // language=hbs
-    return `<a href="{{to}}">{{text}}</a>`;
+  protected render(): string {
+    return template;
   }
 }

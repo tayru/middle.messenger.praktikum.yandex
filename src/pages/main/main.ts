@@ -1,5 +1,5 @@
 import Block from '../../core/Block';
-import { renderDOM, registerComponent }  from '../../core';
+import { renderDOM }  from '../../core';
 
 import ErrorPage from '../../pages/error';
 import AuthPage from '../../pages/auth';
@@ -11,7 +11,6 @@ registerComponent(Button);
 
 
 
-
 import * as Nesting from '../../../static/assets/icons/Nesting.svg'
 import * as CPU from '../../../static/assets/icons/CPU.svg'
 
@@ -20,8 +19,9 @@ import * as CPU from '../../../static/assets/icons/CPU.svg'
 export class MainPage extends Block {
 
   protected getStateFromProps() {
+
     this.state = {
-      
+
           ErrorPage404: (e: Event) => {
           e.preventDefault();
           renderDOM(new ErrorPage({ title: '404', text: 'Не туда попали', img: Nesting  }
@@ -61,7 +61,7 @@ export class MainPage extends Block {
     // language=hbs
     return `
       <div>
-      <h1>Список страниц</h1>
+      <h1 style="color: white; text-align: center" ">Список страниц</h1>
       <ul>
         <li>
         {{{Button

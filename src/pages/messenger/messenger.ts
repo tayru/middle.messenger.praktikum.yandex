@@ -3,9 +3,6 @@ import template from 'bundle-text:./template.hbs';
 
 import './messenger.pcss';
 import {validate} from "../../services/Validation";
-import {renderDOM} from "../../core";
-
-
 
 
 export class MessengerPage extends Block {

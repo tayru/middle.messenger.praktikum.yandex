@@ -8,7 +8,6 @@ interface ErrorProps {
     img: string;
 }
 
-
 export class ErrorPage extends Block {
     constructor(props: ErrorProps) {
         super({...props});
