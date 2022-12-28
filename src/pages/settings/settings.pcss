@@ -1,60 +1,61 @@
 .page-settings {
-    min-height: 100vh;
-    display: flex;
+  min-height: 100vh;
+  display: flex;
 }
 
 .settings-side {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    width: 64px;
-    background: var(--dark-bg-color);
-    height: 100%;
-    cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 64px;
+  background: var(--dark-bg-color);
+  height: 100%;
+  cursor: pointer;
 }
 
 .settings {
-    min-height: 100vh;
-    background-image: url("/static/assets/img/bg-pattern.png");
-    background-repeat: repeat-y;
-    background-size: cover;
-    padding-top: 35px;
-    flex-grow: 1;
+  min-height: 100vh;
+  background-image: url("/static/assets/img/bg-pattern.png");
+  background-repeat: repeat-y;
+  background-size: cover;
+  padding-top: 35px;
+  flex-grow: 1;
 
-    &__form:first-child {
-        margin-right: 100px;
-    }
+  &__form:first-child {
+    margin-right: 100px;
+  }
 
-    &__name-title {
-        font-weight: 500;
-        font-size: 20px;
-        text-align: center;
-        color: var(--main-color);
-        margin-bottom: 30px;
-    }
-    &__img {
-        margin: 0 auto 20px;
-        display: block;
-        cursor: pointer;
-    }
+  &__name-title {
+    font-weight: 500;
+    font-size: 20px;
+    text-align: center;
+    color: var(--main-color);
+    margin-bottom: 30px;
+  }
 
-    &__form-wrap {
-        backdrop-filter: blur(2.5px);
-        background: var(--dark-bg-color);
-        border-radius: 10px;
-        margin: 0 auto;
-        padding: 50px 30px 30px;
-        display: flex;
-        width: 800px;
-        justify-content: center;
-    }
-    &__form-wrap form:first-child {
-        margin-right: 40px;
-    }
+  &__img {
+    margin: 0 auto 20px;
+    display: block;
+    cursor: pointer;
+  }
 
+  &__form-wrap {
+    backdrop-filter: blur(2.5px);
+    background: var(--dark-bg-color);
+    border-radius: 10px;
+    margin: 0 auto;
+    padding: 50px 30px 30px;
+    display: flex;
+    width: 800px;
+    justify-content: center;
+  }
+
+  &__form-wrap form:first-child {
+    margin-right: 40px;
+  }
 }
 
 #avatar {
-    display: none;
+  display: none;
 }
