@@ -20,8 +20,6 @@ registerComponent(Chat);
 registerComponent(textArea);
 
 
-
-
 document.addEventListener("DOMContentLoaded", () => {
 
   const AppMainPage = new mainPage();
