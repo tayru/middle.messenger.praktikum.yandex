@@ -16,6 +16,7 @@ export function validate(name: string, str: string, str2?: string): string | nul
         case 'password':
         case 'oldPassword':
         case 'newPassword':
+            console.log('проверка паролей')
             if (str.length === 0) messege = `Поле не может быть пустым`;
             if (str.length < 8 || str.length > 40) messege = `Пароль должен быть больше 8 символов и не больше 40 символов`;
             if (!/[0-9]/.test(str) || str === str.toLowerCase()) {
@@ -25,6 +26,8 @@ export function validate(name: string, str: string, str2?: string): string | nul
 
         case 'password2':
         case 'newPassword2':
+            console.log('проверка паролей')
+
             if (str.length === 0) messege = `Поле не может быть пустым`;
             if (str !== str2) {
                 messege = `Пароли не совпадают`;
@@ -39,16 +42,16 @@ export function validate(name: string, str: string, str2?: string): string | nul
                 messege = `Первая буква должна быть заглавной`;
             }
             if (/[0-9 ]/.test(str)) {
-                messege = `Имя не может содержать пробелы или цифры`;
+                messege = `Имя/Фамилия не может содержать пробелы или цифры`;
             }
             if (/-$/.test(str)) {
-                messege = `Имя не может оканчиваться дефисом`;
+                messege = `Имя/Фамилия не может оканчиваться дефисом`;
             }
             if (/[А-ЯЁа-яё][А-ЯЁ]/.test(str)) {
                 messege = `Заглавные буквы не могут быть в середине слова`;
             }
             if (!/^[A-ZА-ЯЁ][A-Za-zа-яё]+(-[A-ZА-ЯЁ]?[A-Za-zа-яё]+)*$/.test(str)) {
-                messege = `Имя может содержать только кириллицу/латиницу и дефисы`;
+                messege = `Имя/Фамилия может содержать только кириллицу/латиницу и дефисы`;
             }
             break;
 

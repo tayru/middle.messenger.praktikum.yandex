@@ -23,7 +23,6 @@ export class RegPage extends Block {
                 const obj:object = {}
 
                 const inputs = document.querySelectorAll("input");
-                const ErrorWrapper = document.querySelector(".error-wrapper");
                 let flag:boolean = false;
 
                 for (let i = 0; i < inputs.length; i++) {
@@ -48,7 +47,6 @@ export class RegPage extends Block {
                         textField.classList.add("error")
                     } else {
                         textField.classList.remove("error")
-                        ErrorWrapper.textContent = ''
                     }
 
                 }
