@@ -1,25 +1,53 @@
-import { renderDOM, registerComponent }  from './core';
-import mainPage from './pages/main';
-import '/static/styles/style.css';
-
-import Button from './components/button';
-import Link from './components/link';
-import Input from './components/input';
-import textArea from './components/textArea';
-import changeChat from './components/messenger/change-chat';
-import Chat from './components/messenger/chat';
-
-registerComponent(Button);
-registerComponent(Link);
-registerComponent(Input);
-registerComponent(changeChat);
-registerComponent(Chat);
-registerComponent(textArea);
+import { renderDOM, registerComponent, PathRouter, CoreRouter, Store } from 'core';
+import { initApp } from './services/initApp';
+import { defaultState } from './store';
+import { initRouter } from './router';
+import SplashScreen from './pages/auth';
 
 
-document.addEventListener("DOMContentLoaded", () => {
-  const AppMainPage = new mainPage();
+import * as components from './components';
 
-  renderDOM(AppMainPage);
+Object.values(components).forEach((Component: any) => {
+  registerComponent(Component);
 });
 
+declare global {
+  interface Window {
+    store: Store<AppState>;
+    router: CoreRouter;
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const store = new Store<AppState>(defaultState);
+  const router = new PathRouter();
+
+  /**
+   * Помещаем роутер и стор в глобальную область для доступа в хоках with*
+   * @warning Не использовать такой способ на реальный проектах
+   */
+  window.router = router;
+  window.store = store;
+
+  renderDOM(new SplashScreen({}));
+// @ts-ignore
+  store.on('changed', (prevState, nextState) => {
+    if (process.env.DEBUG) {
+      console.log(
+          '%cstore updated',
+          'background: #222; color: #bada55',
+          nextState,
+      );
+    }
+  });
+
+  /**
+   * Инициализируем роутер
+   */
+  initRouter(router, store);
+
+  /**
+   * Загружаем данные для приложения
+   */
+  store.dispatch(initApp);
+});
