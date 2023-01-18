@@ -37,7 +37,7 @@ export class AuthPage extends Block {
                         textField.classList.add("error")
                     } else {
                         textField.classList.remove("error")
-                        ErrorWrapper.textContent = ''
+                        textField.querySelector(".text-field__error").textContent = ''
                     }
 
                 }
@@ -47,12 +47,12 @@ export class AuthPage extends Block {
 
             },
 
-            // onFocus: () => {
-            //     this.state.checkValidation()
-            // },
-            // onBlur: () => {
-            //     this.state.checkValidation()
-            // },
+            onFocus: (event: Event) => {
+                this.state.checkValidation(event)
+            },
+            onBlur: (event: Event) => {
+                this.state.checkValidation(event)
+            },
 
             regPage: (e: Event) => {
                 e.preventDefault();

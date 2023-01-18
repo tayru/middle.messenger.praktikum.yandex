@@ -9,7 +9,7 @@ export class MessengerPage extends Block {
     protected getStateFromProps() {
         this.state = {
 
-            checkValidation: () => {
+            checkValidation: (e: Event) => {
 
                 const textArea = document.querySelector("#message-area");
                 const errorWrapper = document.querySelector('.chat__input-error');
@@ -29,11 +29,11 @@ export class MessengerPage extends Block {
                 console.log('Сообщение:', message)
             },
 
-            onFocus: () => {
-                this.state.checkValidation()
+            onFocus: (e: Event) => {
+                this.state.checkValidation(e)
             },
-            onBlur: () => {
-                this.state.checkValidation()
+            onBlur: (e: Event) => {
+                this.state.checkValidation(e)
             },
 
             onSend: (e: Event) => {

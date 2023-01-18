@@ -1,47 +1,77 @@
-enum METHOD {
-    GET = 'GET',
-    POST = 'POST',
-    PUT = 'PUT',
+enum METHODS {
+    GET = "GET",
+    POST = "POST",
+    DELETE = "DELETE",
+    PUT = "PUT",
     PATCH = 'PATCH',
-    DELETE = 'DELETE'
-};
+}
 
 type Options = {
-    method: METHOD;
-    data?: any;
+    timeout?: number;
+    method: string;
+    headers?: Record<string, string>;
+    data?: Record<string, any>;
+    params?: Record<string, any>;
 };
 
-// Тип Omit принимает два аргумента: первый — тип, второй — строка
-// и удаляет из первого типа ключ, переданный вторым аргументом
-type OptionsWithoutMethod = Omit<Options, 'method'>;
-// Этот тип эквивалентен следующему:
-// type OptionsWithoutMethod = { data?: any };
+export default  class HTTPTransport {
+    // eslint-disable-next-line class-methods-use-this
+    private queryStringify = (data: Record<string, any>) => {
+        if (typeof data !== "object") {
+            throw new Error("Тело запроса должно быть объектом");
+        }
 
-export class HTTPTransport {
-    get(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
-        return this.request(url, {...options, method: METHOD.GET});
+        const keys = Object.keys(data);
+
+        return keys.reduce(
+            (result, key, index) =>
+                `${result}${key}=${data[key]}${index < keys.length - 1 ? "&" : ""}`,
+            "?"
+        );
     };
 
-    request(url: string, options: Options = { method: METHOD.GET }): Promise<XMLHttpRequest> {
-        const {method, data} = options;
+    public get = (url: string, options: Options) =>
+        this.request(url, { ...options, method: METHODS.GET }, options.timeout);
+
+    public post = (url: string, options: Options) =>
+        this.request(url, { ...options, method: METHODS.POST }, options.timeout);
+
+    public put = (url: string, options: Options) =>
+        this.request(url, { ...options, method: METHODS.PUT }, options.timeout);
+
+    public patch = (url: string, options: Options) =>
+        this.request(url, { ...options, method: METHODS.PATCH }, options.timeout);
+
+    public delete = (url: string, options: Options) =>
+        this.request(url, { ...options, method: METHODS.DELETE }, options.timeout);
+
+
+    private request = (url: string, options: Options, timeout = 5000) => {
+        const { headers = {}, method, data, params } = options;
 
         return new Promise((resolve, reject) => {
             const xhr = new XMLHttpRequest();
-            xhr.open(method, url);
+            const isGet = method === METHODS.GET;
 
-            xhr.onload = function() {
-                resolve(xhr);
-            };
+            xhr.open(method, params ? `${url}${this.queryStringify(params)}` : url);
 
+            Object.keys(headers).forEach((key) => {
+                xhr.setRequestHeader(key, headers[key]);
+            });
+
+            xhr.timeout = timeout;
+
+            xhr.onload = () => resolve(xhr);
             xhr.onabort = reject;
             xhr.onerror = reject;
             xhr.ontimeout = reject;
 
-            if (method === METHOD.GET || !data) {
+            if (isGet) {
                 xhr.send();
             } else {
-                xhr.send(data);
+                xhr.send(JSON.stringify(data));
             }
         });
     };
-} 
+}
+

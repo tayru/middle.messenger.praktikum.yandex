@@ -22,7 +22,6 @@ export class SetPage extends Block {
 
                 const obj:object = {}
 
-                const ErrorWrapper = document.querySelector(".error-wrapper");
                 let flag:boolean = false;
 
                 for (let i = 0; i < inputs.length; i++) {
@@ -34,8 +33,9 @@ export class SetPage extends Block {
 
                     obj[name] = value;
                     let result: string | null;
-                    if (name === "password2") {
+                    if (name === "newPassword2") {
                         result = validate( name, obj['password'], value);
+                        console.log(result)
                     } else  {
                         result = validate( name, value)
 
@@ -46,7 +46,6 @@ export class SetPage extends Block {
                         textField.classList.add("error")
                     } else {
                         textField.classList.remove("error")
-                        ErrorWrapper.textContent = ''
                     }
 
                 }
