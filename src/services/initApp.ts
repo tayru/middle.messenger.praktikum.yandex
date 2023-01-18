@@ -1,7 +1,7 @@
-import { authAPI } from '/src/api/auth';
-import { UserDTO } from '/src/api/types';
+import { authAPI } from 'api/auth';
+import { UserDTO } from 'api/types';
 import type { Dispatch } from 'core';
-import { transformUser, apiHasError } from '/src/utils';
+import { transformUser, apiHasError } from 'utils';
 
 export async function initApp(dispatch: Dispatch<AppState>) {
 

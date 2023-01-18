@@ -1,5 +1,4 @@
 import mainAuth from "/src/pages/auth";
-
 import { BlockClass } from '/src/core';
 
 export enum Screens {

@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.store = store;
 
   renderDOM(new SplashScreen({}));
-
+// @ts-ignore
   store.on('changed', (prevState, nextState) => {
     if (process.env.DEBUG) {
       console.log(

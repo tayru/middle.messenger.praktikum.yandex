@@ -1,3 +1,7 @@
+import { withStore, withRouter } from 'utils';
+import { login } from 'services/auth';
+import { CoreRouter, Store, Block } from 'core';
+
 import Block from '../../core/Block';
 import template from 'bundle-text:./template.hbs';
 import { validate } from "../../services/Validation";

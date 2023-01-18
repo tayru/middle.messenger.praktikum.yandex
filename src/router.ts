@@ -2,26 +2,12 @@ import { Store, renderDOM, CoreRouter } from './core';
 import { getScreenComponent, Screens } from './utils';
 
 const routes = [
-  {
-    path: '/onboarding',
-    block: Screens.Onboarding,
-    shouldAuthorized: false,
-  },
+
   {
     path: '/login',
     block: Screens.Login,
     shouldAuthorized: false,
-  },
-  {
-    path: '/profile',
-    block: Screens.Profile,
-    shouldAuthorized: true,
-  },
-  {
-    path: '*',
-    block: Screens.Onboarding,
-    shouldAuthorized: false,
-  },
+  }
 ];
 
 export function initRouter(router: CoreRouter, store: Store<AppState>) {
@@ -36,7 +22,7 @@ export function initRouter(router: CoreRouter, store: Store<AppState>) {
       }
 
       if (!currentScreen) {
-        store.dispatch({ screen: Screens.Onboarding });
+        store.dispatch({ screen: Screens.Login });
       }
     });
   });
