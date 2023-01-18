@@ -2,7 +2,11 @@ import { Store, renderDOM, CoreRouter } from './core';
 import { getScreenComponent, Screens } from './utils';
 
 const routes = [
-
+  {
+    path: '/onboarding',
+    block: Screens.Onboarding,
+    shouldAuthorized: false,
+  },
   {
     path: '/login',
     block: Screens.Login,
