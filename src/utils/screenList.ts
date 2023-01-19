@@ -1,16 +1,17 @@
-import mainAuth from "/src/pages/auth";
-import OnboardingPage from "/src/pages/onboarding";
+import AuthPage from "/src/pages/auth";
+import RegPage from "/src/pages/register";
+
 
 import { BlockClass } from '/src/core';
 
 export enum Screens {
-  Onboarding = 'onboadring',
-  Login = 'mainAuth',
+  RegPage = 'RegPage',
+  AuthPage = 'AuthPage',
 }
 
 const map: Record<Screens, BlockClass<any>> = {
-  [Screens.Onboarding]: OnboardingPage,
-  [Screens.Login]: mainAuth,
+  [Screens.RegPage]: RegPage,
+  [Screens.AuthPage]: AuthPage,
 };
 
 export const getScreenComponent = (screen: Screens): BlockClass<any> => {
