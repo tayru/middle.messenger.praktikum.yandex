@@ -2,7 +2,7 @@ import { renderDOM, registerComponent, PathRouter, CoreRouter, Store } from 'cor
 import { initApp } from './services/initApp';
 import { defaultState } from './store';
 import { initRouter } from './router';
-import SplashScreen from './pages/auth';
+import AuthPage from "/src/pages/auth";
 
 
 import * as components from './components';
@@ -29,9 +29,12 @@ document.addEventListener('DOMContentLoaded', () => {
   window.router = router;
   window.store = store;
 
-  renderDOM(new SplashScreen({}));
+  renderDOM(new AuthPage({}));
 // @ts-ignore
   store.on('changed', (prevState, nextState) => {
+    console.log(prevState)
+    console.log(nextState)
+
     if (process.env.DEBUG) {
       console.log(
           '%cstore updated',

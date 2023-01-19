@@ -3,15 +3,20 @@ import { getScreenComponent, Screens } from './utils';
 
 const routes = [
   {
-    path: '/onboarding',
-    block: Screens.Onboarding,
+    path: '/RegPage',
+    block: Screens.RegPage,
     shouldAuthorized: false,
   },
   {
     path: '/login',
-    block: Screens.Login,
+    block: Screens.AuthPage,
     shouldAuthorized: false,
-  }
+  },
+  {
+    path: '*',
+    block: Screens.RegPage,
+    shouldAuthorized: false,
+  },
 ];
 
 export function initRouter(router: CoreRouter, store: Store<AppState>) {
@@ -26,7 +31,7 @@ export function initRouter(router: CoreRouter, store: Store<AppState>) {
       }
 
       if (!currentScreen) {
-        store.dispatch({ screen: Screens.Login });
+        store.dispatch({ screen: Screens.AuthPage });
       }
     });
   });
@@ -36,6 +41,7 @@ export function initRouter(router: CoreRouter, store: Store<AppState>) {
    * для переключения активного экрана
    */
   store.on('changed', (prevState, nextState) => {
+    console.log(nextState, 'nextState')
     if (!prevState.appIsInited && nextState.appIsInited) {
       router.start();
     }
