@@ -2,7 +2,7 @@ import { renderDOM, registerComponent, PathRouter, CoreRouter, Store } from 'cor
 import { initApp } from './services/initApp';
 import { defaultState } from './store';
 import { initRouter } from './router';
-import AuthPage from "/src/pages/auth";
+import Splash from "/src/pages/splash";
 
 
 import * as components from './components';
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.router = router;
   window.store = store;
 
-  renderDOM(new AuthPage({}));
+  renderDOM(new Splash({}));
 // @ts-ignore
   store.on('changed', (prevState, nextState) => {
     console.log(prevState)
