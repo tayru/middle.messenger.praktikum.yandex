@@ -5,7 +5,6 @@ const PORT = 3000
 
 const app = express()
 
-
 app.use("/", express.static(path.join("dist")))
 app.get("*", (req, res) => {
     res.sendFile(path.resolve("dist", "index.html"))
