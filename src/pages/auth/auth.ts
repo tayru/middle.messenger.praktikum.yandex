@@ -73,7 +73,9 @@ export class AuthPage extends Block<loginPageProps> {
                 let obj = this.state.checkValidation()
                 if (obj !== null) {
                     console.log('123214')
-                    this.props.store.dispatch(login, obj);
+                    // this.props.store.dispatch(login, obj);
+                    window.store.dispatch(login, obj)
+
                 }
             }
         }
