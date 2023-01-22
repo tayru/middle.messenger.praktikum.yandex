@@ -1,7 +1,7 @@
 import Block from '../../core/Block';
 import { renderDOM }  from '../../core';
 
-import ErrorPage from '../../pages/error';
+import ErrorPage from '../error/404';
 import AuthPage from '../../pages/auth';
 import RegPage from '../../pages/register';
 import SetPage from '../../pages/settings';
