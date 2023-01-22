@@ -1,4 +1,4 @@
-import { request } from '../core/apiRequest';
+import { request } from 'core/apiRequest';
 import { APIError, UserDTO } from './types';
 
 type LoginRequestData = {

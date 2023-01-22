@@ -1,2 +1,2 @@
-export { SetPage as default } from './settings';
+export { default } from './settings';
 

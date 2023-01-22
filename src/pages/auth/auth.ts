@@ -16,13 +16,18 @@ type loginPageProps = {
     isLoading: boolean;
     onToggleAppLoading?: () => void;
     onNavigateNext?: () => void;
+    onSignUp?: (e: MouseEvent) => void;
+    onSubmit?: (e: FormDataEvent) => void;
+    onInput?: () => void;
+    onFocus?: () => void;
+    onBlur?: () => void;
 };
 
 export class AuthPage extends Block<loginPageProps> {
     static componentName = 'Authorization';
 
-
-    protected getStateFromProps() {
+    constructor(props?: loginPageProps) {
+        super(props);
         this.state = {
             regPage: (e: Event) => {
                 e.preventDefault();
@@ -77,12 +82,18 @@ export class AuthPage extends Block<loginPageProps> {
                 if (obj !== null) {
                     console.log('123214')
                     // this.props.store.dispatch(login, obj);
-                    window.store.dispatch(login, obj)
+                    this.props.store.dispatch(login, obj);
 
                 }
             }
         }
+        this.setProps({
+            ...this.props,
+        });
     }
+
+
+
    render() {
     return template;
   }

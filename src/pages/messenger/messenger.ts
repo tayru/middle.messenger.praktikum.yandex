@@ -1,8 +1,10 @@
 import Block from '../../core/Block';
 import template from 'bundle-text:./template.hbs';
+import { withStore, withRouter, withUser } from '../../utils/';
 
 import './messenger.pcss';
 import {validate} from "../../services/Validation";
+import {SetPage} from "../settings/settings";
 
 
 export class MessengerPage extends Block {
@@ -49,4 +51,5 @@ export class MessengerPage extends Block {
     return template;
   }
 }
+export default withRouter(withStore(withUser(MessengerPage)));
 

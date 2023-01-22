@@ -20,14 +20,15 @@
         </label>
         <input type="file" name="avatar" id="avatar">
 
-        <h1 class="settings__name-title">Иван Иванович</h1>
+        <h1 class="settings__name-title">{{user.firstName}} {{user.secondName}}</h1>
         <section class="settings__form-wrap">
 
             <form action="" method="post" class="settings__form-data">
 
                 <div class="text-field">
-                    <label class="text-field__label" for="first_name">Имя</label>
+                    <label class="text-field__label" for="first_name">Имя: {{user.firstName}}</label>
                     <div class="text-field__error"></div>
+
                     {{{Input  name="first_name"
                               id="first_name"
                               type="text"
@@ -37,7 +38,7 @@
                     }}}
                 </div>
                 <div class="text-field">
-                    <label class="text-field__label" for="second_name">Фамилия</label>
+                    <label class="text-field__label" for="second_name">Фамилия: {{user.lastName}}</label>
                     <div class="text-field__error"></div>
                     {{{Input  name="second_name"
                               id="second_name"
@@ -48,7 +49,7 @@
                     }}}
                 </div>
                 <div class="text-field">
-                    <label class="text-field__label" for="display_name">Отображаемое имя</label>
+                    <label class="text-field__label" for="display_name">Отображаемое имя: {{user.displayName}}</label>
                     <div class="text-field__error"></div>
                     {{{Input  name="display_name"
                               id="display_name"
@@ -60,7 +61,7 @@
                 </div>
 
                 <div class="text-field">
-                    <label class="text-field__label" for="login">Логин</label>
+                    <label class="text-field__label" for="login">Логин: {{user.login}}</label>
                     <div class="text-field__error"></div>
                     {{{Input  name="login"
                               id="login"
@@ -71,7 +72,7 @@
                     }}}
                 </div>
                 <div class="text-field">
-                    <label class="text-field__label" for="email">Почта</label>
+                    <label class="text-field__label" for="email">Почта: {{user.email}}</label>
                     <div class="text-field__error"></div>
                     {{{Input  name="email"
                               id="email"
@@ -83,7 +84,7 @@
                 </div>
 
                 <div class="text-field">
-                    <label class="text-field__label" for="phone">Телефон</label>
+                    <label class="text-field__label" for="phone">Телефон: {{user.phone}}</label>
                     <div class="text-field__error"></div>
                     {{{Input  name="phone"
                               id="phone"

@@ -7,7 +7,7 @@ import MessengerPage from "../messenger";
 import { logout } from '../../services/auth';
 import { CoreRouter} from '../../core/';
 import { Store} from '../../core/';
-
+import { withStore, withRouter, withUser } from '../../utils/';
 
 type SettingsPageProps = {
     router: CoreRouter;
@@ -18,6 +18,11 @@ type SettingsPageProps = {
 
 export class SetPage extends Block<SettingsPageProps> {
     static componentName = 'Settings';
+    constructor(props: SettingsPageProps) {
+        super(props);
+        console.log(props, 'props')
+
+    }
 
     protected getStateFromProps() {
 
@@ -105,3 +110,4 @@ export class SetPage extends Block<SettingsPageProps> {
   }
 }
 
+export default withRouter(withStore(withUser(SetPage)));
