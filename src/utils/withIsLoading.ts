@@ -1,4 +1,4 @@
-import { BlockClass } from 'core';
+import { BlockClass } from '../core';
 
 type WithIsLoading = {
   isLoading: boolean;

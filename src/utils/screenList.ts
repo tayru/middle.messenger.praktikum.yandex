@@ -1,12 +1,12 @@
-import AuthPage from "/src/pages/auth";
-import RegPage from "/src/pages/register";
-import MessengerPage from "/src/pages/messenger";
-import SetPage from "/src/pages/settings";
-import Page404 from "/src/pages/error/404";
-import Page500 from "/src/pages/error/500";
+import AuthPage from "../../src/pages/auth";
+import RegPage from "../../src/pages/register";
+import MessengerPage from "../../src/pages/messenger";
+import SetPage from "../../src/pages/settings";
+import Page404 from "../../src/pages/error/404";
+import Page500 from "../../src/pages/error/500";
 
 
-import { BlockClass } from '/src/core';
+import { BlockClass } from '../../src/core';
 
 export enum Screens {
   RegPage = 'RegPage',

@@ -1,4 +1,4 @@
-import { BlockClass, CoreRouter } from 'core';
+import { BlockClass, CoreRouter } from '../core';
 
 type WithRouterProps = { router: CoreRouter }
 

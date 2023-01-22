@@ -1,5 +1,8 @@
-import { withStore, withRouter, withIsLoading } from '/src/utils';
-import { CoreRouter, Store} from '/src/core';
+import { withIsLoading } from '../../utils/withIsLoading';
+import { withStore } from '../../utils/withStore';
+import { withRouter } from '../../utils/withRouter';
+import { CoreRouter, Store} from '../../core';
+import { login } from '../../services/auth';
 
 import Block from '../../core/Block';
 import template from 'bundle-text:./template.hbs';
@@ -24,11 +27,10 @@ export class AuthPage extends Block<loginPageProps> {
             },
 
             checkValidation: (event: Event) => {
-                console.log(event.target)
+                console.log(event)
                 const obj:object = {}
 
                 const inputs = document.querySelectorAll("input");
-                const ErrorWrapper = document.querySelector(".error-wrapper");
                 let flag:boolean = false;
 
                 for (let i = 0; i < inputs.length; i++) {
@@ -51,8 +53,9 @@ export class AuthPage extends Block<loginPageProps> {
                     }
 
                 }
-
                 console.log('Вывод данных', obj);
+
+                if (flag === false) return obj; else return null;
 
 
             },
@@ -66,10 +69,12 @@ export class AuthPage extends Block<loginPageProps> {
 
 
             onLogin: (e: Event) => {
-                console.log('11')
-
                 e.preventDefault();
-                this.state.checkValidation()
+                let obj = this.state.checkValidation()
+                if (obj !== null) {
+                    console.log('123214')
+                    this.props.store.dispatch(login, obj);
+                }
             }
         }
     }

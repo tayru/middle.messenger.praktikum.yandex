@@ -2,8 +2,6 @@ import Block from '../../core/Block';
 import template from 'bundle-text:./template.hbs';
 import './register.pcss';
 import {validate} from "../../services/Validation";
-import {renderDOM} from "../../core";
-import MessengerPage from "../messenger";
 
 
 export class RegPage extends Block {

@@ -1,4 +1,4 @@
-import { BlockClass, Store } from 'core';
+import { BlockClass, Store } from '../core';
 
 type WithStateProps = { store: Store<AppState> };
 
