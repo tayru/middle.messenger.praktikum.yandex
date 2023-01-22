@@ -5,6 +5,7 @@ import './link.pcss';
 
 interface LinkProps {
   text: string;
+  url: string;
   class: string;
   events?: { [key: string]: (event?: Event) => void}
   onClick: (event: Event  | undefined) => void;

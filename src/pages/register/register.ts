@@ -63,9 +63,10 @@ export class RegPage extends Block {
                 this.state.checkValidation(event)
             },
 
-            regPage: (e: Event) => {
+            loginPage: (e: Event) => {
                 e.preventDefault();
-                renderDOM(new MessengerPage());
+                window.router.go('/login')
+
             },
 
             onLogin: (e: Event) => {

@@ -1,17 +1,27 @@
-import { withStore, withRouter } from 'utils';
-import { login } from 'services/auth';
-import { CoreRouter, Store, Block } from 'core';
+import { withStore, withRouter, withIsLoading } from '/src/utils';
+import { CoreRouter, Store} from '/src/core';
 
 import Block from '../../core/Block';
 import template from 'bundle-text:./template.hbs';
 import { validate } from "../../services/Validation";
-import { renderDOM } from "../../core";
-import MessengerPage from '../messenger';
+
 import './auth.pcss';
 
-export class AuthPage extends Block {
+type loginPageProps = {
+    router: CoreRouter;
+    store: Store<AppState>;
+    isLoading: boolean;
+    onToggleAppLoading?: () => void;
+    onNavigateNext?: () => void;
+};
+
+export class AuthPage extends Block<loginPageProps> {
     protected getStateFromProps() {
         this.state = {
+            regPage: (e: Event) => {
+                e.preventDefault();
+                window.router.go('/RegPage')
+            },
 
             checkValidation: (event: Event) => {
                 console.log(event.target)
@@ -54,12 +64,10 @@ export class AuthPage extends Block {
                 this.state.checkValidation(event)
             },
 
-            regPage: (e: Event) => {
-                e.preventDefault();
-                renderDOM(new MessengerPage());
-            },
 
             onLogin: (e: Event) => {
+                console.log('11')
+
                 e.preventDefault();
                 this.state.checkValidation()
             }
@@ -70,3 +78,4 @@ export class AuthPage extends Block {
   }
 }
 
+export default withRouter(withStore(withIsLoading(AuthPage)));
