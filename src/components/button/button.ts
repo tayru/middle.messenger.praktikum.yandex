@@ -5,6 +5,7 @@ import './button.pcss';
 
 interface ButtonProps {
   text: string;
+  class: string;
   onClick: (event: Event  | undefined) => void;
   events?: { [key: string]: (event?: Event) => void}
 }

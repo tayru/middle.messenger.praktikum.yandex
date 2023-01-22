@@ -6,6 +6,8 @@ import {validate} from "../../services/Validation";
 
 
 export class MessengerPage extends Block {
+    static componentName = 'Messenger';
+
     protected getStateFromProps() {
         this.state = {
 

@@ -5,6 +5,8 @@ import {validate} from "../../services/Validation";
 
 
 export class RegPage extends Block {
+    static componentName = 'Registration';
+
     protected getStateFromProps() {
         this.state = {
             values: {

@@ -19,6 +19,9 @@ type loginPageProps = {
 };
 
 export class AuthPage extends Block<loginPageProps> {
+    static componentName = 'Authorization';
+
+
     protected getStateFromProps() {
         this.state = {
             regPage: (e: Event) => {

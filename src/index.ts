@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.router = router;
   window.store = store;
 
-  renderDOM(new Splash({}));
+  renderDOM(new Splash());
 // @ts-ignore
   store.on('changed', (prevState, nextState) => {
     console.log(prevState)

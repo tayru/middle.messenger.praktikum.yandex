@@ -4,11 +4,23 @@ import './settings.pcss';
 import {validate} from "../../services/Validation";
 import {renderDOM} from "../../core";
 import MessengerPage from "../messenger";
+import { logout } from '../../services/auth';
+import { CoreRouter} from '../../core/';
+import { Store} from '../../core/';
 
 
+type SettingsPageProps = {
+    router: CoreRouter;
+    store: Store<AppState>;
+    user: User | null;
+    onLogout?: () => void;
+};
 
-export class SetPage extends Block {
+export class SetPage extends Block<SettingsPageProps> {
+    static componentName = 'Settings';
+
     protected getStateFromProps() {
+
         this.state = {
 
             checkValidation: (event: Event, form:string, ) => {
@@ -67,6 +79,13 @@ export class SetPage extends Block {
             },
             onBlur2: () => {
                 this.state.checkValidation(event, "pass")
+            },
+
+            onLogout: (e: Event) => {
+                e.preventDefault();
+                console.log('exit')
+                window.store.dispatch(logout)
+
             },
 
             regPage: (e: Event) => {

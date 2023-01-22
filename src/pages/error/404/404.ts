@@ -9,6 +9,8 @@ interface ErrorProps {
 }
 
 export class Page404 extends Block {
+    static componentName = '404';
+
     constructor(props: ErrorProps) {
         super({...props});
     }
