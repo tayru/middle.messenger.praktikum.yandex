@@ -8,9 +8,10 @@ type LoginRequestData = {
 
 // type LoginResponseData = {} | APIError;
 
-export const authAPI = {
+export  const authAPI = {
   login: (data: LoginRequestData) => {
-    return apiRequest.post('auth/signin', { data: data });
+
+    return  apiRequest.post('auth/signin', { data: data });
   },
 
   me: () => {

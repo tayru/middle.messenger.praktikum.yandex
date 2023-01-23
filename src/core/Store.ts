@@ -1,14 +1,14 @@
 import EventBus from './EventBus';
 
 export type Dispatch<State> = (
-  nextStateOrAction: Partial<State> | Action<State>,
-  payload?: any,
+    nextStateOrAction: Partial<State> | Action<State>,
+    payload?: any
 ) => void;
 
 export type Action<State> = (
-  dispatch: Dispatch<State>,
-  state: State,
-  payload: any,
+    dispatch: Dispatch<State>,
+    state: State,
+    payload: any
 ) => void;
 
 export class Store<State extends Record<string, any>> extends EventBus {

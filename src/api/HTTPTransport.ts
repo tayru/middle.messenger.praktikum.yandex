@@ -34,11 +34,13 @@ export default class HttpTransport<Props> {
     }
 
     public post(url: string, options: HttpTransportOptions = {}): Promise<any> {
-        return this.request(
+        let res = this.request(
             url,
             { ...options, method: METHODS.POST },
             options.timeout
         );
+        console.log(res)
+        return res
     }
     public put(url: string, options: HttpTransportOptions = {}) {
         return this.request(
@@ -91,11 +93,12 @@ export default class HttpTransport<Props> {
             }
 
             xhr.ontimeout = reject;
-            if (method === METHODS.GET || !data) {
+            if (method === METHODS.GET && !data) {
                 xhr.send();
             } else {
                 xhr.send(JSON.stringify(data));
             }
+
         });
     }
 }
