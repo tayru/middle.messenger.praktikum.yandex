@@ -26,8 +26,7 @@ type loginPageProps = {
 export class AuthPage extends Block<loginPageProps> {
     static componentName = 'Authorization';
 
-    constructor(props?: loginPageProps) {
-        super(props);
+    protected getStateFromProps() {
         this.state = {
             regPage: (e: Event) => {
                 e.preventDefault();
@@ -82,14 +81,12 @@ export class AuthPage extends Block<loginPageProps> {
                 if (obj !== null) {
                     console.log('123214')
                     // this.props.store.dispatch(login, obj);
-                    this.props.store.dispatch(login, obj);
+                    window.store.dispatch(login, obj);
 
                 }
             }
         }
-        this.setProps({
-            ...this.props,
-        });
+
     }
 
 
