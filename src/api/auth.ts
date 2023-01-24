@@ -1,5 +1,4 @@
 import { apiRequest } from './HTTPTransport';
-// import { APIError, UserDTO } from './types';
 
 type LoginRequestData = {
   login: string;

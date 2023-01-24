@@ -1,4 +1,6 @@
 import { authAPI } from '../api/auth';
+import { userAPI } from '../api/user';
+
 import { UserDTO } from '../api/types';
 import type { Dispatch } from '../core/Store';
 import { transformUser } from '../utils';

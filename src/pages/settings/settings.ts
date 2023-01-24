@@ -101,7 +101,13 @@ export class SetPage extends Block<SettingsPageProps> {
             onLogin: (e: Event) => {
                 e.preventDefault();
                 this.state.checkValidation(event)
+            },
+            onMessenger: (e: Event) => {
+                e.preventDefault();
+                console.log('onMessenger')
+                window.router.go('/messenger')
             }
+
         }
     }
 
