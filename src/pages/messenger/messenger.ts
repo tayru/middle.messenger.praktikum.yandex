@@ -43,6 +43,12 @@ export class MessengerPage extends Block {
             onSend: (e: Event) => {
                 e.preventDefault();
                 this.state.checkValidation()
+            },
+
+            onSettings: (e: Event) => {
+                e.preventDefault();
+                console.log('onSettings')
+                window.router.go('/settings')
             }
         }
     }
