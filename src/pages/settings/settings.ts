@@ -118,6 +118,13 @@ export class SetPage extends Block<SettingsPageProps> {
                 }
             },
 
+            editAvatar:(e: Event) => {
+                //сначала загрузить фото, потом обновить данные
+                e.preventDefault();
+                console.log('editAvatar')
+
+            },
+
             regPage: (e: Event) => {
                 e.preventDefault();
                 renderDOM(new MessengerPage());
