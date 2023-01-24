@@ -43,14 +43,14 @@ export const logout = async (dispatch: Dispatch<AppState>) => {
   window.router.go('/login');
 };
 
-export const signup = async (
+export const registration = async (
     dispatch: Dispatch<AppState>,
     state: AppState,
     action: LoginPayload
 ) => {
   dispatch({ isLoading: true });
-  console.log('signup', action);
-  const { response, status } = await authAPI.signup(action);
+  console.log('registration', action);
+  const { response, status } = await authAPI.registration(action);
 
   if (status !== 200) {
     dispatch({ isLoading: false, loginFormError: JSON.parse(response).reason });

@@ -2,6 +2,7 @@ import Block from '../../core/Block';
 import template from 'bundle-text:./template.hbs';
 import './register.pcss';
 import {validate} from "../../services/Validation";
+import {registration} from "../../services/auth";
 
 
 export class RegPage extends Block {
@@ -19,7 +20,6 @@ export class RegPage extends Block {
             },
 
             checkValidation: (event: Event) => {
-                console.log(event.target)
                 const obj:object = {}
 
                 const inputs = document.querySelectorAll("input");
@@ -53,6 +53,8 @@ export class RegPage extends Block {
 
                 console.log('Вывод данных', obj);
 
+                if (flag === false) return obj; else return null;
+
 
             },
 
@@ -69,9 +71,14 @@ export class RegPage extends Block {
 
             },
 
-            onLogin: (e: Event) => {
+            onReg: (e: Event) => {
                 e.preventDefault();
-                this.state.checkValidation(event)
+                let obj = this.state.checkValidation()
+                if (obj !== null) {
+                    console.log('123214')
+                    window.store.dispatch(registration, obj);
+
+                }
             }
         }
     }

@@ -20,7 +20,7 @@ export  const authAPI = {
 
   logout: () => apiRequest.post('auth/logout'),
 
-  signup: (data: LoginRequestData) => {
+  registration: (data: LoginRequestData) => {
     return apiRequest.post('auth/signup', { data: data });
   },
 };
