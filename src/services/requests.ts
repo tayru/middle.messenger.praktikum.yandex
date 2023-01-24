@@ -10,6 +10,15 @@ type LoginPayload = {
   password: string;
 };
 
+type userData = {
+  first_name: string;
+  second_name: string;
+  display_name: string;
+  login: string;
+  email: string;
+  phone: string;
+};
+
 export const login = async (
     dispatch: Dispatch<AppState>,
     state: AppState,
@@ -70,4 +79,22 @@ export const registration = async (
   window.router.go('/messenger');
 };
 
+export const editProfile = async (
+    dispatch: Dispatch<AppState>,
+    state: AppState,
+    action: userData
+) => {
+  dispatch({ isLoading: true });
+  console.log('editProfile', action);
+  const { response, status } = await userAPI.editProfile(action);
 
+  if (status !== 200) {
+    dispatch({ isLoading: false, loginFormError: JSON.parse(response).reason });
+    return;
+  }
+  const { response: responseUser} = await authAPI.me();
+  dispatch({ isLoading: false, loginFormError: null });
+
+  dispatch({ user: transformUser(JSON.parse(responseUser) as UserDTO) });
+  window.router.go('/messenger');
+};

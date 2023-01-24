@@ -2,7 +2,7 @@ import Block from '../../core/Block';
 import template from 'bundle-text:./template.hbs';
 import './register.pcss';
 import {validate} from "../../services/Validation";
-import {registration} from "../../services/auth";
+import {registration} from "../../services/requests";
 
 
 export class RegPage extends Block {

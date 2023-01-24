@@ -12,15 +12,11 @@ type userData = {
 // type LoginResponseData = {} | APIError;
 
 export  const userAPI = {
-    changeUser: (data: userData) => {
-        return  apiRequest.post('user/profile', { data: data });
+    editProfile: (data: userData) => {
+        return  apiRequest.put('user/profile', { data: data });
     },
 
-    me: () => {
-        return apiRequest.get('auth/user');
-    },
 
-    logout: () => apiRequest.post('auth/logout'),
 
 
 };

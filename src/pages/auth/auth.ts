@@ -2,7 +2,7 @@ import { withIsLoading } from '../../utils/withIsLoading';
 import { withStore } from '../../utils/withStore';
 import { withRouter } from '../../utils/withRouter';
 import { CoreRouter, Store} from '../../core';
-import { login } from '../../services/auth';
+import { login } from '../../services/requests';
 
 import Block from '../../core/Block';
 import template from 'bundle-text:./template.hbs';

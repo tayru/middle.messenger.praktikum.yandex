@@ -4,7 +4,7 @@ import './settings.pcss';
 import {validate} from "../../services/Validation";
 import {renderDOM} from "../../core";
 import MessengerPage from "../messenger";
-import { logout } from '../../services/auth';
+import {logout, editProfile, registration} from '../../services/requests';
 import { CoreRouter} from '../../core/';
 import { Store} from '../../core/';
 import { withStore, withRouter, withUser } from '../../utils/';
@@ -29,7 +29,6 @@ export class SetPage extends Block<SettingsPageProps> {
         this.state = {
 
             checkValidation: (event: Event, form:string, ) => {
-                console.log(event.target)
                 let inputs;
                 if (form === "data") {
                     inputs = document.querySelectorAll(".settings__form-data input");
@@ -68,6 +67,8 @@ export class SetPage extends Block<SettingsPageProps> {
                 }
 
                 console.log('Вывод данных', obj);
+                if (flag === false) return obj; else return null;
+
 
 
             },
@@ -93,6 +94,18 @@ export class SetPage extends Block<SettingsPageProps> {
 
             },
 
+            editProfile:(e: Event) => {
+                let obj =  this.state.checkValidation(event, "data")
+                console.log(obj)
+                e.preventDefault();
+                console.log('editProfile')
+                if (obj !== null) {
+                    console.log('123214')
+                    window.store.dispatch(editProfile, obj);
+
+                }
+            },
+
             regPage: (e: Event) => {
                 e.preventDefault();
                 renderDOM(new MessengerPage());
@@ -101,6 +114,7 @@ export class SetPage extends Block<SettingsPageProps> {
             onLogin: (e: Event) => {
                 e.preventDefault();
                 this.state.checkValidation(event)
+
             },
             onMessenger: (e: Event) => {
                 e.preventDefault();
