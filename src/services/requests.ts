@@ -1,7 +1,8 @@
 import { authAPI } from '../api/auth';
 import { userAPI } from '../api/user';
+import { chatAPI } from '../api/chat';
 
-import { UserDTO } from '../api/types';
+import { UserDTO, TChat } from '../api/types';
 import type { Dispatch } from '../core/Store';
 import { transformUser } from '../utils';
 
@@ -38,13 +39,17 @@ export const login = async (
     return;
   }
   const { response: responseUser, status: statusUser } = await authAPI.me();
+  const { response: responseChats} = await chatAPI.getChats()
+  console.log(responseChats)
+  console.log('responseChats')
+
 
   dispatch({ isLoading: false, loginFormError: null });
   if (statusUser !== 200) {
     dispatch(logout);
     return;
   }
-
+  dispatch({ chats: JSON.parse(responseChats) });
   dispatch({ user: transformUser(JSON.parse(responseUser) as UserDTO) });
   window.router.go('/messenger');
 };

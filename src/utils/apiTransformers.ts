@@ -1,4 +1,4 @@
-import { UserDTO } from '../api/types';
+import { UserDTO, TChat } from '../api/types';
 
 export const transformUser = (data: UserDTO): User => {
   return {

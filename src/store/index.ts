@@ -4,4 +4,8 @@ export const defaultState: AppState = {
   screen: null,
   loginFormError: null,
   user: null,
+  chats: null,
+  messages: null,
+
+
 };

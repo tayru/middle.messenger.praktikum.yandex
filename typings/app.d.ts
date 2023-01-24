@@ -12,6 +12,8 @@ declare global {
     isLoading: boolean;
     loginFormError: string | null;
     user: User | null;
+    chats: null | string[],
+    messages: null | string[],
   };
 
   export type User = {
