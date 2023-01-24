@@ -39,9 +39,7 @@ export const login = async (
     return;
   }
   const { response: responseUser, status: statusUser } = await authAPI.me();
-  const { response: responseChats} = await chatAPI.getChats()
-  console.log(responseChats)
-  console.log('responseChats')
+
 
 
   dispatch({ isLoading: false, loginFormError: null });
@@ -49,6 +47,7 @@ export const login = async (
     dispatch(logout);
     return;
   }
+  const { response: responseChats} = await chatAPI.getChats()
   dispatch({ chats: JSON.parse(responseChats) });
   dispatch({ user: transformUser(JSON.parse(responseUser) as UserDTO) });
   window.router.go('/messenger');
@@ -83,7 +82,8 @@ export const registration = async (
     dispatch(logout);
     return;
   }
-
+  const { response: responseChats} = await chatAPI.getChats()
+  dispatch({ chats: JSON.parse(responseChats) });
   dispatch({ user: transformUser(JSON.parse(responseUser) as UserDTO) });
   window.router.go('/messenger');
 };
@@ -103,7 +103,8 @@ export const editProfile = async (
   }
   const { response: responseUser} = await authAPI.me();
   dispatch({ isLoading: false, loginFormError: null });
-
+  const { response: responseChats} = await chatAPI.getChats()
+  dispatch({ chats: JSON.parse(responseChats) });
   dispatch({ user: transformUser(JSON.parse(responseUser) as UserDTO) });
 };
 
@@ -123,6 +124,7 @@ export const editPassword = async (
   }
   const { response: responseUser} = await authAPI.me();
   dispatch({ isLoading: false, loginFormError: null });
-
+  const { response: responseChats} = await chatAPI.getChats()
+  dispatch({ chats: JSON.parse(responseChats) });
   dispatch({ user: transformUser(JSON.parse(responseUser) as UserDTO) });
 };

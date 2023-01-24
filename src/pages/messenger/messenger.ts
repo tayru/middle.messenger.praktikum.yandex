@@ -4,7 +4,6 @@ import { withStore, withRouter, withUser } from '../../utils/';
 
 import './messenger.pcss';
 import {validate} from "../../services/Validation";
-import {SetPage} from "../settings/settings";
 
 
 export class MessengerPage extends Block {
