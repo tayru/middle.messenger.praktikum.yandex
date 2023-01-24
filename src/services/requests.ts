@@ -18,6 +18,10 @@ type userData = {
   email: string;
   phone: string;
 };
+type passwordData = {
+  oldPassword: string;
+  newPassword: string;
+};
 
 export const login = async (
     dispatch: Dispatch<AppState>,
@@ -96,5 +100,24 @@ export const editProfile = async (
   dispatch({ isLoading: false, loginFormError: null });
 
   dispatch({ user: transformUser(JSON.parse(responseUser) as UserDTO) });
-  window.router.go('/messenger');
+};
+
+
+export const editPassword = async (
+    dispatch: Dispatch<AppState>,
+    state: AppState,
+    action: passwordData
+) => {
+  dispatch({ isLoading: true });
+  console.log('editProfile', action);
+  const { response, status } = await userAPI.editPassword(action);
+
+  if (status !== 200) {
+    dispatch({ isLoading: false, loginFormError: JSON.parse(response).reason });
+    return;
+  }
+  const { response: responseUser} = await authAPI.me();
+  dispatch({ isLoading: false, loginFormError: null });
+
+  dispatch({ user: transformUser(JSON.parse(responseUser) as UserDTO) });
 };

@@ -9,6 +9,10 @@ type userData = {
     phone: string;
 };
 
+type passwordData = {
+    oldPassword: string;
+    newPassword: string;
+};
 // type LoginResponseData = {} | APIError;
 
 export  const userAPI = {
@@ -16,7 +20,9 @@ export  const userAPI = {
         return  apiRequest.put('user/profile', { data: data });
     },
 
-
+    editPassword: (data: passwordData) => {
+        return  apiRequest.put('user/password', { data: data });
+    },
 
 
 };

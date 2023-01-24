@@ -4,7 +4,7 @@ import './settings.pcss';
 import {validate} from "../../services/Validation";
 import {renderDOM} from "../../core";
 import MessengerPage from "../messenger";
-import {logout, editProfile, registration} from '../../services/requests';
+import {logout, editProfile, registration, editPassword} from '../../services/requests';
 import { CoreRouter} from '../../core/';
 import { Store} from '../../core/';
 import { withStore, withRouter, withUser } from '../../utils/';
@@ -49,7 +49,7 @@ export class SetPage extends Block<SettingsPageProps> {
 
                     obj[name] = value;
                     let result: string | null;
-                    if (name === "newPassword2") {
+                    if (name === "newPassword") {
                         result = validate( name, obj['password'], value);
                         console.log(result)
                     } else  {
@@ -102,6 +102,18 @@ export class SetPage extends Block<SettingsPageProps> {
                 if (obj !== null) {
                     console.log('123214')
                     window.store.dispatch(editProfile, obj);
+
+                }
+            },
+
+            editPassword:(e: Event) => {
+                let obj =  this.state.checkValidation(event, "pass")
+                console.log(obj)
+                e.preventDefault();
+                console.log('editPassword')
+                if (obj !== null) {
+                    console.log('123214')
+                    window.store.dispatch(editPassword, obj);
 
                 }
             },
