@@ -1,13 +1,25 @@
 import Block from '../../core/Block';
 import template from 'bundle-text:./template.hbs';
-import { withStore, withRouter, withUser } from '../../utils/';
+import { withStore, withRouter } from '../../utils/';
 
 import './messenger.pcss';
 import {validate} from "../../services/Validation";
+import {CoreRouter, Store} from "../../core";
 
+type MessagePageProps = {
+    router: CoreRouter;
+    store: Store<AppState>;
+    user: User | null;
+    onLogout?: () => void;
+};
 
-export class MessengerPage extends Block {
+export class MessengerPage extends Block<MessagePageProps> {
     static componentName = 'Messenger';
+    constructor(props: MessagePageProps) {
+        super(props);
+        console.log(props, 'props')
+
+    }
 
     protected getStateFromProps() {
         this.state = {
@@ -56,5 +68,5 @@ export class MessengerPage extends Block {
     return template;
   }
 }
-export default withRouter(withStore(withUser(MessengerPage)));
+export default withRouter(withStore(MessengerPage));
 

@@ -8,7 +8,7 @@ export function withUser<P extends WithUserProps>(WrappedBlock: BlockClass<P>) {
     public static componentName = WrappedBlock.componentName || WrappedBlock.name;
 
     constructor(props: P) {
-      super({ ...props, user: window.store.getState().user });
+      super({ ...props, user: window.store.getState().user});
     }
 
     __onChangeUserCallback = (prevState: AppState, nextState: AppState) => {
