@@ -6,12 +6,14 @@ import './messenger.pcss';
 import {validate} from "../../services/Validation";
 import {CoreRouter, Store} from "../../core";
 import {editPassword, GetToken} from '../../services/requests';
+import {chatAPI} from "../../api/chat";
 
 type MessagePageProps = {
     router: CoreRouter;
     store: Store<AppState>;
     user: User | null;
     onLogout?: () => void;
+    ws?: any;
 };
 
 export class MessengerPage extends Block<MessagePageProps> {
@@ -24,6 +26,10 @@ export class MessengerPage extends Block<MessagePageProps> {
 
     protected getStateFromProps() {
         this.state = {
+            values: {
+                ws: {},
+
+            },
 
             checkValidation: (e: Event) => {
 
@@ -62,12 +68,46 @@ export class MessengerPage extends Block<MessagePageProps> {
                 console.log('onSettings')
                 window.router.go('/settings')
             },
-            selectChat: (e: Event) => {
+            selectChat: async (e: Event) => {
                 let IDchat = e.currentTarget.dataset.id
                 let IDuser = store.state.user.id;
-                let token = window.store.dispatch(GetToken, IDchat, IDuser);
+                let { response: token} = await chatAPI.getToken(IDchat)
+                token = JSON.parse(token).token
 
+                let path = `wss://ya-praktikum.tech/ws/chats/${IDuser}/${IDchat}/${token}`;
+                let socket = new WebSocket(path);
+                this.ws = new WebSocket(path);
+                this.ws.addEventListener('open', () => {
+                    console.log('Соединение установлено');
 
+                    this.ws.send(JSON.stringify({
+                        content: 'Моё первое сообщение миру!',
+                        type: 'message',
+                    }));
+
+                    this.ws.send(JSON.stringify({
+                        content: '0',
+                        type: 'get old',
+                    }));
+                });
+
+                this.ws.addEventListener('close', event => {
+                    if (event.wasClean) {
+                        console.log('Соединение закрыто чисто');
+                    } else {
+                        console.log('Обрыв соединения');
+                    }
+
+                    console.log(`Код: ${event.code} | Причина: ${event.reason}`);
+                });
+
+                this.ws.addEventListener('message', event => {
+                    console.log('Получены данные', event.data);
+                });
+
+                this.ws.addEventListener('error', event => {
+                    console.log('Ошибка', event.message);
+                });
 
 
             }

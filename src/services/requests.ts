@@ -139,6 +139,4 @@ export const GetToken = async (
   const { response: response} = await chatAPI.getToken(IDchat);
   dispatch({ token: JSON.parse(response).token });
 
-  let path = `wss://ya-praktikum.tech/ws/chats/${IDUser}/${IDchat}/${JSON.parse(response).token}`;
-  new WebSocket(path)
 };
