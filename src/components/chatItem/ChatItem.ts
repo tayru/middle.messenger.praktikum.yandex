@@ -4,8 +4,10 @@ import template from 'bundle-text:./template.hbs';
 import './ChatItem.pcss';
 
 interface ChatItemProps {
-  text: string;
-  className: string;
+  id: string;
+  title: string;
+  last_message: string;
+  unread_count: string;
   onClick: (event: Event  | undefined) => void;
   events?: { [key: string]: (event?: Event) => void}
 }
