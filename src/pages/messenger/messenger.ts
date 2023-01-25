@@ -93,8 +93,9 @@ export class MessengerPage extends Block<MessagePageProps> {
             },
 
             sendMessage:(e: Event) => {
+                let text = document.querySelector('.message-area').value;
                 this.ws.send(JSON.stringify({
-                    content: 'Моё первое сообщение миру!',
+                    content: text,
                     type: 'message',
                 }));
             }

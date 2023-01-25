@@ -13,7 +13,7 @@ declare global {
     loginFormError: string | null;
     user: User | null;
     chats: null | string[],
-    messages: null | string[],
+    messages: null | string[] | string,
     token: null | string,
   };
 
