@@ -5,6 +5,7 @@ import { withStore, withRouter } from '../../utils/';
 import './messenger.pcss';
 import {validate} from "../../services/Validation";
 import {CoreRouter, Store} from "../../core";
+import {editPassword, GetToken} from '../../services/requests';
 
 type MessagePageProps = {
     router: CoreRouter;
@@ -63,7 +64,7 @@ export class MessengerPage extends Block<MessagePageProps> {
             },
             selectChat: (e: Event) => {
                 let IDchat = e.currentTarget.dataset.id
-                console.log(IDchat)
+                window.store.dispatch(GetToken, IDchat);
             }
         }
     }

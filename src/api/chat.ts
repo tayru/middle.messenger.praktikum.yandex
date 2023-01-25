@@ -18,6 +18,10 @@ export  const chatAPI = {
         return  apiRequest.post('chats', { data: data });
     },
 
+    getToken: (id: number) => {
+        return  apiRequest.post(`chats/token/${id}`, );
+    },
+
     addUserToChats: (data: usersToChat) => {
         return  apiRequest.put('chats/users', { data: data });
     },

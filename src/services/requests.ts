@@ -128,3 +128,13 @@ export const editPassword = async (
   dispatch({ chats: JSON.parse(responseChats) });
   dispatch({ user: transformUser(JSON.parse(responseUser) as UserDTO) });
 };
+
+export const GetToken = async (
+    dispatch: Dispatch<AppState>,
+    state: AppState,
+    IDchat: string
+) => {
+  const { response } = await chatAPI.getToken(IDchat);
+  console.log(response)
+  dispatch({ messages: JSON.parse(response) });
+};
