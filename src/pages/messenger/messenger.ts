@@ -64,7 +64,8 @@ export class MessengerPage extends Block<MessagePageProps> {
             },
             selectChat: (e: Event) => {
                 let IDchat = e.currentTarget.dataset.id
-                window.store.dispatch(GetToken, IDchat);
+                let token = window.store.dispatch(GetToken, IDchat);
+                console.log(token)
             }
         }
     }

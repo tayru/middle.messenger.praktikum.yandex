@@ -14,6 +14,7 @@ declare global {
     user: User | null;
     chats: null | string[],
     messages: null | string[],
+    token: null | string,
   };
 
   export type User = {

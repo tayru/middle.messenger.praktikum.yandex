@@ -134,7 +134,7 @@ export const GetToken = async (
     state: AppState,
     IDchat: string
 ) => {
-  const { response } = await chatAPI.getToken(IDchat);
-  console.log(response)
-  dispatch({ messages: JSON.parse(response) });
+  const { response: response} = await chatAPI.getToken(IDchat);
+  dispatch({ token: JSON.parse(response).token });
+
 };
