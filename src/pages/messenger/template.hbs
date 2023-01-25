@@ -46,6 +46,7 @@
                 </div>
             </li>
             {{#each store.state.chats}}
+                {{{ChatItem}}}
 
                 <li class="dialogs-chat" data-id="{{{this.id}}}">
                     <div class="dialogs-chat__avatar">
@@ -78,7 +79,8 @@
         </div>
         <div class="chat__input">
             <div class="chat__input-error"></div>
-        {{{textArea  placeholder="Введите текст сообщения" name="message"
+
+            {{{textArea  placeholder="Введите текст сообщения" name="message"
                      class="message-area" id="message-area"
                      onFocus=onFocus
                      onBlur=onBlur}}}
