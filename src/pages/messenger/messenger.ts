@@ -64,8 +64,12 @@ export class MessengerPage extends Block<MessagePageProps> {
             },
             selectChat: (e: Event) => {
                 let IDchat = e.currentTarget.dataset.id
-                let token = window.store.dispatch(GetToken, IDchat);
-                console.log(token)
+                let IDuser = store.state.user.id;
+                let token = window.store.dispatch(GetToken, IDchat, IDuser);
+
+
+
+
             }
         }
     }

@@ -125,11 +125,6 @@ export class SetPage extends Block<SettingsPageProps> {
 
             },
 
-            regPage: (e: Event) => {
-                e.preventDefault();
-                renderDOM(new MessengerPage());
-            },
-
             onLogin: (e: Event) => {
                 e.preventDefault();
                 this.state.checkValidation(event)
