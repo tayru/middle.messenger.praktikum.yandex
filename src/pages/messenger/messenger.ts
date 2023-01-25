@@ -1,11 +1,12 @@
 import Block from '../../core/Block';
 import template from 'bundle-text:./template.hbs';
 import { withStore, withRouter } from '../../utils/';
+import type { Dispatch } from '../../core';
 
 import './messenger.pcss';
 import {validate} from "../../services/Validation";
 import {CoreRouter, Store} from "../../core";
-import {editPassword, GetToken} from '../../services/requests';
+import {updateMessage} from '../../services/requests';
 import {chatAPI} from "../../api/chat";
 
 type MessagePageProps = {
@@ -28,7 +29,6 @@ export class MessengerPage extends Block<MessagePageProps> {
         this.state = {
             values: {
                 ws: {},
-
             },
 
             checkValidation: (e: Event) => {
@@ -81,35 +81,22 @@ export class MessengerPage extends Block<MessagePageProps> {
                     console.log('Соединение установлено');
 
                     this.ws.send(JSON.stringify({
-                        content: 'Моё первое сообщение миру!',
-                        type: 'message',
-                    }));
-
-                    this.ws.send(JSON.stringify({
                         content: '0',
                         type: 'get old',
                     }));
                 });
 
-                this.ws.addEventListener('close', event => {
-                    if (event.wasClean) {
-                        console.log('Соединение закрыто чисто');
-                    } else {
-                        console.log('Обрыв соединения');
-                    }
-
-                    console.log(`Код: ${event.code} | Причина: ${event.reason}`);
-                });
-
                 this.ws.addEventListener('message', event => {
-                    console.log('Получены данные', event.data);
+                    window.store.dispatch(updateMessage, event.data);
                 });
 
-                this.ws.addEventListener('error', event => {
-                    console.log('Ошибка', event.message);
-                });
+            },
 
-
+            sendMessage:(e: Event) => {
+                this.ws.send(JSON.stringify({
+                    content: 'Моё первое сообщение миру!',
+                    type: 'message',
+                }));
             }
         }
     }

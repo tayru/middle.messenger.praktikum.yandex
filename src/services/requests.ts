@@ -140,3 +140,15 @@ export const GetToken = async (
   dispatch({ token: JSON.parse(response).token });
 
 };
+
+export const updateMessage = async (
+    dispatch: Dispatch<AppState>,
+    state: AppState,
+    messages: string
+
+) => {
+  dispatch({ messages: JSON.parse(messages) });
+
+};
+
+
