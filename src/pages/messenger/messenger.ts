@@ -60,6 +60,10 @@ export class MessengerPage extends Block<MessagePageProps> {
                 e.preventDefault();
                 console.log('onSettings')
                 window.router.go('/settings')
+            },
+            selectChat: (e: Event) => {
+                let IDchat = e.currentTarget.dataset.id
+                console.log(IDchat)
             }
         }
     }
