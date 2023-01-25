@@ -58,8 +58,12 @@
     <section  class="dialog">
         <div class="dialog_date">19 июня</div>
         <div class="chat">
-            <div class="chat_item">Привет</div>
-            <div class="chat_item chat_item__my-message">Как дела</div>
+
+            {{#each store.state.messages}}
+                {{#with this}}
+                    {{{Message content=content}}}
+                {{/with}}
+            {{/each}}
 
         </div>
         <div class="chat__input">
