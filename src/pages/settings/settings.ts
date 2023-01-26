@@ -121,14 +121,8 @@ export class SetPage extends Block<SettingsPageProps> {
                 e.preventDefault();
                 console.log('editAvatar')
                 const inputFile = document.getElementById("avatar");
-
                 const formData = new FormData();
-
-                for (const file of inputFile.files) {
-                    formData.append("files", file);
-                }
-
-                window.store.dispatch(changeAvatar, formData);
+                window.store.dispatch(changeAvatar, formData.append('avatar', inputFile.files[0]));
 
             },
 
