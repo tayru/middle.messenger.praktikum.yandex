@@ -62,7 +62,6 @@ export default class HttpTransport<Props> {
             xhr.withCredentials = true;
             if (method === METHODS.GET) {
                 xhr.open(method, url);
-                // xhr.open(method, url + '?' + queryStringify(data));
             } else {
                 if (typeof method === 'string') {
                     xhr.open(method, url);
