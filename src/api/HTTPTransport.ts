@@ -10,18 +10,10 @@ const BASE_API = 'https://ya-praktikum.tech/api/v2';
 interface HttpTransportOptions<P = any> {
     method?: string;
     data?: any;
-    // headers?: string;
     headers?: Record<string, string>;
     timeout?: number;
     mode?: string;
     credentials?: string;
-}
-
-function queryStringify(data: any): string {
-    const queryString: string = Object.keys(data)
-        .map((key) => key + '=' + data[key])
-        .join('&');
-    return queryString;
 }
 
 export default class HttpTransport<Props> {
