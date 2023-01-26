@@ -28,6 +28,11 @@ type createChat = {
   title: string;
 }
 
+type UserChat = {
+  users: number[],
+  chatId: number
+}
+
 export const login = async (
     dispatch: Dispatch<AppState>,
     state: AppState,
@@ -165,4 +170,26 @@ export const createChat = async (
   const { response, status } = await chatAPI.createChat( {
     title: title
   });
+};
+
+export const addUser = async (
+    dispatch: Dispatch<AppState>,
+    state: AppState,
+    dataUserChat: UserChat
+) => {
+  console.log(dataUserChat)
+
+  const { response, status } = await chatAPI.addUserToChats( dataUserChat);
+  console.log(response)
+};
+
+export const deleteUser = async (
+    dispatch: Dispatch<AppState>,
+    state: AppState,
+    dataUserChat: UserChat
+) => {
+  console.log(dataUserChat)
+
+  const { response, status } = await chatAPI.deleteUserToChats( dataUserChat);
+  console.log(response)
 };

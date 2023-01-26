@@ -44,6 +44,34 @@
     </aside>
 
     <section  class="dialog">
+        <div class="dialog-forms">
+        <form class="create-chat">
+            <label for="create-chat__input">Добавить пользователя(ID):</label>
+            {{{Input  name="addUser__input"
+                      type="text"
+                      class="caddUser__input dialogs-search__input"
+                      id="addUser__input"
+                      placeholder="Введите id пользователя"
+            }}}
+            {{{Button className="addUser__btn"
+                      text="ОК" onClick=addUser
+            }}}
+
+        </form>
+        <form class="create-chat">
+            <label for="deleteUser__input">Удалить пользователя(ID):</label>
+            {{{Input  name="deleteUser__input"
+                      type="text"
+                      class="deleteUser__input dialogs-search__input"
+                      id="deleteUser__input"
+                      placeholder="Введите id пользователя"
+            }}}
+            {{{Button className="create-chat__btn"
+                      text="ОК" onClick=deleteUser
+            }}}
+
+        </form>
+        </div>
         <div class="dialog_date">19 июня</div>
         <div class="chat">
 

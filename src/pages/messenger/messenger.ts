@@ -6,7 +6,7 @@ import type { Dispatch } from '../../core';
 import './messenger.pcss';
 import {validate} from "../../services/Validation";
 import {CoreRouter, Store} from "../../core";
-import { updateMessage, createChat} from '../../services/requests';
+import {updateMessage, createChat, login, addUser} from '../../services/requests';
 import {chatAPI} from "../../api/chat";
 
 type MessagePageProps = {
@@ -16,6 +16,11 @@ type MessagePageProps = {
     onLogout?: () => void;
     ws?: any;
 };
+
+type UserChat = {
+    users: number[],
+    chatId: number
+}
 
 export class MessengerPage extends Block<MessagePageProps> {
     static componentName = 'Messenger';
@@ -69,7 +74,8 @@ export class MessengerPage extends Block<MessagePageProps> {
                 window.router.go('/settings')
             },
             selectChat: async (e: Event) => {
-                let IDchat = e.currentTarget.dataset.id
+                let IDchat = e.currentTarget.dataset.id * 1;
+                window.store.dispatch({ ActiveChat: IDchat });
                 let IDuser = store.state.user.id;
                 let { response: token} = await chatAPI.getToken(IDchat)
                 token = JSON.parse(token).token
@@ -94,7 +100,7 @@ export class MessengerPage extends Block<MessagePageProps> {
 
             sendMessage:(e: Event) => {
                 e.preventDefault();
-                let text = document.querySelector('.message-area').value;
+                const text = document.querySelector('.message-area').value;
                 this.ws.send(JSON.stringify({
                     content: text,
                     type: 'message',
@@ -102,8 +108,31 @@ export class MessengerPage extends Block<MessagePageProps> {
             },
             createChat:(e:Event) => {
                 e.preventDefault();
-                let text = document.querySelector('#create-chat__input').value;
+                const text = document.querySelector('#create-chat__input').value;
                 window.store.dispatch(createChat, text);
+            },
+            addUser:(e: Event) => {
+                e.preventDefault();
+                const id = document.querySelector('#addUser__input').value;
+                const idChat = window.store.state.ActiveChat;
+
+                const UserChat = {
+                    users: [id],
+                    chatId: idChat
+                }
+                window.store.dispatch(addUser, UserChat);
+            },
+            deleteUser:(e: Event) => {
+                e.preventDefault();
+                const id = document.querySelector('#deleteUser__input').value;
+                const idChat = window.store.state.ActiveChat;
+
+                const UserChat = {
+                    users: [id],
+                    chatId: idChat
+                }
+                window.store.dispatch(addUser, UserChat);
+
             }
         }
     }
