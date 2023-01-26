@@ -19,6 +19,20 @@
                 <input class="dialogs-search__input" type="text" placeholder="Поиск">
             </form>
 
+        <form class="create-chat">
+            <label for="create-chat__input">Создать чат:</label>
+            {{{Input  name="reate-chat__input"
+                      type="text"
+                      class="create-chat__input dialogs-search__input"
+                      id="create-chat__input"
+                      placeholder="Название чата"
+            }}}
+            {{{Button className="create-chat__btn"
+                      text="Создать чат" onClick=createChat
+            }}}
+
+        </form>
+
         <ul class="dialogs-chat-wrapper">
             {{#each store.state.chats}}
                 {{#with this}}

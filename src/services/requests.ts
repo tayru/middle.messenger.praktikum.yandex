@@ -24,6 +24,10 @@ type passwordData = {
   newPassword: string;
 };
 
+type createChat = {
+  title: string;
+}
+
 export const login = async (
     dispatch: Dispatch<AppState>,
     state: AppState,
@@ -151,4 +155,14 @@ export const updateMessage = async (
 
 };
 
+export const createChat = async (
+    dispatch: Dispatch<AppState>,
+    state: AppState,
+    title: createChat
+) => {
+  console.log(title)
 
+  const { response, status } = await chatAPI.createChat( {
+    title: title
+  });
+};

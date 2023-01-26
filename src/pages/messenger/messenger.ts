@@ -6,7 +6,7 @@ import type { Dispatch } from '../../core';
 import './messenger.pcss';
 import {validate} from "../../services/Validation";
 import {CoreRouter, Store} from "../../core";
-import {updateMessage} from '../../services/requests';
+import { updateMessage, createChat} from '../../services/requests';
 import {chatAPI} from "../../api/chat";
 
 type MessagePageProps = {
@@ -93,11 +93,17 @@ export class MessengerPage extends Block<MessagePageProps> {
             },
 
             sendMessage:(e: Event) => {
+                e.preventDefault();
                 let text = document.querySelector('.message-area').value;
                 this.ws.send(JSON.stringify({
                     content: text,
                     type: 'message',
                 }));
+            },
+            createChat:(e:Event) => {
+                e.preventDefault();
+                let text = document.querySelector('#create-chat__input').value;
+                window.store.dispatch(createChat, text);
             }
         }
     }
