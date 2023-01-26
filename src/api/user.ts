@@ -24,5 +24,14 @@ export  const userAPI = {
         return  apiRequest.put('user/password', { data: data });
     },
 
+    uploadFile: (data) => {
+        return  apiRequest.post('/resources', { data: data });
+    },
+
+
+    // changeAvatar: (data: passwordData) => {
+    //     return  apiRequest.put('user/password', { data: data });
+    // },
+
 
 };

@@ -4,10 +4,11 @@ import './settings.pcss';
 import {validate} from "../../services/Validation";
 import {renderDOM} from "../../core";
 import MessengerPage from "../messenger";
-import {logout, editProfile, registration, editPassword} from '../../services/requests';
+import {logout, editProfile, registration, editPassword, addUser, changeAvatar} from '../../services/requests';
 import { CoreRouter} from '../../core/';
 import { Store} from '../../core/';
 import { withStore, withRouter, withUser } from '../../utils/';
+import {changeChat} from "../../components";
 
 type SettingsPageProps = {
     router: CoreRouter;
@@ -89,7 +90,6 @@ export class SetPage extends Block<SettingsPageProps> {
 
             onLogout: (e: Event) => {
                 e.preventDefault();
-                console.log('exit')
                 window.store.dispatch(logout)
 
             },
@@ -100,7 +100,6 @@ export class SetPage extends Block<SettingsPageProps> {
                 e.preventDefault();
                 console.log('editProfile')
                 if (obj !== null) {
-                    console.log('123214')
                     window.store.dispatch(editProfile, obj);
 
                 }
@@ -112,7 +111,6 @@ export class SetPage extends Block<SettingsPageProps> {
                 e.preventDefault();
                 console.log('editPassword')
                 if (obj !== null) {
-                    console.log('123214')
                     window.store.dispatch(editPassword, obj);
 
                 }
@@ -122,6 +120,15 @@ export class SetPage extends Block<SettingsPageProps> {
                 //сначала загрузить фото, потом обновить данные
                 e.preventDefault();
                 console.log('editAvatar')
+                const inputFile = document.getElementById("avatar");
+
+                const formData = new FormData();
+
+                for (const file of inputFile.files) {
+                    formData.append("files", file);
+                }
+
+                window.store.dispatch(changeAvatar, formData);
 
             },
 

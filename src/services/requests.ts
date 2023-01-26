@@ -179,7 +179,7 @@ export const addUser = async (
 ) => {
   console.log(dataUserChat)
 
-  const { response, status } = await chatAPI.addUserToChats( dataUserChat);
+  const { response } = await chatAPI.addUserToChats( dataUserChat);
   console.log(response)
 };
 
@@ -190,6 +190,16 @@ export const deleteUser = async (
 ) => {
   console.log(dataUserChat)
 
-  const { response, status } = await chatAPI.deleteUserToChats( dataUserChat);
+  const { response } = await chatAPI.deleteUserToChats( dataUserChat);
+  console.log(response)
+};
+
+export const changeAvatar = async (
+    dispatch: Dispatch<AppState>,
+    state: AppState,
+    formData: any
+) => {
+
+  const { response } = await userAPI.uploadFile(formData);
   console.log(response)
 };
