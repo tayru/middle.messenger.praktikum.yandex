@@ -3,6 +3,8 @@ import { initApp } from './services/initApp';
 import { defaultState } from './store';
 import { initRouter } from './router';
 import Splash from "../src/pages/splash";
+import './style/index.pcss';
+import './style/variables.pcss';
 
 
 import * as components from './components';
