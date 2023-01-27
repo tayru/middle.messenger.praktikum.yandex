@@ -33,6 +33,12 @@ type UserChat = {
   chatId: number
 }
 
+type APIError = {
+  reason: string;
+};
+
+type AvatarItem = { id: number; src: string };
+
 export const login = async (
     dispatch: Dispatch<AppState>,
     state: AppState,
@@ -197,9 +203,10 @@ export const deleteUser = async (
 export const changeAvatar = async (
     dispatch: Dispatch<AppState>,
     state: AppState,
-    formData: any
+    action: { formData: FormData; itemId: string | number }
 ) => {
-
-  const { response } = await userAPI.uploadFile(formData);
+  console.log(action.formData)
+  const { response } = await userAPI.changeAvatar(action.formData);
   console.log(response)
+
 };

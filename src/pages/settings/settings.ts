@@ -120,9 +120,18 @@ export class SetPage extends Block<SettingsPageProps> {
                 //сначала загрузить фото, потом обновить данные
                 e.preventDefault();
                 console.log('editAvatar')
+                let idUser = window.store.state.user?.id
                 const inputFile = document.getElementById("avatar");
                 const formData = new FormData();
-                window.store.dispatch(changeAvatar, formData.append('avatar', inputFile.files[0]));
+                formData.append('avatar', inputFile.files[0]);
+
+
+                window.store.dispatch(changeAvatar, );
+
+                window.store.dispatch(changeAvatar, {
+                    avatarFormData: formData,
+                    itemId: idUser,
+                });
 
             },
 

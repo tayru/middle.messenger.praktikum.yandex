@@ -24,14 +24,12 @@ export  const userAPI = {
         return  apiRequest.put('user/password', { data: data });
     },
 
-    uploadFile: (data) => {
-        return  apiRequest.post('/user/profile/avatar', { data: data });
+    changeAvatar: (data: FormData) => {
+        return apiRequest.put('user/profile/avatar', {
+            data: data,
+            headers: { contentType: false },
+        });
     },
-
-
-    // changeAvatar: (data: passwordData) => {
-    //     return  apiRequest.put('user/password', { data: data });
-    // },
 
 
 };

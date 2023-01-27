@@ -7,16 +7,16 @@ const METHODS = {
 
 const BASE_API = 'https://ya-praktikum.tech/api/v2';
 
-interface HttpTransportOptions<P = any> {
+interface HttpTransportOptions {
     method?: string;
     data?: any;
-    headers?: Record<string, string>;
+    headers?:  Record<string, string | boolean>;
     timeout?: number;
     mode?: string;
     credentials?: string;
 }
 
-export default class HttpTransport<Props> {
+export default class HttpTransport {
     public get(url: string, options: HttpTransportOptions = {}): Promise<any> {
         return this.request(
             url,
@@ -26,13 +26,11 @@ export default class HttpTransport<Props> {
     }
 
     public post(url: string, options: HttpTransportOptions = {}): Promise<any> {
-        let res = this.request(
+        return this.request(
             url,
             { ...options, method: METHODS.POST },
             options.timeout
         );
-        console.log(res)
-        return res
     }
     public put(url: string, options: HttpTransportOptions = {}) {
         return this.request(
@@ -55,11 +53,17 @@ export default class HttpTransport<Props> {
         options: HttpTransportOptions,
         timeout?: number
     ): Promise<any> {
-        const { method, data } = options;
+        const { method, data, headers  } = options;
         const url = `${BASE_API}/${path}`;
         return new Promise((resolve, reject) => {
             const xhr = new XMLHttpRequest();
             xhr.withCredentials = true;
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status >= 400) {
+                    reject(xhr.responseText);
+                }
+            };
+            
             if (method === METHODS.GET) {
                 xhr.open(method, url);
             } else {
@@ -67,16 +71,19 @@ export default class HttpTransport<Props> {
                     xhr.open(method, url);
                 }
             }
+            if (!headers) {
+                xhr.setRequestHeader('Content-Type', 'application/json');
+            } else if (headers?.contentType !== false) {
+                xhr.setRequestHeader('Content-Type', <string>headers?.contentType);
+            }
 
-            xhr.setRequestHeader('Content-Type', 'application/json');
             xhr.onload = function () {
                 resolve(xhr);
             };
 
             xhr.onabort = reject;
             xhr.onerror = function (err) {
-                console.log(err);
-                reject();
+                reject(err);
             };
 
             if (timeout != null) {
@@ -84,12 +91,15 @@ export default class HttpTransport<Props> {
             }
 
             xhr.ontimeout = reject;
-            if (method === METHODS.GET && !data) {
+            if (method === METHODS.GET || !data) {
                 xhr.send();
             } else {
-                xhr.send(JSON.stringify(data));
+                if (!headers) {
+                    xhr.send(JSON.stringify(data));
+                } else {
+                    xhr.send(data);
+                }
             }
-
         });
     }
 }
