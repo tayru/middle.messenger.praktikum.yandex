@@ -82,6 +82,14 @@ export class RegPage extends Block {
             }
         }
     }
+    componentDidMount(): void {
+        if(window.store.state.user) window.router.go('/messenger')
+    }
+
+    componentDidUpdate(): boolean {
+        if(window.store.state.user) window.router.go('/messenger')
+        return true;
+    }
    render() {
     return template;
   }

@@ -25,7 +25,7 @@ export  const userAPI = {
     },
 
     uploadFile: (data) => {
-        return  apiRequest.post('/resources', { data: data });
+        return  apiRequest.post('/user/profile/avatar', { data: data });
     },
 
 

@@ -9,6 +9,7 @@ import template from 'bundle-text:./template.hbs';
 import { validate } from "../../services/Validation";
 
 import './auth.pcss';
+import {authAPI} from "../../api/auth";
 
 type loginPageProps = {
     router: CoreRouter;
@@ -28,6 +29,7 @@ export class AuthPage extends Block<loginPageProps> {
 
     protected getStateFromProps() {
         this.state = {
+
             regPage: (e: Event) => {
                 e.preventDefault();
                 window.router.go('/RegPage')
@@ -85,7 +87,15 @@ export class AuthPage extends Block<loginPageProps> {
                 }
             }
         }
+    }
 
+    componentDidMount(): void {
+        if(window.store.state.user) window.router.go('/messenger')
+    }
+
+    componentDidUpdate(): boolean {
+        if(window.store.state.user) window.router.go('/messenger')
+        return true;
     }
 
 

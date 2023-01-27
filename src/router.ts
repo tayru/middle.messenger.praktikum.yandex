@@ -30,12 +30,12 @@ const routes = [
   {
     path: '/messenger',
     block: Screens.MessengerPage,
-    shouldAuthorized: false,
+    shouldAuthorized: true,
   },
   {
     path: '/settings',
     block: Screens.SetPage,
-    shouldAuthorized: false,
+    shouldAuthorized: true,
   },
   {
     path: '*',
