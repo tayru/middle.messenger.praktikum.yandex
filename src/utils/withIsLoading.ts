@@ -18,3 +18,4 @@ export function withIsLoading<P extends WithIsLoading>(WrappedBlock: BlockClass<
     }
   } as BlockClass<Omit<P, 'isLoading'>>;
 }
+

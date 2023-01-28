@@ -49,3 +49,4 @@ export class PathRouter implements CoreRouter {
     window.history.forward();
   }
 }
+

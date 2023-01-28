@@ -78,3 +78,4 @@ export function initRouter(router: CoreRouter, store: Store<AppState>) {
     }
   });
 }
+

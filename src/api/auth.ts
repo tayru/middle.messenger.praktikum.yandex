@@ -23,3 +23,4 @@ export  const authAPI = {
     return apiRequest.post('auth/signup', { data: data });
   },
 };
+

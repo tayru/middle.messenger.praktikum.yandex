@@ -7,3 +7,4 @@ export default function renderDOM(block: Block) {
   root!.appendChild(block.getContent());
 }
 
+

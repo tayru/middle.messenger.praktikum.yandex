@@ -30,3 +30,4 @@ export function withUser<P extends WithUserProps>(WrappedBlock: BlockClass<P>) {
 
   } as BlockClass<Omit<P, 'user'>>;
 }
+

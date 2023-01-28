@@ -19,7 +19,13 @@ static componentName = `Link`;
     super({
       ...props,
       events: {
-        onClick: props.onClick
+        // @ts-ignore
+        onClick: (e: Event) => {
+          e.preventDefault();
+
+          // @ts-ignore
+          router.go(this.props.url);
+        }
       }
     });
   }
@@ -28,3 +34,4 @@ static componentName = `Link`;
     return template;
   }
 }
+

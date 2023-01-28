@@ -25,3 +25,4 @@ export async function initApp(dispatch: Dispatch<AppState>) {
 
   dispatch({ appIsInited: true });
 }
+

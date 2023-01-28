@@ -106,3 +106,4 @@ export class AuthPage extends Block<loginPageProps> {
 }
 
 export default withRouter(withStore(withIsLoading(AuthPage)));
+

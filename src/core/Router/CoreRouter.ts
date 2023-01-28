@@ -9,3 +9,4 @@ export interface CoreRouter {
 
   forward(): void
 }
+

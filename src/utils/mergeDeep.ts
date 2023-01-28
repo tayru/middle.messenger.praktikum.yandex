@@ -17,3 +17,4 @@ export function mergeDeep(lhs: Indexed, rhs: Indexed): Indexed {
 
   return lhs;
 }
+

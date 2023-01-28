@@ -263,3 +263,4 @@ export default class Block<P = any> {
     return fragment.content;
   }
 }
+

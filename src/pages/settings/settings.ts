@@ -152,3 +152,4 @@ export class SetPage extends Block<SettingsPageProps> {
 }
 
 export default withRouter(withStore(withUser(SetPage)));
+

@@ -12,3 +12,4 @@ export function withRouter<P extends WithRouterProps>(WrappedBlock: BlockClass<P
     }
   } as BlockClass<Omit<P, 'router'>>;
 }
+

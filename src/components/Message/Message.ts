@@ -28,3 +28,4 @@ export class Message extends Block<ChatItemProps> {
   }
 }
 
+

@@ -30,3 +30,4 @@ const map: Record<Screens, BlockClass<any>> = {
 export const getScreenComponent = (screen: Screens): BlockClass<any> => {
   return map[screen];
 };
+

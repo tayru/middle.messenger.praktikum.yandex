@@ -33,3 +33,4 @@ export function withStore<P extends WithStateProps>(WrappedBlock: BlockClass<P>)
 
   } as BlockClass<Omit<P, 'store'>>;
 }
+

@@ -7,5 +7,5 @@ export const defaultState: AppState = {
   chats: null,
   messages: null,
 
-
 };
+

@@ -145,3 +145,4 @@ export class MessengerPage extends Block<MessagePageProps> {
 }
 export default withRouter(withStore(MessengerPage));
 
+
