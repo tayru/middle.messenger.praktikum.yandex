@@ -125,9 +125,6 @@ export class SetPage extends Block<SettingsPageProps> {
                 const formData = new FormData();
                 formData.append('avatar', inputFile.files[0]);
 
-
-                window.store.dispatch(changeAvatar, );
-
                 window.store.dispatch(changeAvatar, {
                     avatarFormData: formData,
                     itemId: idUser,
