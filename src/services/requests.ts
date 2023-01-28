@@ -162,7 +162,16 @@ export const updateMessage = async (
     messages: string
 
 ) => {
-  dispatch({ messages: JSON.parse(messages) });
+  const data = JSON.parse(messages);
+  if (data.type !== ('pong' || 'user_connect')) {
+    const prevMsg = window.store.getState().messages;
+    if (data instanceof Array) {
+      dispatch({ messages: data });
+    } else {
+      dispatch({ messages: [data, ...prevMsg] });
+    }
+  }
+
 
 };
 

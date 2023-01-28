@@ -93,6 +93,8 @@ export class MessengerPage extends Block<MessagePageProps> {
                 });
 
                 this.ws.addEventListener('message', event => {
+                    console.log('Получены данные', JSON.parse(event.data));
+
                     window.store.dispatch(updateMessage, event.data);
                 });
 
