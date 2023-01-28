@@ -172,10 +172,12 @@ export const createChat = async (
     title: createChat
 ) => {
   console.log(title)
-
   const { response, status } = await chatAPI.createChat( {
     title: title
   });
+
+  const { response: responseChats} = await chatAPI.getChats()
+  dispatch({ chats: JSON.parse(responseChats) });
 };
 
 export const addUser = async (
