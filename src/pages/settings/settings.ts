@@ -122,11 +122,11 @@ export class SetPage extends Block<SettingsPageProps> {
                 console.log('editAvatar')
                 let idUser = window.store.state.user?.id
                 const inputFile = document.getElementById("avatar");
-                const formData = new FormData();
-                formData.append('avatar', inputFile.files[0]);
+                const avatarFormData = new FormData();
+                avatarFormData.append('avatar', inputFile.files[0]);
 
                 window.store.dispatch(changeAvatar, {
-                    avatarFormData: formData,
+                    avatarFormData: avatarFormData,
                     itemId: idUser,
                 });
 

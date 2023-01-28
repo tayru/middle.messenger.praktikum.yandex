@@ -203,10 +203,10 @@ export const deleteUser = async (
 export const changeAvatar = async (
     dispatch: Dispatch<AppState>,
     state: AppState,
-    action: { formData: FormData; itemId: string | number }
+    action: { avatarFormData: FormData; itemId: string | number }
 ) => {
-  console.log(action.formData)
-  const { response } = await userAPI.changeAvatar(action.formData);
+  console.log(action.avatarFormData)
+  const { response } = await userAPI.changeAvatar(action.avatarFormData);
   console.log(response)
 
-};
+}

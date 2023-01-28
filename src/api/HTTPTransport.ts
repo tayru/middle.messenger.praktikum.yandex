@@ -6,15 +6,15 @@ const METHODS = {
 };
 
 const BASE_API = 'https://ya-praktikum.tech/api/v2';
-
 interface HttpTransportOptions {
     method?: string;
     data?: any;
-    headers?:  Record<string, string | boolean>;
+    headers?: Record<string, string | boolean>;
     timeout?: number;
     mode?: string;
     credentials?: string;
 }
+
 
 export default class HttpTransport {
     public get(url: string, options: HttpTransportOptions = {}): Promise<any> {
@@ -32,6 +32,7 @@ export default class HttpTransport {
             options.timeout
         );
     }
+
     public put(url: string, options: HttpTransportOptions = {}) {
         return this.request(
             url,
@@ -53,8 +54,9 @@ export default class HttpTransport {
         options: HttpTransportOptions,
         timeout?: number
     ): Promise<any> {
-        const { method, data, headers  } = options;
+        const { method, data, headers } = options;
         const url = `${BASE_API}/${path}`;
+
         return new Promise((resolve, reject) => {
             const xhr = new XMLHttpRequest();
             xhr.withCredentials = true;
@@ -63,7 +65,7 @@ export default class HttpTransport {
                     reject(xhr.responseText);
                 }
             };
-            
+
             if (method === METHODS.GET) {
                 xhr.open(method, url);
             } else {

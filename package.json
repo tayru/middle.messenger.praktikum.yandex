@@ -14,7 +14,7 @@
   "description": "",
   "scripts": {
     "start": "npm run build && node ./server/server.js",
-    "dev": "parcel src/index.html --no-source-maps",
+    "dev": "parcel src/index.html --no-source-maps  --no-cache",
     "build": "parcel build src/index.html",
     "tscheck": "npx tsc --noEmit",
     "eslint": "npx eslint \"./src/**/*.ts\" --ext .ts",
