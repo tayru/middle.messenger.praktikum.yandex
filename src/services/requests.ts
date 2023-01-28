@@ -208,5 +208,8 @@ export const changeAvatar = async (
   console.log(action.avatarFormData)
   const { response } = await userAPI.changeAvatar(action.avatarFormData);
   console.log(response)
+  const { response: responseUser} = await authAPI.me();
+  dispatch({ user: transformUser(JSON.parse(responseUser) as UserDTO) });
+
 
 }
