@@ -7,6 +7,7 @@ interface Props {
   name?: string;
   type?: "string" | "number" | "email" | "tel" | "password";
   class?: string;
+  value?:string;
   events?: { [key: string]: (event?: Event) => void}
   onFocus: (event: Event  | undefined) => void;
   onBlur: (event: Event  | undefined) => void;

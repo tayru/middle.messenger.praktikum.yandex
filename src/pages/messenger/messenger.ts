@@ -6,7 +6,7 @@ import type { Dispatch } from '../../core';
 import './messenger.pcss';
 import {validate} from "../../services/Validation";
 import {CoreRouter, Store} from "../../core";
-import {updateMessage, createChat, login, addUser} from '../../services/requests';
+import {updateMessage, createChat, login, addUser, deleteChat} from '../../services/requests';
 import {chatAPI} from "../../api/chat";
 
 type MessagePageProps = {
@@ -102,7 +102,9 @@ export class MessengerPage extends Block<MessagePageProps> {
 
             sendMessage:(e: Event) => {
                 e.preventDefault();
-                const text = document.querySelector('.message-area').value;
+                let text = document.querySelector('.message-area').value;
+                text = text.trim();
+                if (text === '') return false
                 this.ws.send(JSON.stringify({
                     content: text,
                     type: 'message',
@@ -135,6 +137,15 @@ export class MessengerPage extends Block<MessagePageProps> {
                 }
                 window.store.dispatch(addUser, UserChat);
 
+            },
+            deleteChat:(e: Event) => {
+                e.preventDefault();
+                const id = window.store.state.ActiveChat;
+                console.log(id)
+                const idChat = {
+                    chatId: id
+                }
+                window.store.dispatch(deleteChat, idChat);
             }
         }
     }

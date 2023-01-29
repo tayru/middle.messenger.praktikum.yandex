@@ -9,6 +9,11 @@ type usersToChat = {
     chatId: number;
 }
 
+type idChat = {
+    chatId: number
+}
+
+
 export  const chatAPI = {
     getChats: () => {
         return  apiRequest.get('chats', );
@@ -28,6 +33,10 @@ export  const chatAPI = {
 
     deleteUserToChats: (data: usersToChat) => {
         return  apiRequest.delete('chats/users', { data: data });
+    },
+
+    deleteChat: (data: idChat) => {
+        return  apiRequest.delete('chats', { data: data });
     },
 
     // login: (data: LoginRequestData) => {

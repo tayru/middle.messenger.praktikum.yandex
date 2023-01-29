@@ -25,6 +25,7 @@ export class ChatItem extends Block<ChatItemProps> {
   }
 
   protected render(): string {
+
     return template;
   }
 }

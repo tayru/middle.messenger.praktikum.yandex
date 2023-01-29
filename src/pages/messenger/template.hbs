@@ -28,7 +28,12 @@
         <ul class="dialogs-chat-wrapper">
             {{#each store.state.chats}}
                 {{#with this}}
-                    {{{ChatItem onClick=../selectChat  id=id title=title last_message=last_message.content unread_count=unread_count}}}
+                    {{{ChatItem
+
+            img=avatar
+
+
+            onClick=../selectChat  id=id title=title last_message=last_message.content unread_count=unread_count}}}
                 {{/with}}
             {{/each}}
         </ul>
@@ -63,6 +68,14 @@
             }}}
 
         </form>
+            <form class="create-chat">
+                <label for="create-chat__input">Удалить чат:</label>
+
+                {{{Button className="btn-del "
+                text="Delete" onClick=deleteChat
+                }}}
+
+            </form>
         </div>
         <div class="chat">
 

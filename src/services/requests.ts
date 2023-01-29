@@ -33,6 +33,10 @@ type UserChat = {
   chatId: number
 }
 
+type idChat = {
+  chatId: number
+}
+
 type APIError = {
   reason: string;
 };
@@ -187,6 +191,21 @@ export const createChat = async (
 
   const { response: responseChats} = await chatAPI.getChats()
   dispatch({ chats: JSON.parse(responseChats) });
+};
+
+export const deleteChat = async (
+    dispatch: Dispatch<AppState>,
+    state: AppState,
+    dataChatId: idChat
+) => {
+  console.log(dataChatId)
+  await chatAPI.deleteChat(dataChatId);
+  dispatch({ messages: [] });
+
+
+  const { response: responseChats} = await chatAPI.getChats()
+  dispatch({ chats: JSON.parse(responseChats) });
+
 };
 
 export const addUser = async (

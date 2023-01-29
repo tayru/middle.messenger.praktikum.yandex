@@ -70,11 +70,17 @@
   &__avatar {
     margin-right: 10px;
     width: 57px;
+    height: 57px;
+    overflow: hidden;
+    background-color: bisque;
+    border-radius: 50%;
   }
 
-  &__avatar svg {
-    max-width: 100%;
-    height: auto;
+  &__avatar img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
   }
 
   &__text {
@@ -165,4 +171,8 @@
   display: flex;
   gap: 40px;
   margin-top: 10px;
+}
+
+.deleteChat {
+  background: var(--error-color);
 }
