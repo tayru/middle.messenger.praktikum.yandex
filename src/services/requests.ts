@@ -41,44 +41,49 @@ type APIError = {
   reason: string;
 };
 
-type AvatarItem = { id: number; src: string };
 
 export const login = async (
     dispatch: Dispatch<AppState>,
     state: AppState,
     action: LoginPayload
 ) => {
-  dispatch({ isLoading: true });
-  console.log('login', action);
-  //в ответе не json, не надо делать JSON.parse
-  const { response, status } = await authAPI.login(action);
+  try {
+    dispatch({ isLoading: true });
+    console.log('login', action);
+    const { response, status } = await authAPI.login(action);
 
-  if (status !== 200) {
-    dispatch({ isLoading: false, loginFormError: JSON.parse(response).reason });
-    return;
-  }
-  const { response: responseUser, status: statusUser } = await authAPI.me();
+    if (status !== 200) {
+      dispatch({ isLoading: false, loginFormError: JSON.parse(response).reason });
+      return;
+    }
+    const { response: responseUser, status: statusUser } = await authAPI.me();
 
 
 
-  dispatch({ isLoading: false, loginFormError: null });
-  if (statusUser !== 200) {
-    dispatch(logout);
-    return;
-  }
-  const { response: responseChats} = await chatAPI.getChats()
-  dispatch({ chats: JSON.parse(responseChats) });
-  dispatch({ user: transformUser(JSON.parse(responseUser) as UserDTO) });
-  window.router.go('/messenger');
+    dispatch({ isLoading: false, loginFormError: null });
+    if (statusUser !== 200) {
+      dispatch(logout);
+      return;
+    }
+    const { response: responseChats} = await chatAPI.getChats()
+    dispatch({ chats: JSON.parse(responseChats) });
+    dispatch({ user: transformUser(JSON.parse(responseUser) as UserDTO) });
+    window.router.go('/messenger');
+} catch (err) {
+  console.log(err);
+}
 };
 
 export const logout = async (dispatch: Dispatch<AppState>) => {
-  dispatch({ isLoading: true });
+  try {
+    dispatch({ isLoading: true });
+    await authAPI.logout();
+    dispatch({ isLoading: false, user: null });
 
-  await authAPI.logout();
-  dispatch({ isLoading: false, user: null });
-
-  window.router.go('/login');
+    window.router.go('/login');
+} catch (err) {
+  console.log(err);
+}
 };
 
 export const registration = async (
@@ -86,25 +91,29 @@ export const registration = async (
     state: AppState,
     action: LoginPayload
 ) => {
-  dispatch({ isLoading: true });
-  console.log('registration', action);
-  const { response, status } = await authAPI.registration(action);
+  try {
+    dispatch({ isLoading: true });
+    console.log('registration', action);
+    const { response, status } = await authAPI.registration(action);
 
-  if (status !== 200) {
-    dispatch({ isLoading: false, loginFormError: JSON.parse(response).reason });
-    return;
-  }
-  const { response: responseUser, status: statusUser } = await authAPI.me();
+    if (status !== 200) {
+      dispatch({ isLoading: false, loginFormError: JSON.parse(response).reason });
+      return;
+    }
+    const { response: responseUser, status: statusUser } = await authAPI.me();
 
-  dispatch({ isLoading: false, loginFormError: null });
-  if (statusUser !== 200) {
-    dispatch(logout);
-    return;
-  }
-  const { response: responseChats} = await chatAPI.getChats()
-  dispatch({ chats: JSON.parse(responseChats) });
-  dispatch({ user: transformUser(JSON.parse(responseUser) as UserDTO) });
-  window.router.go('/messenger');
+    dispatch({ isLoading: false, loginFormError: null });
+    if (statusUser !== 200) {
+      dispatch(logout);
+      return;
+    }
+    const { response: responseChats} = await chatAPI.getChats()
+    dispatch({ chats: JSON.parse(responseChats) });
+    dispatch({ user: transformUser(JSON.parse(responseUser) as UserDTO) });
+    window.router.go('/messenger');
+} catch (err) {
+  console.log(err);
+}
 };
 
 export const editProfile = async (
@@ -112,6 +121,7 @@ export const editProfile = async (
     state: AppState,
     action: userData
 ) => {
+  try {
   dispatch({ isLoading: true });
   console.log('editProfile', action);
   const { response, status } = await userAPI.editProfile(action);
@@ -125,6 +135,9 @@ export const editProfile = async (
   const { response: responseChats} = await chatAPI.getChats()
   dispatch({ chats: JSON.parse(responseChats) });
   dispatch({ user: transformUser(JSON.parse(responseUser) as UserDTO) });
+} catch (err) {
+  console.log(err);
+}
 };
 
 
@@ -133,19 +146,23 @@ export const editPassword = async (
     state: AppState,
     action: passwordData
 ) => {
-  dispatch({ isLoading: true });
-  console.log('editProfile', action);
-  const { response, status } = await userAPI.editPassword(action);
+  try {
+    dispatch({ isLoading: true });
+    console.log('editProfile', action);
+    const { response, status } = await userAPI.editPassword(action);
 
-  if (status !== 200) {
-    dispatch({ isLoading: false, loginFormError: JSON.parse(response).reason });
-    return;
-  }
-  const { response: responseUser} = await authAPI.me();
-  dispatch({ isLoading: false, loginFormError: null });
-  const { response: responseChats} = await chatAPI.getChats()
-  dispatch({ chats: JSON.parse(responseChats) });
-  dispatch({ user: transformUser(JSON.parse(responseUser) as UserDTO) });
+    if (status !== 200) {
+      dispatch({ isLoading: false, loginFormError: JSON.parse(response).reason });
+      return;
+    }
+    const { response: responseUser} = await authAPI.me();
+    dispatch({ isLoading: false, loginFormError: null });
+    const { response: responseChats} = await chatAPI.getChats()
+    dispatch({ chats: JSON.parse(responseChats) });
+    dispatch({ user: transformUser(JSON.parse(responseUser) as UserDTO) });
+} catch (err) {
+  console.log(err);
+}
 };
 
 export const GetToken = async (
@@ -155,9 +172,12 @@ export const GetToken = async (
     IDUser: string
 
 ) => {
-  const { response: response} = await chatAPI.getToken(IDchat);
-  dispatch({ token: JSON.parse(response).token });
-
+  try {
+    const { response: response} = await chatAPI.getToken(IDchat);
+    dispatch({ token: JSON.parse(response).token });
+} catch (err) {
+  console.log(err);
+}
 };
 
 export const updateMessage = async (
@@ -166,16 +186,19 @@ export const updateMessage = async (
     messages: string
 
 ) => {
-  const data = JSON.parse(messages);
-  if (data.type !== ('pong' || 'user_connect')) {
-    const prevMsg = window.store.getState().messages;
-    if (data instanceof Array) {
-      dispatch({ messages: data });
-    } else {
-      dispatch({ messages: [data, ...prevMsg] });
+  try {
+    const data = JSON.parse(messages);
+    if (data.type !== ('pong' || 'user_connect')) {
+      const prevMsg = window.store.getState().messages;
+      if (data instanceof Array) {
+        dispatch({ messages: data });
+      } else {
+        dispatch({ messages: [data, ...prevMsg] });
+      }
     }
-  }
-
+} catch (err) {
+  console.log(err);
+}
 
 };
 
@@ -184,13 +207,16 @@ export const createChat = async (
     state: AppState,
     title: createChat
 ) => {
-  console.log(title)
-  const { response, status } = await chatAPI.createChat( {
-    title: title
-  });
+  try {
+    const { response, status } = await chatAPI.createChat( {
+      title: title
+    });
 
-  const { response: responseChats} = await chatAPI.getChats()
-  dispatch({ chats: JSON.parse(responseChats) });
+    const { response: responseChats} = await chatAPI.getChats()
+    dispatch({ chats: JSON.parse(responseChats) });
+} catch (err) {
+  console.log(err);
+}
 };
 
 export const deleteChat = async (
@@ -198,14 +224,14 @@ export const deleteChat = async (
     state: AppState,
     dataChatId: idChat
 ) => {
-  console.log(dataChatId)
-  await chatAPI.deleteChat(dataChatId);
-  dispatch({ messages: [] });
-
-
-  const { response: responseChats} = await chatAPI.getChats()
-  dispatch({ chats: JSON.parse(responseChats) });
-
+  try {
+    await chatAPI.deleteChat(dataChatId);
+    dispatch({ messages: [] });
+    const { response: responseChats} = await chatAPI.getChats()
+    dispatch({ chats: JSON.parse(responseChats) });
+} catch (err) {
+  console.log(err);
+}
 };
 
 export const addUser = async (
@@ -213,10 +239,11 @@ export const addUser = async (
     state: AppState,
     dataUserChat: UserChat
 ) => {
-  console.log(dataUserChat)
-
-  const { response } = await chatAPI.addUserToChats( dataUserChat);
-  console.log(response)
+  try {
+    const { response } = await chatAPI.addUserToChats( dataUserChat);
+} catch (err) {
+  console.log(err);
+}
 };
 
 export const deleteUser = async (
@@ -224,10 +251,12 @@ export const deleteUser = async (
     state: AppState,
     dataUserChat: UserChat
 ) => {
-  console.log(dataUserChat)
-
-  const { response } = await chatAPI.deleteUserToChats( dataUserChat);
-  console.log(response)
+  try {
+    const { response } = await chatAPI.deleteUserToChats( dataUserChat);
+    console.log(response)
+} catch (err) {
+  console.log(err);
+}
 };
 
 export const changeAvatar = async (
@@ -235,12 +264,15 @@ export const changeAvatar = async (
     state: AppState,
     action: { avatarFormData: FormData; itemId: string | number }
 ) => {
-  console.log(action.avatarFormData)
-  const { response } = await userAPI.changeAvatar(action.avatarFormData);
-  console.log(response)
-  const { response: responseUser} = await authAPI.me();
-  dispatch({ user: transformUser(JSON.parse(responseUser) as UserDTO) });
-
+  try {
+    console.log(action.avatarFormData)
+    const { response } = await userAPI.changeAvatar(action.avatarFormData);
+    console.log(response)
+    const { response: responseUser} = await authAPI.me();
+    dispatch({ user: transformUser(JSON.parse(responseUser) as UserDTO) });
+  } catch (err) {
+    console.log(err);
+  }
 
 }
 
