@@ -18,7 +18,7 @@
     "build": "parcel build src/index.html",
     "tscheck": "npx tsc --noEmit",
     "eslint": "npx eslint \"./src/**/*.ts\" --ext .ts",
-    "stylelint": "stylelint \"**/*.css\"",
+    "stylelint": "stylelint \"**/*.pcss\"",
     "stylelint:fix": "stylelint \"**/*{.css,.pcss}\" --fix"
   },
   "alias": {
