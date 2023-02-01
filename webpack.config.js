@@ -36,10 +36,7 @@ const config = {
                 test: /\.pcss$/i,
                 use: [stylesHandler, 'css-loader']
             },
-            {
-                test: /\.pcss$/i,
-                use: [stylesHandler, 'css-loader', 'sass-loader']
-            },
+
             {
                 test: /\.(eot|ttf|woff|woff2|png|jpg|gif)$/i,
                 type: 'asset'
