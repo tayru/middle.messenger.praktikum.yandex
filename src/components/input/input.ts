@@ -1,5 +1,5 @@
 import Block from '../../core/Block';
-import template from 'bundle-text:./template.hbs';
+import template from './template.hbs';
 
 import './input.pcss';
 

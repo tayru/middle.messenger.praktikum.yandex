@@ -50,7 +50,7 @@ const config = {
             },
             {
                 test: /\.hbs$/,
-                type: 'asset/source'
+                use: ['raw-loader']
             }
         ]
     },

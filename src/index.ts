@@ -37,13 +37,12 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log(prevState)
     console.log(nextState)
 
-    if (process.env.DEBUG) {
       console.log(
           '%cstore updated',
           'background: #222; color: #bada55',
           nextState,
       );
-    }
+
   });
 
   /**

@@ -1,7 +1,6 @@
 import Block from '../../core/Block';
-import template from 'bundle-text:./template.hbs';
+import template from './template.hbs';
 import { withStore, withRouter } from '../../utils/';
-import type { Dispatch } from '../../core';
 
 import './messenger.pcss';
 import {validate} from "../../services/Validation";

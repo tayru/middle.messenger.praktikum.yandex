@@ -5,7 +5,7 @@ import { CoreRouter, Store} from '../../core';
 import { login } from '../../services/requests';
 
 import Block from '../../core/Block';
-import template from 'bundle-text:./template.hbs';
+import template from './template.hbs';
 import { validate } from "../../services/Validation";
 
 import './auth.pcss';
