@@ -5,7 +5,7 @@ import { withStore, withRouter } from '../../utils/';
 import './messenger.pcss';
 import {validate} from "../../services/Validation";
 import {CoreRouter, Store} from "../../core";
-import {updateMessage, createChat, login, addUser, deleteChat} from '../../services/requests';
+import {updateMessage, createChat,  addUser, deleteChat} from '../../services/requests';
 import {chatAPI} from "../../api/chat";
 
 type MessagePageProps = {
@@ -16,10 +16,6 @@ type MessagePageProps = {
     ws?: any;
 };
 
-type UserChat = {
-    users: number[],
-    chatId: number
-}
 
 export class MessengerPage extends Block<MessagePageProps> {
     static componentName = 'Messenger';
@@ -35,11 +31,10 @@ export class MessengerPage extends Block<MessagePageProps> {
                 ws: {},
             },
 
-            checkValidation: (e: Event) => {
+            checkValidation: () => {
 
                 const textArea = document.querySelector("#message-area");
                 const errorWrapper = document.querySelector('.chat__input-error');
-
                 const message:string | null | undefined = textArea.value;
                 const name:string | null | undefined = textArea.getAttribute("name");
 
@@ -80,7 +75,6 @@ export class MessengerPage extends Block<MessagePageProps> {
                 token = JSON.parse(token).token
 
                 let path = `wss://ya-praktikum.tech/ws/chats/${IDuser}/${IDchat}/${token}`;
-                let socket = new WebSocket(path);
                 this.ws = new WebSocket(path);
                 this.ws.addEventListener('open', () => {
                     console.log('Соединение установлено');

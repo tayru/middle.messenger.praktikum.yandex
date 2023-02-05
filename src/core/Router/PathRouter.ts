@@ -8,7 +8,7 @@ export class PathRouter implements CoreRouter {
   start() {
     if (!this.isStarted) {
       this.isStarted = true;
-
+// @ts-ignore
       window.onpopstate = (event: PopStateEvent) => {
         this.onRouteChange.call(this);
       };

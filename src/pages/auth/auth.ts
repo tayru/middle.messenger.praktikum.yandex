@@ -9,7 +9,6 @@ import template from './template.hbs';
 import { validate } from "../../services/Validation";
 
 import './auth.pcss';
-import {authAPI} from "../../api/auth";
 
 type loginPageProps = {
     router: CoreRouter;
@@ -47,17 +46,22 @@ export class AuthPage extends Block<loginPageProps> {
                     const textField = input.closest(".text-field")
 
                     const value:string = input.value.trim();
+                    // @ts-ignore
                     const name:string = input.getAttribute("name");
-
+                    // @ts-ignore
                     obj[name] = value;
 
                     let result:string | null = validate( name, value)
                     if (result != null) {
                         flag = true;
+                        // @ts-ignore
                         textField.querySelector(".text-field__error").textContent = result
+                        // @ts-ignore
                         textField.classList.add("error")
                     } else {
+                        // @ts-ignore
                         textField.classList.remove("error")
+                        // @ts-ignore
                         textField.querySelector(".text-field__error").textContent = ''
                     }
 
@@ -90,10 +94,12 @@ export class AuthPage extends Block<loginPageProps> {
     }
 
     componentDidMount(): void {
+        // @ts-ignore
         if(window.store.state.user) window.router.go('/messenger')
     }
 
     componentDidUpdate(): boolean {
+        // @ts-ignore
         if(window.store.state.user) window.router.go('/messenger')
         return true;
     }

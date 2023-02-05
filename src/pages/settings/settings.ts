@@ -2,13 +2,11 @@ import Block from '../../core/Block';
 import template from './template.hbs';
 import './settings.pcss';
 import {validate} from "../../services/Validation";
-import {renderDOM} from "../../core";
-import MessengerPage from "../messenger";
-import {logout, editProfile, registration, editPassword, addUser, changeAvatar} from '../../services/requests';
+
+import {logout, editProfile,  editPassword,  changeAvatar} from '../../services/requests';
 import { CoreRouter} from '../../core/';
 import { Store} from '../../core/';
 import { withStore, withRouter, withUser } from '../../utils/';
-import {changeChat} from "../../components";
 
 type SettingsPageProps = {
     router: CoreRouter;

@@ -37,10 +37,6 @@ type idChat = {
   chatId: number
 }
 
-type APIError = {
-  reason: string;
-};
-
 
 export const login = async (
     dispatch: Dispatch<AppState>,
@@ -208,7 +204,7 @@ export const createChat = async (
     title: createChat
 ) => {
   try {
-    const { response, status } = await chatAPI.createChat( {
+     await chatAPI.createChat( {
       title: title
     });
 
@@ -240,9 +236,9 @@ export const addUser = async (
     dataUserChat: UserChat
 ) => {
   try {
-    const { response } = await chatAPI.addUserToChats( dataUserChat);
+    await chatAPI.addUserToChats( dataUserChat);
 } catch (err) {
-  console.log(err);
+    console.log(err);
 }
 };
 

@@ -72,7 +72,7 @@ export default class Block<P = any> {
   _createResources() {
     this._element = this._createDocumentElement('div');
   }
-
+// @ts-ignore
   protected getStateFromProps(props: any): void {
     this.state = {};
   }
@@ -87,7 +87,7 @@ export default class Block<P = any> {
 
     this.componentDidMount(props);
   }
-
+// @ts-ignore
   componentDidMount(props: P) {}
 
   _componentWillUnmount() {
@@ -104,7 +104,7 @@ export default class Block<P = any> {
     }
     this._render();
   }
-
+// @ts-ignore
   componentDidUpdate(oldProps: P, newProps: P) {
     return true;
   }
