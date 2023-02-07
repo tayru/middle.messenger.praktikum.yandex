@@ -1,15 +1,17 @@
 import EventBus from './EventBus';
-import { nanoid } from 'nanoid';
+import {v4 as uuidv4} from 'uuid';
+
 import Handlebars from 'handlebars';
 
 type Events = Values<typeof Block.EVENTS>;
+export type PropsType = Partial<{ [key: string]: any }> | object | null;
 
 export interface BlockClass<P> extends Function {
   new (props: P): Block<P>;
   componentName?: string;
 }
 
-export default class Block<P = any> {
+export default class Block<P = PropsType> {
   static EVENTS = {
     INIT: 'init',
     FLOW_CDM: 'flow:component-did-mount',
@@ -18,10 +20,11 @@ export default class Block<P = any> {
     FLOW_RENDER: 'flow:render',
   } as const;
 
-  public id = nanoid(6);
+  public id = uuidv4();
+
 
   protected _element: Nullable<HTMLElement> = null;
-  protected readonly props: P;
+  protected readonly props: Readonly<P | PropsType>;
   protected children: { [id: string]: Block } = {};
 
   eventBus: () => EventBus<Events>;
