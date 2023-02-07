@@ -35,8 +35,12 @@ export class MessengerPage extends Block<MessagePageProps> {
 
                 const textArea = document.querySelector("#message-area");
                 const errorWrapper = document.querySelector('.chat__input-error');
+                // @ts-ignore
                 const message:string | null | undefined = textArea.value;
+                // @ts-ignore
                 const name:string | null | undefined = textArea.getAttribute("name");
+                if (name == null || message == null) return
+                if (errorWrapper == null) return
 
                 const text:string | null = validate(name, message);
 
