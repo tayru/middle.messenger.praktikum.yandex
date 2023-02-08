@@ -21,6 +21,7 @@
     "eslint:fix": "npx eslint \"./src/**/*.ts\" --ext .ts --fix",
     "stylelint": "stylelint \"**/*.pcss\"",
     "stylelint:fix": "stylelint \"**/*{.css,.pcss}\" --fix",
+    "lint:all": "npm run eslint && npm run stylelint",
     "watch": "webpack --mode development --watch",
     "test": "jest",
     "clear_jest": "jest --clearCache"
@@ -101,6 +102,7 @@
     "identity-obj-proxy": "3.0.0",
     "mini-css-extract-plugin": "2.7.2",
     "msw": "1.0.0",
+    "npm-run-all": "4.1.5",
     "raw-loader": "4.0.2",
     "sass-loader": "13.2.0",
     "ts-loader": "9.4.2",
