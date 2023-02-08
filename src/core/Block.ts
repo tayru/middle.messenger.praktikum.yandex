@@ -58,7 +58,7 @@ export default class Block<P extends PropsType> {
       setTimeout(() => this._checkInDom(), 1000);
       return;
     }
-
+    // @ts-ignore
     this.eventBus().emit(Block.EVENTS.FLOW_CWU, this.props);
   }
 
@@ -215,6 +215,7 @@ export default class Block<P extends PropsType> {
   }
 
   _removeEvents() {
+    // @ts-ignore
     const events: Record<string, () => void> = (this.props as P)?.events;
 
     if (!events || !this._element) {
@@ -227,6 +228,7 @@ export default class Block<P extends PropsType> {
   }
 
   _addEvents() {
+    // @ts-ignore
     const events: Record<string, () => void> = (this.props as P)?.events;
 
     if (!events) {

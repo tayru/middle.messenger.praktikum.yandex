@@ -213,7 +213,8 @@ export const createChat = async (
 ) => {
   try {
      await chatAPI.createChat( {
-      title: title
+       // @ts-ignore
+       title: title
     });
 
     const { response: responseChats} = await chatAPI.getChats()

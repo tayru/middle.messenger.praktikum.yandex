@@ -80,15 +80,18 @@ export class AuthPage extends Block<loginPageProps> {
             },
 
             onFocus: (event: Event) => {
+                // @ts-ignore
                 this.state.checkValidation(event)
             },
             onBlur: (event: Event) => {
+                // @ts-ignore
                 this.state.checkValidation(event)
             },
 
 
             onLogin: (e: Event) => {
                 e.preventDefault();
+                // @ts-ignore
                 const obj = this.state.checkValidation()
                 if (obj !== null) {
                     console.log('123214')

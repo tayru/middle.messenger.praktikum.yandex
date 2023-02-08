@@ -19,7 +19,7 @@ export class RegPage extends Block<any> {
                 password: '',
             },
 
-            checkValidation: (event: Event) => {
+            checkValidation: () => {
                 const obj:object = {}
 
                 const inputs = document.querySelectorAll("input");
@@ -30,22 +30,28 @@ export class RegPage extends Block<any> {
                     const textField = input.closest(".text-field")
 
                     const value:string = input.value.trim();
-                    const name:string = input.getAttribute("name");
+                    const name:string | null = input.getAttribute("name");
 
+                    // @ts-ignore
                     obj[name] = value;
                     let result: string | null;
                     if (name === "password2") {
-                       result = validate( name, obj['password'], value);
+                        // @ts-ignore
+                        result = validate( name, obj['password'], value);
                     } else  {
+                        // @ts-ignore
                         result = validate( name, value)
 
                     }
 
                     if (result != null) {
                         flag = true;
-                        textField.querySelector(".text-field__error").textContent = result
+                        // @ts-ignore
+                        textField.querySelector(".text-field__error").textContent = result;
+                        // @ts-ignore
                         textField.classList.add("error")
                     } else {
+                        // @ts-ignore
                         textField.classList.remove("error")
                     }
 
@@ -59,9 +65,11 @@ export class RegPage extends Block<any> {
             },
 
             onFocus: () => {
+                // @ts-ignore
                 this.state.checkValidation(event)
             },
             onBlur: () => {
+                // @ts-ignore
                 this.state.checkValidation(event)
             },
 
@@ -73,6 +81,7 @@ export class RegPage extends Block<any> {
 
             onReg: (e: Event) => {
                 e.preventDefault();
+                // @ts-ignore
                 const obj = this.state.checkValidation()
                 if (obj !== null) {
                     console.log('123214')

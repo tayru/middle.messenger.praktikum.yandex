@@ -13,6 +13,7 @@ describe('core/Block', () => {
     it('check set props', () => {
         const block = new testBlock({ title: 'test' });
         block.setProps({ title: 'new title' });
+        // @ts-ignore
         expect(block?.props?.title).toEqual('new title');
     });
 
@@ -29,6 +30,7 @@ describe('core/Block', () => {
         const eventBus = new EventBus<Events>();
         block._registerEvents(eventBus);
         const mock = jest.fn();
+        // @ts-ignore
         block.eventBus().on(EVENTS_LIST.FLOW_CDU, mock);
 
         // 2 Act

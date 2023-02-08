@@ -32,6 +32,7 @@ describe('components/Button', () => {
     const mock = jest.fn()
 
     renderBlock({
+      // @ts-ignore
       Block: Button,
       props: { text: '123', onClick: mock },
     })

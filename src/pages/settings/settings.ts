@@ -29,6 +29,7 @@ export class SetPage extends Block<SettingsPageProps> {
 
             checkValidation: (event: Event, form:string, ) => {
                 let inputs;
+                console.log(event)
                 if (form === "data") {
                     inputs = document.querySelectorAll(".settings__form-data input");
                 } else {
@@ -44,22 +45,28 @@ export class SetPage extends Block<SettingsPageProps> {
                     const textField = input.closest(".text-field")
 
                     const value:string = input.value.trim();
-                    const name:string = input.getAttribute("name");
+                    const name:string | null = input.getAttribute("name");
 
+                    // @ts-ignore
                     obj[name] = value;
                     let result: string | null;
                     if (name === "newPassword") {
+                        // @ts-ignore
                         result = validate( name, obj['password'], value);
                         console.log(result)
                     } else  {
+                        // @ts-ignore
                         result = validate( name, value)
 
                     }
                     if (result != null) {
                         flag = true;
-                        textField.querySelector(".text-field__error").textContent = result
+                        // @ts-ignore
+                        textField.querySelector(".text-field__error").textContent = result;
+                        // @ts-ignore
                         textField.classList.add("error")
                     } else {
+                        // @ts-ignore
                         textField.classList.remove("error")
                     }
 
@@ -73,16 +80,20 @@ export class SetPage extends Block<SettingsPageProps> {
             },
 
             onFocus1: () => {
+                // @ts-ignore
                 this.state.checkValidation(event, "data")
             },
             onBlur1: () => {
+                // @ts-ignore
                 this.state.checkValidation(event, "data")
             },
 
             onFocus2: () => {
+                // @ts-ignore
                 this.state.checkValidation(event, "pass")
             },
             onBlur2: () => {
+                // @ts-ignore
                 this.state.checkValidation(event, "pass")
             },
 
@@ -93,6 +104,7 @@ export class SetPage extends Block<SettingsPageProps> {
             },
 
             editProfile:(e: Event) => {
+                // @ts-ignore
                 const obj =  this.state.checkValidation(event, "data")
                 console.log(obj)
                 e.preventDefault();
@@ -104,6 +116,7 @@ export class SetPage extends Block<SettingsPageProps> {
             },
 
             editPassword:(e: Event) => {
+                // @ts-ignore
                 const obj =  this.state.checkValidation(event, "pass")
                 console.log(obj)
                 e.preventDefault();
@@ -121,6 +134,7 @@ export class SetPage extends Block<SettingsPageProps> {
                 const idUser = window.store.state.user?.id
                 const inputFile = document.getElementById("avatar");
                 const avatarFormData = new FormData();
+                // @ts-ignore
                 avatarFormData.append('avatar', inputFile.files[0]);
 
                 window.store.dispatch(changeAvatar, {
@@ -132,6 +146,7 @@ export class SetPage extends Block<SettingsPageProps> {
 
             onLogin: (e: Event) => {
                 e.preventDefault();
+                // @ts-ignore
                 this.state.checkValidation(event)
 
             },
