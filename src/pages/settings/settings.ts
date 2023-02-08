@@ -37,7 +37,7 @@ export class SetPage extends Block<SettingsPageProps> {
 
                 const obj:object = {}
 
-                let flag:boolean = false;
+                let flag = false;
 
                 for (let i = 0; i < inputs.length; i++) {
                     const input = inputs[i] as HTMLInputElement;
@@ -93,7 +93,7 @@ export class SetPage extends Block<SettingsPageProps> {
             },
 
             editProfile:(e: Event) => {
-                let obj =  this.state.checkValidation(event, "data")
+                const obj =  this.state.checkValidation(event, "data")
                 console.log(obj)
                 e.preventDefault();
                 console.log('editProfile')
@@ -104,7 +104,7 @@ export class SetPage extends Block<SettingsPageProps> {
             },
 
             editPassword:(e: Event) => {
-                let obj =  this.state.checkValidation(event, "pass")
+                const obj =  this.state.checkValidation(event, "pass")
                 console.log(obj)
                 e.preventDefault();
                 console.log('editPassword')
@@ -118,7 +118,7 @@ export class SetPage extends Block<SettingsPageProps> {
                 //сначала загрузить фото, потом обновить данные
                 e.preventDefault();
                 console.log('editAvatar')
-                let idUser = window.store.state.user?.id
+                const idUser = window.store.state.user?.id
                 const inputFile = document.getElementById("avatar");
                 const avatarFormData = new FormData();
                 avatarFormData.append('avatar', inputFile.files[0]);

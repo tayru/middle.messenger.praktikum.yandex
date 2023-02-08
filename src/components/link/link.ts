@@ -19,10 +19,11 @@ static componentName = `Link`;
     super({
       ...props,
       events: {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         onClick: (e: Event) => {
           e.preventDefault();
-
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
           router.go(this.props.url);
         }

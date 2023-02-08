@@ -3,7 +3,6 @@ import { BlockClass } from '../core';
 type WithUserProps = { user: User | null };
 
 export function withUser<P extends WithUserProps>(WrappedBlock: BlockClass<P>) {
-  // @ts-expect-error No base constructor has the specified
   return class extends WrappedBlock<P> {
     public static componentName = WrappedBlock.componentName || WrappedBlock.name;
 

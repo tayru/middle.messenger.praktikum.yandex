@@ -9,7 +9,6 @@ type WithIsLoading = {
  * только при обернутом withStore хоке.
  */
 export function withIsLoading<P extends WithIsLoading>(WrappedBlock: BlockClass<P>) {
-  // @ts-expect-error No base constructor has the specified number of type arguments
   return class extends WrappedBlock<P> {
     public static componentName = WrappedBlock.componentName || WrappedBlock.name;
 

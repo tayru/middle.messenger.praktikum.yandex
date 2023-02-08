@@ -4,7 +4,7 @@ import template from './template.hbs';
 import './chat.pcss';
 
 
-export class Chat extends Block {
+export class Chat extends Block<any> {
   static componentName = `Chat`;
 
   protected render(): string {

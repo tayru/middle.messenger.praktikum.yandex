@@ -16,7 +16,9 @@ describe('components/Button', () => {
   // ЮНИТ-тест на UI компонент
   // могут называть интеграционным тестом
   it('should render button', () => {
-    const button = renderButton({ onClick: () => {} })
+    const button = renderButton({ onClick: () => {
+      console.log('клик')
+      } })
 
     expect(button).toBeInTheDocument()
   });

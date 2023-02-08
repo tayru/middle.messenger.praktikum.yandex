@@ -39,28 +39,34 @@ export class AuthPage extends Block<loginPageProps> {
                 const obj:object = {}
 
                 const inputs = document.querySelectorAll("input");
-                let flag:boolean = false;
+                let flag = false;
 
                 for (let i = 0; i < inputs.length; i++) {
                     const input = inputs[i] as HTMLInputElement;
                     const textField = input.closest(".text-field")
 
                     const value:string = input.value.trim();
+                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                     // @ts-ignore
                     const name:string = input.getAttribute("name");
+                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                     // @ts-ignore
                     obj[name] = value;
 
-                    let result:string | null = validate( name, value)
+                    const result:string | null = validate( name, value)
                     if (result != null) {
                         flag = true;
+                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                         // @ts-ignore
                         textField.querySelector(".text-field__error").textContent = result
+                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                         // @ts-ignore
                         textField.classList.add("error")
                     } else {
+                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                         // @ts-ignore
                         textField.classList.remove("error")
+                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                         // @ts-ignore
                         textField.querySelector(".text-field__error").textContent = ''
                     }
@@ -83,7 +89,7 @@ export class AuthPage extends Block<loginPageProps> {
 
             onLogin: (e: Event) => {
                 e.preventDefault();
-                let obj = this.state.checkValidation()
+                const obj = this.state.checkValidation()
                 if (obj !== null) {
                     console.log('123214')
                     window.store.dispatch(login, obj);
@@ -94,11 +100,13 @@ export class AuthPage extends Block<loginPageProps> {
     }
 
     componentDidMount(): void {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         if(window.store.state.user) window.router.go('/messenger')
     }
 
     componentDidUpdate(): boolean {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         if(window.store.state.user) window.router.go('/messenger')
         return true;

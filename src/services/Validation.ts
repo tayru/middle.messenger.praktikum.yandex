@@ -82,5 +82,5 @@ export function validate(name: string, str: string, str2?: string): string | nul
             messege = null;
     }
     return messege;
-};
+}
 
