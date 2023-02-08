@@ -3,12 +3,13 @@ import template from './template.hbs';
 
 import './button.pcss';
 
-interface ButtonProps {
+export interface ButtonProps {
   text: string;
   type: string;
   className: string;
   onClick: (event: Event  | undefined) => void;
-  events?: { [key: string]: (event?: Event) => void}
+  events?: { [key: string]: (event?: Event) => void};
+  dataTestId?: string;
 }
 export class Button extends Block<ButtonProps> {
 // export class Button extends Block {
