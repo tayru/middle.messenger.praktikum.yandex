@@ -8,7 +8,7 @@ interface ErrorProps {
     img: string;
 }
 
-export class Page500 extends Block {
+export class Page500 extends Block<any> {
     static componentName = '500';
 
     constructor(props: ErrorProps) {

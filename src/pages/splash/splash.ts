@@ -3,7 +3,7 @@ import template from './template.hbs';
 import './splash.pcss';
 
 
-export class Splash extends Block {
+export class Splash extends Block<any> {
     constructor() {
         super();
     }

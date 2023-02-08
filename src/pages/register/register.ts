@@ -5,7 +5,7 @@ import {validate} from "../../services/Validation";
 import {registration} from "../../services/requests";
 
 
-export class RegPage extends Block {
+export class RegPage extends Block<any> {
     static componentName = 'Registration';
 
     protected getStateFromProps() {

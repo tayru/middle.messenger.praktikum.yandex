@@ -3,7 +3,7 @@ import { defaultState } from '../store';
 import * as components from '../components';
 import { initRouter } from '../router';
 import { MockedPathRouter } from './MockedPathRouter';
-import { sleep } from '/sleep';
+// import { sleep } from '/sleep';
 import { PropsType } from '../core/Block';
 
 type RenderBlockParams = {
@@ -28,7 +28,8 @@ export async function renderBlock<PropsType>({
   window.store = store;
 
   document.body.innerHTML = '<div id="app"></div>';
-
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   renderDOM(new Block<PropsType>(props as PropsType));
 
   initRouter(router, store);
