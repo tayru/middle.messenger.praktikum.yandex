@@ -76,7 +76,7 @@ export class MessengerPage extends Block<MessagePageProps> {
             selectChat: async (e: Event) => {
                 const IDchat = e.currentTarget.dataset.id * 1;
                 window.store.dispatch({ ActiveChat: IDchat });
-                const IDuser = store.state.user.id;
+                const IDuser = window.store.state.user.id;
                 let { response: token} = await chatAPI.getToken(IDchat)
                 token = JSON.parse(token).token
 

@@ -6,6 +6,6 @@ export const defaultState: AppState = {
   user: null,
   chats: null,
   messages: null,
-
+  token: null,
 };
 

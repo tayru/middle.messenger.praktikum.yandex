@@ -14,7 +14,6 @@
   "description": "",
   "scripts": {
     "start": "npm run build && node ./server/server.js",
-    "dev": "webpack --mode development --stats-error-details",
     "dev:start": "webpack-dev-server --mode development --open",
     "build": "webpack --mode production",
     "tscheck": "npx tsc --noEmit",

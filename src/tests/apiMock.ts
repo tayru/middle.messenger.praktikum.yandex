@@ -4,6 +4,7 @@ import { rest } from 'msw';
 const handlers = [
   rest.post(`${process.env.API_ENDPOINT}/auth/signin`, (req, res, ctx) => {
     console.log('Call signin endpoind');
+    console.log(req)
 
     return res(
       ctx.status(401),
@@ -14,12 +15,13 @@ const handlers = [
   }),
   rest.post(`${process.env.API_ENDPOINT}/auth/logout`, (req, res, ctx) => {
     console.log('Call logout endpoind');
+    console.log(req)
 
     return res(ctx.status(200));
   }),
   rest.get(`${process.env.API_ENDPOINT}/auth/user`, (req, res, ctx) => {
     console.log('Call user endpoind');
-
+    console.log(req)
     return res(ctx.status(200));
   }),
 ];

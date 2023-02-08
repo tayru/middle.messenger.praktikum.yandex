@@ -2,7 +2,7 @@ import { authAPI } from '../api/auth';
 import { userAPI } from '../api/user';
 import { chatAPI } from '../api/chat';
 
-import { UserDTO, TChat } from '../api/types';
+import { UserDTO } from '../api/types';
 import type { Dispatch } from '../core/Store';
 import { transformUser } from '../utils';
 
@@ -46,6 +46,7 @@ export const login = async (
   try {
     dispatch({ isLoading: true });
     console.log('login', action);
+    console.log(state);
     const { response, status } = await authAPI.login(action);
 
     if (status !== 200) {
@@ -90,6 +91,7 @@ export const registration = async (
   try {
     dispatch({ isLoading: true });
     console.log('registration', action);
+    console.log(state);
     const { response, status } = await authAPI.registration(action);
 
     if (status !== 200) {
@@ -120,7 +122,9 @@ export const editProfile = async (
   try {
   dispatch({ isLoading: true });
   console.log('editProfile', action);
-  const { response, status } = await userAPI.editProfile(action);
+  console.log(state);
+
+    const { response, status } = await userAPI.editProfile(action);
 
   if (status !== 200) {
     dispatch({ isLoading: false, loginFormError: JSON.parse(response).reason });
@@ -145,6 +149,7 @@ export const editPassword = async (
   try {
     dispatch({ isLoading: true });
     console.log('editProfile', action);
+    console.log(state);
     const { response, status } = await userAPI.editPassword(action);
 
     if (status !== 200) {
@@ -165,10 +170,11 @@ export const GetToken = async (
     dispatch: Dispatch<AppState>,
     state: AppState,
     IDchat: string,
-    IDUser: string
+    // IDUser: string
 
 ) => {
   try {
+    console.log(state);
     const { response: response} = await chatAPI.getToken(IDchat);
     dispatch({ token: JSON.parse(response).token });
 } catch (err) {
@@ -183,6 +189,7 @@ export const updateMessage = async (
 
 ) => {
   try {
+    console.log(state);
     const data = JSON.parse(messages);
     if (data.type !== ('pong' || 'user_connect')) {
       const prevMsg = window.store.getState().messages;
@@ -225,7 +232,9 @@ export const deleteChat = async (
     dispatch({ messages: [] });
     const { response: responseChats} = await chatAPI.getChats()
     dispatch({ chats: JSON.parse(responseChats) });
-} catch (err) {
+    console.log(state);
+
+  } catch (err) {
   console.log(err);
 }
 };
@@ -237,7 +246,10 @@ export const addUser = async (
 ) => {
   try {
     await chatAPI.addUserToChats( dataUserChat);
-} catch (err) {
+    console.log(dispatch);
+    console.log(state);
+
+  } catch (err) {
     console.log(err);
 }
 };
@@ -250,6 +262,8 @@ export const deleteUser = async (
   try {
     const { response } = await chatAPI.deleteUserToChats( dataUserChat);
     console.log(response)
+    console.log(dispatch);
+    console.log(state);
 } catch (err) {
   console.log(err);
 }
@@ -262,6 +276,7 @@ export const changeAvatar = async (
 ) => {
   try {
     console.log(action.avatarFormData)
+    console.log(state);
     const { response } = await userAPI.changeAvatar(action.avatarFormData);
     console.log(response)
     const { response: responseUser} = await authAPI.me();

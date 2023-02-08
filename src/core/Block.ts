@@ -78,6 +78,7 @@ export default class Block<P extends PropsType> {
    **/
   protected getStateFromProps(props?: P | PropsType): void {
     this.state = {};
+    console.log(props)
   }
 
   init() {
@@ -91,6 +92,8 @@ export default class Block<P extends PropsType> {
   }
 
   componentDidMount(props: P) {
+    console.log(props)
+
     // console.log('componentDidMount');
   }
 
@@ -103,6 +106,8 @@ export default class Block<P extends PropsType> {
   }
 
   componentDidUpdate(oldProps: P, newProps: P) {
+    console.log(oldProps, newProps)
+
     return true;
   }
 

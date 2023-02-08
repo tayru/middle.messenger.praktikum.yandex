@@ -27,7 +27,7 @@ export class SetPage extends Block<SettingsPageProps> {
 
         this.state = {
 
-            checkValidation: (event: Event, form:string, ) => {
+            checkValidation: (form:string, ) => {
                 let inputs;
                 if (form === "data") {
                     inputs = document.querySelectorAll(".settings__form-data input");
@@ -44,8 +44,7 @@ export class SetPage extends Block<SettingsPageProps> {
                     const textField = input.closest(".text-field")
 
                     const value:string = input.value.trim();
-                    const name:string = input.getAttribute("name");
-
+                    const name:string | null = input.getAttribute("name");
                     obj[name] = value;
                     let result: string | null;
                     if (name === "newPassword") {
