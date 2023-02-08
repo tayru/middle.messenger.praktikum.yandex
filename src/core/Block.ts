@@ -1,46 +1,44 @@
 import EventBus from './EventBus';
 import {v4 as uuidv4} from 'uuid';
-
 import Handlebars from 'handlebars';
 
-type Events = Values<typeof Block.EVENTS>;
+export type Events = Values<typeof Block.EVENTS>;
 export type PropsType = Partial<{ [key: string]: any }> | object | null;
 
-export interface BlockClass<P> extends Function {
-  new (props: P): Block<P>;
-  componentName?: string;
-}
+export type StateType = { [key: string]: any } | object;
 
-export default class Block<P = PropsType> {
+export default class Block<P extends PropsType> {
   static EVENTS = {
     INIT: 'init',
     FLOW_CDM: 'flow:component-did-mount',
     FLOW_CDU: 'flow:component-did-update',
-    FLOW_CWU: 'flow:component-will-unmount',
     FLOW_RENDER: 'flow:render',
   } as const;
-
+  static componentName: string;
   public id = uuidv4();
 
+  protected _element: Nullable<HTMLElement | HTMLInputElement> = null;
+  protected props: Readonly<P | PropsType>;
 
-  protected _element: Nullable<HTMLElement> = null;
-  protected readonly props: Readonly<P | PropsType>;
-  protected children: { [id: string]: Block } = {};
+  protected children: { [id: string]: Block<PropsType> } = {};
 
   eventBus: () => EventBus<Events>;
 
-  protected state: any = {};
-  protected refs: { [key: string]: HTMLElement } = {};
+  /**
+   * @deprecated state Не использовать, использовать this.props
+   **/
+  protected state: PropsType = {};
+  protected refs: { [key: string]: Block<PropsType> } = {};
 
-  public static componentName?: string;
-
-  public constructor(props?: P) {
+  public constructor(props?: P | PropsType) {
     const eventBus = new EventBus<Events>();
 
     this.getStateFromProps(props);
 
-    this.props = this._makePropsProxy(props || ({} as P));
+    // this.props = this._makePropsProxy(props || ({} as P));
+    this.props = props || ({} as P);
     this.state = this._makePropsProxy(this.state);
+
 
     this.eventBus = () => eventBus;
 
@@ -68,15 +66,17 @@ export default class Block<P = PropsType> {
     eventBus.on(Block.EVENTS.INIT, this.init.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
-    eventBus.on(Block.EVENTS.FLOW_CWU, this._componentWillUnmount.bind(this));
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
   }
 
   _createResources() {
     this._element = this._createDocumentElement('div');
   }
-// @ts-ignore
-  protected getStateFromProps(props: any): void {
+
+  /**
+   * @deprecated state Не использовать, использовать this.props
+   **/
+  protected getStateFromProps(props?: P | PropsType): void {
     this.state = {};
   }
 
@@ -87,18 +87,12 @@ export default class Block<P = PropsType> {
 
   _componentDidMount(props: P) {
     this._checkInDom();
-
     this.componentDidMount(props);
   }
-// @ts-ignore
-  componentDidMount(props: P) {}
 
-  _componentWillUnmount() {
-    this.eventBus().destroy();
-    this.componentWillUnmount();
+  componentDidMount(props: P) {
+    // console.log('componentDidMount');
   }
-
-  componentWillUnmount() {}
 
   _componentDidUpdate(oldProps: P, newProps: P) {
     const response = this.componentDidUpdate(oldProps, newProps);
@@ -107,20 +101,24 @@ export default class Block<P = PropsType> {
     }
     this._render();
   }
-// @ts-ignore
+
   componentDidUpdate(oldProps: P, newProps: P) {
     return true;
   }
 
-  setProps = (nextProps: Partial<P>) => {
-    if (!nextProps) {
+  setProps = (nextPartialProps: Partial<P>) => {
+    if (!nextPartialProps) {
       return;
     }
+    const prevProps = this.props;
+    const nextProps = { ...prevProps, ...nextPartialProps };
+    this.props = nextProps;
 
-    Object.assign(this.props, nextProps);
+    this.eventBus().emit(Block.EVENTS.FLOW_CDU, prevProps, nextProps);
+    // Object.assign(this.props && this.props, nextProps);
   };
 
-  setState = (nextState: any) => {
+  setState = (nextState: PropsType) =>{
     if (!nextState) {
       return;
     }
@@ -129,7 +127,11 @@ export default class Block<P = PropsType> {
   };
 
   get element() {
-    return this._element;
+    return this._element as HTMLElement;
+  }
+
+  get inputElement() {
+    return this._element as HTMLInputElement;
   }
 
   _render() {
@@ -163,28 +165,44 @@ export default class Block<P = PropsType> {
     return this.element!;
   }
 
-  _makePropsProxy(props: any): any {
-    // Можно и так передать this
-    // Такой способ больше не применяется с приходом ES6+
-    const self = this;
-
+  _makePropsProxy(props: PropsType) {
     return new Proxy(props as unknown as object, {
-      get(target: Record<string, unknown>, prop: string) {
+      get: (target: Record<string, unknown>, prop: string) => {
         const value = target[prop];
         return typeof value === 'function' ? value.bind(target) : value;
       },
-      set(target: Record<string, unknown>, prop: string, value: unknown) {
+      set: (target: Record<string, unknown>, prop: string, value: unknown) => {
+        const oldTarget = { ...target };
         target[prop] = value;
-
-        // Запускаем обновление компоненты
-        // Плохой cloneDeep, в след итерации нужно заставлять добавлять cloneDeep им самим
-        self.eventBus().emit(Block.EVENTS.FLOW_CDU, { ...target }, target);
+        if (
+            typeof oldTarget[prop] !== 'function' &&
+            JSON.stringify(oldTarget[prop]) !== JSON.stringify(value)
+        ) {
+          this.eventBus().emit(Block.EVENTS.FLOW_CDU, oldTarget, target);
+        }
         return true;
       },
-      deleteProperty() {
+      deleteProperty: () => {
         throw new Error('Нет доступа');
       },
-    }) as unknown as P;
+    }) as unknown as PropsType;
+  }
+  _makeStateProxy(props: StateType) {
+    return new Proxy(props as unknown as object, {
+      get: (target: Record<string, unknown>, prop: string) => {
+        const value = target[prop];
+        return typeof value === 'function' ? value.bind(target) : value;
+      },
+      set: (target: Record<string, unknown>, prop: string, value: unknown) => {
+        target[prop] = value;
+
+        this.eventBus().emit(Block.EVENTS.FLOW_CDU, { ...target }, target);
+        return true;
+      },
+      deleteProperty: () => {
+        throw new Error('Нет доступа');
+      },
+    }) as unknown as StateType;
   }
 
   _createDocumentElement(tagName: string) {
@@ -192,7 +210,7 @@ export default class Block<P = PropsType> {
   }
 
   _removeEvents() {
-    const events: Record<string, () => void> = (this.props as any).events;
+    const events: Record<string, () => void> = (this.props as P)?.events;
 
     if (!events || !this._element) {
       return;
@@ -204,7 +222,7 @@ export default class Block<P = PropsType> {
   }
 
   _addEvents() {
-    const events: Record<string, () => void> = (this.props as any).events;
+    const events: Record<string, () => void> = (this.props as P)?.events;
 
     if (!events) {
       return;
@@ -265,5 +283,12 @@ export default class Block<P = PropsType> {
      */
     return fragment.content;
   }
-}
 
+  show() {
+    this.getContent().style.display = 'block';
+  }
+
+  hide() {
+    this.getContent().style.display = 'none';
+  }
+}
