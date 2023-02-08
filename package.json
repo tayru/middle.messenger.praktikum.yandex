@@ -83,6 +83,8 @@
   },
   "dependencies": {
     "@types/uuid": "9.0.0",
+    "@typescript-eslint/eslint-plugin": "5.51.0",
+    "@typescript-eslint/parser": "5.51.0",
     "babel-loader": "9.1.2",
     "clean-webpack-plugin": "4.0.0",
     "css-loader": "6.7.3",
