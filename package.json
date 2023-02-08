@@ -22,7 +22,8 @@
     "stylelint": "stylelint \"**/*.pcss\"",
     "stylelint:fix": "stylelint \"**/*{.css,.pcss}\" --fix",
     "watch": "webpack --mode development --watch",
-    "test": "jest"
+    "test": "jest",
+    "clear_jest": "jest --clearCache"
   },
   "jest": {
     "testEnvironment": "jsdom",

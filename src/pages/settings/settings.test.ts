@@ -4,13 +4,13 @@ import SetPage from './settings';
 
 const USER_MOCK = {
   avatar: "/d66cf98f-05dc-49ba-8d2b-c1db0c5888c3/761d694b-39b5-4dee-ab15-78a2bf05461d_12.png",
-  displayName: "Джон дое",
+  displayName: "Борис джонс",
   email: "johndoe2@johndoe2.johndoe2",
-  firstName: "Джон",
+  firstName: "Борис",
   id: 3094,
   login: "johndoe2",
   phone: "89137909090",
-  secondName: "Дое",
+  secondName: "джонс",
 };
 
 describe('pages/Profile', () => {
@@ -22,7 +22,7 @@ describe('pages/Profile', () => {
         Block: SetPage,
         props: {},
         state: {
-          screen: 'profile',
+          screen: 'settings',
           appIsInited: true,
           user: USER_MOCK
         },
@@ -43,7 +43,7 @@ describe('pages/Profile', () => {
     });
 
     await step('check state', async () => {
-      expect(window.store.getState().screen).toEqual('login');
+      expect(window.store.getState().screen).toEqual('AuthPage');
       expect(window.store.getState().user).toEqual(null);
     });
   });
