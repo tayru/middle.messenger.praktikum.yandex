@@ -46,26 +46,31 @@ export class SetPage extends Block<SettingsPageProps> {
 
                     const value:string = input.value.trim();
                     const name:string | null = input.getAttribute("name");
-
+                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                     // @ts-ignore
                     obj[name] = value;
                     let result: string | null;
                     if (name === "newPassword") {
+                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                         // @ts-ignore
                         result = validate( name, obj['password'], value);
                         console.log(result)
                     } else  {
+                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                         // @ts-ignore
                         result = validate( name, value)
 
                     }
                     if (result != null) {
                         flag = true;
+                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                         // @ts-ignore
                         textField.querySelector(".text-field__error").textContent = result;
+                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                         // @ts-ignore
                         textField.classList.add("error")
                     } else {
+                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                         // @ts-ignore
                         textField.classList.remove("error")
                     }
@@ -80,19 +85,23 @@ export class SetPage extends Block<SettingsPageProps> {
             },
 
             onFocus1: () => {
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 // @ts-ignore
                 this.state.checkValidation(event, "data")
             },
             onBlur1: () => {
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 // @ts-ignore
                 this.state.checkValidation(event, "data")
             },
 
             onFocus2: () => {
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 // @ts-ignore
                 this.state.checkValidation(event, "pass")
             },
             onBlur2: () => {
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 // @ts-ignore
                 this.state.checkValidation(event, "pass")
             },
@@ -104,6 +113,7 @@ export class SetPage extends Block<SettingsPageProps> {
             },
 
             editProfile:(e: Event) => {
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 // @ts-ignore
                 const obj =  this.state.checkValidation(event, "data")
                 console.log(obj)
@@ -116,6 +126,7 @@ export class SetPage extends Block<SettingsPageProps> {
             },
 
             editPassword:(e: Event) => {
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 // @ts-ignore
                 const obj =  this.state.checkValidation(event, "pass")
                 console.log(obj)
@@ -134,6 +145,7 @@ export class SetPage extends Block<SettingsPageProps> {
                 const idUser = window.store.state.user?.id
                 const inputFile = document.getElementById("avatar");
                 const avatarFormData = new FormData();
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 // @ts-ignore
                 avatarFormData.append('avatar', inputFile.files[0]);
 
@@ -146,6 +158,7 @@ export class SetPage extends Block<SettingsPageProps> {
 
             onLogin: (e: Event) => {
                 e.preventDefault();
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 // @ts-ignore
                 this.state.checkValidation(event)
 

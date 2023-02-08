@@ -31,14 +31,16 @@ export class RegPage extends Block<any> {
 
                     const value:string = input.value.trim();
                     const name:string | null = input.getAttribute("name");
-
+                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                     // @ts-ignore
                     obj[name] = value;
                     let result: string | null;
                     if (name === "password2") {
+                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                         // @ts-ignore
                         result = validate( name, obj['password'], value);
                     } else  {
+                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                         // @ts-ignore
                         result = validate( name, value)
 
@@ -46,11 +48,14 @@ export class RegPage extends Block<any> {
 
                     if (result != null) {
                         flag = true;
+                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                         // @ts-ignore
                         textField.querySelector(".text-field__error").textContent = result;
+                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                         // @ts-ignore
                         textField.classList.add("error")
                     } else {
+                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                         // @ts-ignore
                         textField.classList.remove("error")
                     }
@@ -65,10 +70,12 @@ export class RegPage extends Block<any> {
             },
 
             onFocus: () => {
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 // @ts-ignore
                 this.state.checkValidation(event)
             },
             onBlur: () => {
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 // @ts-ignore
                 this.state.checkValidation(event)
             },
@@ -81,6 +88,7 @@ export class RegPage extends Block<any> {
 
             onReg: (e: Event) => {
                 e.preventDefault();
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 // @ts-ignore
                 const obj = this.state.checkValidation()
                 if (obj !== null) {

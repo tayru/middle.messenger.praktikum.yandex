@@ -58,6 +58,7 @@ export default class Block<P extends PropsType> {
       setTimeout(() => this._checkInDom(), 1000);
       return;
     }
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     this.eventBus().emit(Block.EVENTS.FLOW_CWU, this.props);
   }
@@ -215,6 +216,7 @@ export default class Block<P extends PropsType> {
   }
 
   _removeEvents() {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     const events: Record<string, () => void> = (this.props as P)?.events;
 
@@ -228,6 +230,7 @@ export default class Block<P extends PropsType> {
   }
 
   _addEvents() {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     const events: Record<string, () => void> = (this.props as P)?.events;
 

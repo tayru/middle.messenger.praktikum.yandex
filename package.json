@@ -45,6 +45,11 @@
       "^tests(.*)$": "<rootDir>/src/tests$1"
     }
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm-run-all test lint:all"
+    }
+  },
   "keywords": [],
   "repository": {
     "type": "git",
