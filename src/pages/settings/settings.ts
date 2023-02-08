@@ -145,7 +145,6 @@ export class SetPage extends Block<SettingsPageProps> {
                 const idUser = window.store.state.user?.id
                 const inputFile = document.getElementById("avatar");
                 const avatarFormData = new FormData();
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 // @ts-ignore
                 avatarFormData.append('avatar', inputFile.files[0]);
 
