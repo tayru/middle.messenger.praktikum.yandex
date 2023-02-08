@@ -23,7 +23,7 @@ export class RegPage extends Block {
                 const obj:object = {}
 
                 const inputs = document.querySelectorAll("input");
-                let flag:boolean = false;
+                let flag = false;
 
                 for (let i = 0; i < inputs.length; i++) {
                     const input = inputs[i] as HTMLInputElement;
@@ -73,7 +73,7 @@ export class RegPage extends Block {
 
             onReg: (e: Event) => {
                 e.preventDefault();
-                let obj = this.state.checkValidation()
+                const obj = this.state.checkValidation()
                 if (obj !== null) {
                     console.log('123214')
                     window.store.dispatch(registration, obj);

@@ -32,7 +32,8 @@ document.addEventListener('DOMContentLoaded', () => {
   window.store = store;
 
   renderDOM(new Splash());
-// @ts-ignore
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   store.on('changed', (prevState, nextState) => {
     console.log(prevState)
     console.log(nextState)

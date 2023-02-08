@@ -1,14 +1,15 @@
 import { CoreRouter } from "./CoreRouter";
 
 export class PathRouter implements CoreRouter {
-  private routes: Record<string, Function> = {};
+  private routes: Record<string, () => void> = {};
 
   private isStarted = false;
 
   start() {
     if (!this.isStarted) {
       this.isStarted = true;
-// @ts-ignore
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       window.onpopstate = (event: PopStateEvent) => {
         this.onRouteChange.call(this);
       };
@@ -31,7 +32,7 @@ export class PathRouter implements CoreRouter {
     }
   }
 
-  use(hash: string, callback: Function) {
+  use(hash: string, callback: any) {
     this.routes[hash] = callback;
     return this;
   }

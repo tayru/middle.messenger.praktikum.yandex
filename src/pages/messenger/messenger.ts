@@ -35,8 +35,10 @@ export class MessengerPage extends Block<MessagePageProps> {
 
                 const textArea = document.querySelector("#message-area");
                 const errorWrapper = document.querySelector('.chat__input-error');
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 // @ts-ignore
                 const message:string | null | undefined = textArea.value;
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 // @ts-ignore
                 const name:string | null | undefined = textArea.getAttribute("name");
                 if (name == null || message == null) return
@@ -72,13 +74,13 @@ export class MessengerPage extends Block<MessagePageProps> {
                 window.router.go('/settings')
             },
             selectChat: async (e: Event) => {
-                let IDchat = e.currentTarget.dataset.id * 1;
+                const IDchat = e.currentTarget.dataset.id * 1;
                 window.store.dispatch({ ActiveChat: IDchat });
-                let IDuser = store.state.user.id;
+                const IDuser = store.state.user.id;
                 let { response: token} = await chatAPI.getToken(IDchat)
                 token = JSON.parse(token).token
 
-                let path = `wss://ya-praktikum.tech/ws/chats/${IDuser}/${IDchat}/${token}`;
+                const path = `wss://ya-praktikum.tech/ws/chats/${IDuser}/${IDchat}/${token}`;
                 this.ws = new WebSocket(path);
                 this.ws.addEventListener('open', () => {
                     console.log('Соединение установлено');

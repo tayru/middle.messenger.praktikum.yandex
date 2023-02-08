@@ -9,8 +9,9 @@ type RenderBlockParams<T> = {
     props: T;
     state?: Partial<AppState>;
 }
-
-export async function renderBlock<T extends Object>({ Block, props, state = defaultState }: RenderBlockParams<T>) {
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+export async function renderBlock<T extends AnyObject>({ Block, props, state = defaultState }: RenderBlockParams<T>) {
       Object.values(components).forEach((Component: any) => {
             registerComponent(Component);
           });
