@@ -14,9 +14,8 @@
   "description": "",
   "scripts": {
     "start": "npm run build && node ./server/server.js",
-    "dev": "webpack --mode development --stats-error-details",
     "dev:start": "webpack-dev-server --mode development --open",
-    "build": "webpack --mode production",
+    "build": "webpack --mode development",
     "tscheck": "npx tsc --noEmit",
     "eslint": "npx eslint \"./src/**/*.ts\" --ext .ts",
     "eslint:fix": "npx eslint \"./src/**/*.ts\" --ext .ts --fix",

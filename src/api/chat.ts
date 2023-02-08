@@ -23,7 +23,7 @@ export  const chatAPI = {
         return  apiRequest.post('chats', { data: data });
     },
 
-    getToken: (id: number) => {
+    getToken: (id: string) => {
         return  apiRequest.post(`chats/token/${id}`, );
     },
 

@@ -4,7 +4,7 @@ import template from './template.hbs';
 import './change-chat.pcss';
 
 
-export class changeChat extends Block {
+export class changeChat extends Block<any> {
 
   static componentName = `changeChat`;
 

@@ -14,7 +14,8 @@
     "strictNullChecks": true,
     "rootDir": "./src",
     "baseUrl": ".src",
-    "useUnknownInCatchVariables": false
+    "useUnknownInCatchVariables": false,
+
   }
 }
 
