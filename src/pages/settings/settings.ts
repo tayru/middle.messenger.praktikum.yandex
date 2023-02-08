@@ -158,6 +158,7 @@ export class SetPage extends Block<SettingsPageProps> {
 
             onLogin: (e: Event) => {
                 e.preventDefault();
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 // @ts-ignore
                 this.state.checkValidation(event)
 
