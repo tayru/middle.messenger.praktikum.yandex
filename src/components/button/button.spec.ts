@@ -3,7 +3,9 @@ import { renderBlock } from "../../tests/renderUtils";
 import { getByRole } from "@testing-library/dom";
 
 function renderButton({ onClick }: any) {
+
   renderBlock({
+    // @ts-ignore
     Block: Button,
     props: { text: '123', onClick },
   })

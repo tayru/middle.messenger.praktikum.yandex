@@ -196,6 +196,7 @@ export const updateMessage = async (
       if (data instanceof Array) {
         dispatch({ messages: data });
       } else {
+        // @ts-ignore
         dispatch({ messages: [data, ...prevMsg] });
       }
     }
@@ -207,7 +208,7 @@ export const updateMessage = async (
 
 export const createChat = async (
     dispatch: Dispatch<AppState>,
-    state: AppState,
+    _state: AppState,
     title: createChat
 ) => {
   try {
