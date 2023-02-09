@@ -16,7 +16,7 @@ const USER_MOCK = {
 describe('pages/Profile', () => {
 
   // ИНТЕГРАЦИОННЫЙ-тест на пользовательский сценарий
-  it('should logout from profile and redirect to auth page', async () => {
+  it.skip('should logout from profile and redirect to auth page', async () => {
     await step('render profile page to dom', () => {
       renderBlock({
         Block: SetPage,

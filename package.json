@@ -24,7 +24,8 @@
     "lint:all": "npm run eslint && npm run stylelint",
     "watch": "webpack --mode development --watch",
     "test": "jest",
-    "clear_jest": "jest --clearCache"
+    "clear_jest": "jest --clearCache",
+    "prepare": "husky install"
   },
   "jest": {
     "testEnvironment": "jsdom",
@@ -48,7 +49,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm-run-all lint:all"
+      "pre-commit": "npm-run-all test lint:all"
     }
   },
   "keywords": [],
@@ -73,7 +74,6 @@
     "babel-plugin-inline-import": "3.0.0",
     "eslint": "8.30.0",
     "eslint-config-google": "0.14.0",
-    "husky": "8.0.3",
     "jest": "27.5.1",
     "nanoid": "4.0.0",
     "node-sass": "8.0.0",
@@ -85,7 +85,8 @@
     "stylelint-config-prettier": "9.0.3",
     "stylelint-config-standard": "28.0.0",
     "stylelint-config-standard-scss": "5.0.0",
-    "typescript": "4.6.2"
+    "typescript": "4.6.2",
+    "husky": "^8.0.0"
   },
   "dependencies": {
     "@types/uuid": "9.0.0",

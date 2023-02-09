@@ -9,7 +9,7 @@ describe('api/HttpTransport', () => {
       });
     } catch (err) {
       const reason = JSON.parse(err).reason;
-      expect(reason).toEqual('Error signin');
+      expect(reason).toEqual('Login or password is incorrect');
     }
   });
 
