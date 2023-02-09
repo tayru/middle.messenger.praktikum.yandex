@@ -57,14 +57,20 @@ export class MessengerPage extends Block<MessagePageProps> {
             },
 
             onFocus: (e: Event) => {
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
                 this.state.checkValidation(e)
             },
             onBlur: (e: Event) => {
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
                 this.state.checkValidation(e)
             },
 
             onSend: (e: Event) => {
                 e.preventDefault();
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
                 this.state.checkValidation()
             },
 
@@ -74,23 +80,37 @@ export class MessengerPage extends Block<MessagePageProps> {
                 window.router.go('/settings')
             },
             selectChat: async (e: Event) => {
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
                 const IDchat = e.currentTarget.dataset.id * 1;
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
                 window.store.dispatch({ ActiveChat: IDchat });
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
                 const IDuser = window.store.state.user.id;
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
                 let { response: token} = await chatAPI.getToken(IDchat)
                 token = JSON.parse(token).token
 
                 const path = `wss://ya-praktikum.tech/ws/chats/${IDuser}/${IDchat}/${token}`;
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
                 this.ws = new WebSocket(path);
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
                 this.ws.addEventListener('open', () => {
                     console.log('Соединение установлено');
-
+                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                    // @ts-ignore
                     this.ws.send(JSON.stringify({
                         content: '0',
                         type: 'get old',
                     }));
                 });
-
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
                 this.ws.addEventListener('message', event => {
                     console.log('Получены данные', JSON.parse(event.data));
 
@@ -101,9 +121,13 @@ export class MessengerPage extends Block<MessagePageProps> {
 
             sendMessage:(e: Event) => {
                 e.preventDefault();
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
                 let text = document.querySelector('.message-area').value;
                 text = text.trim();
-                if (text === '') return false
+                if (text === '') return false;
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
                 this.ws.send(JSON.stringify({
                     content: text,
                     type: 'message',
@@ -111,12 +135,18 @@ export class MessengerPage extends Block<MessagePageProps> {
             },
             createChat:(e:Event) => {
                 e.preventDefault();
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
                 const text = document.querySelector('#create-chat__input').value;
                 window.store.dispatch(createChat, text);
             },
             addUser:(e: Event) => {
                 e.preventDefault();
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
                 const id = document.querySelector('#addUser__input').value;
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
                 const idChat = window.store.state.ActiveChat;
 
                 const UserChat = {
@@ -127,7 +157,11 @@ export class MessengerPage extends Block<MessagePageProps> {
             },
             deleteUser:(e: Event) => {
                 e.preventDefault();
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
                 const id = document.querySelector('#deleteUser__input').value;
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
                 const idChat = window.store.state.ActiveChat;
 
                 const UserChat = {
@@ -139,6 +173,8 @@ export class MessengerPage extends Block<MessagePageProps> {
             },
             deleteChat:(e: Event) => {
                 e.preventDefault();
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
                 const id = window.store.state.ActiveChat;
                 console.log(id)
                 const idChat = {

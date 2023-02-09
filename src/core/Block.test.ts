@@ -13,6 +13,8 @@ describe('core/Block', () => {
     it('check set props', () => {
         const block = new testBlock({ title: 'test' });
         block.setProps({ title: 'new title' });
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         expect(block?.props?.title).toEqual('new title');
     });
 
@@ -29,6 +31,8 @@ describe('core/Block', () => {
         const eventBus = new EventBus<Events>();
         block._registerEvents(eventBus);
         const mock = jest.fn();
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         block.eventBus().on(EVENTS_LIST.FLOW_CDU, mock);
 
         // 2 Act

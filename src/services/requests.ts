@@ -196,6 +196,7 @@ export const updateMessage = async (
       if (data instanceof Array) {
         dispatch({ messages: data });
       } else {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         dispatch({ messages: [data, ...prevMsg] });
       }
@@ -213,7 +214,9 @@ export const createChat = async (
 ) => {
   try {
      await chatAPI.createChat( {
-      title: title
+       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+       // @ts-ignore
+       title: title
     });
 
     const { response: responseChats} = await chatAPI.getChats()

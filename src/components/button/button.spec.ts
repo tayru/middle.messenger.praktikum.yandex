@@ -5,6 +5,7 @@ import { getByRole } from "@testing-library/dom";
 function renderButton({ onClick }: any) {
 
   renderBlock({
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     Block: Button,
     props: { text: '123', onClick },
@@ -32,6 +33,8 @@ describe('components/Button', () => {
     const mock = jest.fn()
 
     renderBlock({
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       Block: Button,
       props: { text: '123', onClick: mock },
     })

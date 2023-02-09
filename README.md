@@ -1,4 +1,7 @@
 Домен:  [https://chat-yandex-praktikum.netlify.app/](https://chat-yandex-praktikum.netlify.app/)
+Ссылка на рендом.ком:  [https://middle-messenger-praktikum-yandex-09b6.onrender.com](https://middle-messenger-praktikum-yandex-09b6.onrender.com)
+
+
 
 Ссылка на прототип проекта:   [https://www.figma.com/file/af883m8C2as6KSefYl1yQI/chat-yandex-praktikum](https://www.figma.com/file/af883m8C2as6KSefYl1yQI/chat-yandex-praktikum)
 
@@ -11,8 +14,6 @@
 - `npm run build` — сборка проекта
 - `npm run delete` — чистка кэша
 
-### Проблемы
-1) Есть проблема с компонентами в виде ссылок, preventDefault не останавливает перезагрузку приложения, поэтому использую кнопки
 
 
 

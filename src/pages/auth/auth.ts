@@ -80,15 +80,21 @@ export class AuthPage extends Block<loginPageProps> {
             },
 
             onFocus: (event: Event) => {
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
                 this.state.checkValidation(event)
             },
             onBlur: (event: Event) => {
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
                 this.state.checkValidation(event)
             },
 
 
             onLogin: (e: Event) => {
                 e.preventDefault();
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
                 const obj = this.state.checkValidation()
                 if (obj !== null) {
                     console.log('123214')
